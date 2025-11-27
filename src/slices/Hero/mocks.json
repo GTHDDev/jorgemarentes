@@ -1,0 +1,227 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "Transformando vidas"
+			},
+			"experience": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "15"
+			},
+			"specialization": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "Dr. Psicología"
+			},
+			"image": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1471897488648-5eae4ac6686b",
+					"width": 3560,
+					"height": 5340
+				},
+				"url": "https://images.unsplash.com/photo-1471897488648-5eae4ac6686b",
+				"width": 3560,
+				"height": 5340,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"alt": "famous",
+				"credits": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			},
+			"schedule_button": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "Agenda una cita"
+			},
+			"clients": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "1000"
+			},
+			"stats": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"stat",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Number",
+									"value": "10"
+								}
+							],
+							[
+								"description",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Años de Experencia"
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"stat",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Number",
+									"value": "459"
+								}
+							],
+							[
+								"description",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Clientes"
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"stat",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Number",
+									"value": "80"
+								}
+							],
+							[
+								"description",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Satisfacción"
+								}
+							]
+						]
+					}
+				]
+			},
+			"link_button": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "Servicios"
+			},
+			"subheading": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "Atención basada en la evidencia"
+			},
+			"introduction": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "Empoderando a las personas para que alcancen el bienestar mental mediante enfoques terapéuticos compasivos y personalizados, respaldados por investigaciones y décadas de experiencia."
+			},
+			"counter": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"stat",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Number",
+									"value": "98"
+								}
+							],
+							[
+								"description",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Satisfacción"
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"stat",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Number",
+									"value": "15"
+								}
+							],
+							[
+								"description",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Años de experiencia"
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"stat",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Number",
+									"value": "1000"
+								}
+							],
+							[
+								"description",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Clientes"
+								}
+							]
+						]
+					}
+				]
+			},
+			"schedule_link": {
+				"key": "b580c1de-b2ad-48b3-9460-fa77047157bb",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://api.whatsapp.com/send/?phone=8663862590&text&type=phone_number&app_absent=0&wame_ctl=1",
+					"target": "_blank",
+					"text": ""
+				}
+			},
+			"link": {
+				"__TYPE__": "LinkContent",
+				"key": "ef837383-8485-4688-88b5-f8241416ab27",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://keyboardgthd.vercel.app/",
+					"text": "Servicios"
+				}
+			}
+		},
+		"items": []
+	}
+]
