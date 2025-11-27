@@ -294,38 +294,73 @@ export type SettingsDocument<Lang extends string = string> =
 export type AllDocumentTypes = HomeDocument | SettingsDocument;
 
 /**
+ * Item in *Hero → Default → Primary → Stats*
+ */
+export interface HeroSliceDefaultPrimaryStatsItem {
+  /**
+   * Stat field in *Hero → Default → Primary → Stats*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.stats[].stat
+   * - **Documentation**: https://prismic.io/docs/fields/number
+   */
+  stat: prismic.NumberField;
+
+  /**
+   * Description field in *Hero → Default → Primary → Stats*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.stats[].description
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  description: prismic.KeyTextField;
+}
+
+/**
  * Primary content in *Hero → Default → Primary*
  */
 export interface HeroSliceDefaultPrimary {
   /**
+   * Specialization field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.specialization
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  specialization: prismic.KeyTextField;
+
+  /**
    * Heading field in *Hero → Default → Primary*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: hero.default.primary.heading
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   * - **Documentation**: https://prismic.io/docs/fields/text
    */
-  heading: prismic.RichTextField;
+  heading: prismic.KeyTextField;
 
   /**
    * Subheading field in *Hero → Default → Primary*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: hero.default.primary.subheading
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   * - **Documentation**: https://prismic.io/docs/fields/text
    */
-  subheading: prismic.RichTextField;
+  subheading: prismic.KeyTextField;
 
   /**
    * Introduction field in *Hero → Default → Primary*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: hero.default.primary.introduction
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   * - **Documentation**: https://prismic.io/docs/fields/text
    */
-  introduction: prismic.RichTextField;
+  introduction: prismic.KeyTextField;
 
   /**
    * Schedule Button field in *Hero → Default → Primary*
@@ -338,6 +373,22 @@ export interface HeroSliceDefaultPrimary {
   schedule_button: prismic.KeyTextField;
 
   /**
+   * Schedule Link field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.schedule_link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  schedule_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
    * Link button field in *Hero → Default → Primary*
    *
    * - **Field Type**: Text
@@ -348,44 +399,24 @@ export interface HeroSliceDefaultPrimary {
   link_button: prismic.KeyTextField;
 
   /**
-   * Experience field in *Hero → Default → Primary*
+   * Link field in *Hero → Default → Primary*
    *
-   * - **Field Type**: Text
+   * - **Field Type**: Link
    * - **Placeholder**: *None*
-   * - **API ID Path**: hero.default.primary.experience
-   * - **Documentation**: https://prismic.io/docs/fields/text
+   * - **API ID Path**: hero.default.primary.link
+   * - **Documentation**: https://prismic.io/docs/fields/link
    */
-  experience: prismic.KeyTextField;
-
-  /**
-   * Clients field in *Hero → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: hero.default.primary.clients
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  clients: prismic.KeyTextField;
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 
   /**
    * Stats field in *Hero → Default → Primary*
    *
-   * - **Field Type**: Text
+   * - **Field Type**: Group
    * - **Placeholder**: *None*
-   * - **API ID Path**: hero.default.primary.stats
-   * - **Documentation**: https://prismic.io/docs/fields/text
+   * - **API ID Path**: hero.default.primary.stats[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
    */
-  stats: prismic.KeyTextField;
-
-  /**
-   * Specialization field in *Hero → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: hero.default.primary.specialization
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  specialization: prismic.KeyTextField;
+  stats: prismic.GroupField<Simplify<HeroSliceDefaultPrimaryStatsItem>>;
 
   /**
    * Image field in *Hero → Default → Primary*
@@ -457,6 +488,7 @@ declare module "@prismicio/client" {
       SettingsDocumentDataSocialMediaItem,
       AllDocumentTypes,
       HeroSlice,
+      HeroSliceDefaultPrimaryStatsItem,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
