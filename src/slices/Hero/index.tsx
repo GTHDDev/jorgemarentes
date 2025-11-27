@@ -45,10 +45,10 @@ const Hero: FC<HeroProps> = ({ slice }) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#FAFAFA] dark:bg-[#0F0F0F]"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-pearl-white dark:bg-ink-black"
     >
       {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#F3EDE7] via-[#FAFAFA] to-white dark:from-[#1a1a1a] dark:via-[#0F0F0F] dark:to-[#0a0a0a] opacity-60" />
+      <div className="absolute inset-0 bg-gradient-to-br from-soft-beige via-pearl-white to-white dark:from-[#1a1a1a] dark:via-ink-black dark:to-[#0a0a0a] opacity-60" />
 
       <div className="relative max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 py-24 lg:py-32 w-full">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -60,9 +60,9 @@ const Hero: FC<HeroProps> = ({ slice }) => {
             className="space-y-8 lg:space-y-10 max-w-2xl"
           >
             <motion.div variants={itemVariants} className="space-y-4">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-white/10 backdrop-blur-sm rounded-full border border-[#0F0F0F]/5 dark:border-white/10 shadow-soft">
-                <span className="w-2 h-2 bg-[#4A6FA5] rounded-full animate-pulse" />
-                <span className="text-sm font-medium text-[#0F0F0F]/70 dark:text-white/70">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-white/10 backdrop-blur-sm rounded-full border border-ink-black/5 dark:border-white/10 shadow-soft">
+                <span className="w-2 h-2 bg-steel-blue rounded-full animate-pulse" />
+                <span className="text-sm font-medium text-ink-black/70 dark:text-white/70">
                   {slice.primary.specialization}
                 </span>
               </div>
@@ -70,17 +70,17 @@ const Hero: FC<HeroProps> = ({ slice }) => {
 
             <motion.h1
               variants={itemVariants}
-              className="font-['Space_Grotesk'] text-5xl sm:text-6xl lg:text-7xl xl:text-display-lg tracking-tight text-[#0F0F0F] dark:text-white"
+              className="font-['Space_Grotesk'] text-5xl sm:text-6xl lg:text-7xl xl:text-display-lg tracking-tight text-ink-black dark:text-white"
             >
               {slice.primary.heading}{" "}
-              <span className="text-[#4A6FA5] inline-block">
+              <span className="text-steel-blue inline-block">
                 {slice.primary.subheading}
               </span>
             </motion.h1>
 
             <motion.p
               variants={itemVariants}
-              className="text-lg sm:text-xl lg:text-2xl text-[#0F0F0F]/60 dark:text-white/60 leading-relaxed max-w-xl"
+              className="text-lg sm:text-xl lg:text-2xl text-ink-black/60 dark:text-white/60 leading-relaxed max-w-xl"
             >
               {slice.primary.introduction}
             </motion.p>
@@ -97,7 +97,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
               >
                 <PrismicNextLink
                   field={slice.primary.schedule_link}
-                  className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#4A6FA5] text-white rounded-full font-medium shadow-medium hover:shadow-strong transition-all duration-300"
+                  className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-steel-blue text-white rounded-full font-medium shadow-medium hover:shadow-strong transition-all duration-300"
                   aria-label="Agendar cita"
                 >
                   <CalendarIcon className="w-5 h-5" />
@@ -113,7 +113,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
               >
                 <PrismicNextLink
                   field={slice.primary.link}
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white dark:bg-white/10 border-2 border-[#0F0F0F]/10 dark:border-white/20 text-[#0F0F0F] dark:text-white rounded-full font-medium hover:bg-[#F3EDE7] dark:hover:bg-white/20 hover:border-[#0F0F0F]/20 dark:hover:border-white/30 transition-all duration-300"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white dark:bg-white/10 border-2 border-ink-black/10 dark:border-white/20 text-ink-black dark:text-white rounded-full font-medium hover:bg-soft-beige dark:hover:bg-white/20 hover:border-ink-black/20 dark:hover:border-white/30 transition-all duration-300"
                 >
                   {slice.primary.link_button}
                 </PrismicNextLink>
@@ -123,7 +123,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
             {/* Stats */}
             <motion.div
               variants={itemVariants}
-              className="flex items-center gap-8 pt-6 border-t border-[#0F0F0F]/5 dark:border-white/10"
+              className="flex items-center gap-8 pt-6 border-t border-ink-black/5 dark:border-white/10"
             >
               {slice.primary.stats.map((item, idx) => (
                 <div key={idx}>
@@ -131,9 +131,9 @@ const Hero: FC<HeroProps> = ({ slice }) => {
                     value={Number(item.stat)}
                     delay={0.5}
                     direction='up'
-                    className="font-['Space_Grotesk'] text-3xl sm:text-4xl font-medium text-[#0F0F0F] dark:text-white"
+                    className="font-['Space_Grotesk'] text-3xl sm:text-4xl font-medium text-ink-black dark:text-white"
                   />
-                  <div className="text-sm text-[#0F0F0F]/60 dark:text-white/60 mt-1">
+                  <div className="text-sm text-ink-black/60 dark:text-white/60 mt-1">
                     {item.description}
                   </div>
                 </div>
@@ -153,7 +153,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
                 field={slice.primary.image}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0F0F0F]/20 via-transparent to-transparent dark:from-[#0F0F0F]/60" />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink-black/20 via-transparent to-transparent dark:from-ink-black/60" />
             </div>
           </motion.div>
         </div>
@@ -169,9 +169,9 @@ const Hero: FC<HeroProps> = ({ slice }) => {
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="w-6 h-10 border-2 border-[#0F0F0F]/20 dark:border-white/20 rounded-full p-1"
+          className="w-6 h-10 border-2 border-ink-black/20 dark:border-white/20 rounded-full p-1"
         >
-          <motion.div className="w-1.5 h-1.5 bg-[#4A6FA5] rounded-full mx-auto" />
+          <motion.div className="w-1.5 h-1.5 bg-steel-blue rounded-full mx-auto" />
         </motion.div>
       </motion.div>
     </section>
