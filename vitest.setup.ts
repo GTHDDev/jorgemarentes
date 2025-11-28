@@ -18,9 +18,11 @@ vi.mock('@prismicio/next', () => ({
 // Mock motion to no-op components that render children (no JSX)
 vi.mock('motion/react', async (orig) => {
   const actual: any = await (orig as any)();
-  const Noop = (props: any) => React.createElement(React.Fragment, null, props.children);
+  // Render real HTML elements for motion components, e.g., motion.a -> <a />
+  const elementFactory = (tag: any) => (props: any) =>
+    React.createElement(tag, props, props.children);
   const motion = new Proxy({}, {
-    get: () => Noop,
+    get: (_: any, tag: any) => elementFactory(tag),
   });
   return {
     ...actual,
