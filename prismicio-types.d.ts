@@ -69,7 +69,7 @@ type ContentRelationshipFieldWithData<
   >;
 }[Exclude<TCustomType[number], string>["id"]];
 
-type HomeDocumentDataSlicesSlice = ServicesSlice | HeroSlice;
+type HomeDocumentDataSlicesSlice = ConferencesSlice | ServicesSlice | HeroSlice;
 
 /**
  * Content for Home documents
@@ -292,6 +292,164 @@ export type SettingsDocument<Lang extends string = string> =
   >;
 
 export type AllDocumentTypes = HomeDocument | SettingsDocument;
+
+/**
+ * Item in *Conferences → Default → Primary → Conferences*
+ */
+export interface ConferencesSliceDefaultPrimaryConferencesItem {
+  /**
+   * Type field in *Conferences → Default → Primary → Conferences*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: conferences.default.primary.conferences[].type
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  type: prismic.KeyTextField;
+
+  /**
+   * Title field in *Conferences → Default → Primary → Conferences*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: conferences.default.primary.conferences[].title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Event field in *Conferences → Default → Primary → Conferences*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: conferences.default.primary.conferences[].event
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  event: prismic.KeyTextField;
+
+  /**
+   * Location field in *Conferences → Default → Primary → Conferences*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: conferences.default.primary.conferences[].location
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  location: prismic.KeyTextField;
+
+  /**
+   * Date field in *Conferences → Default → Primary → Conferences*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: conferences.default.primary.conferences[].date
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  date: prismic.KeyTextField;
+
+  /**
+   * Image field in *Conferences → Default → Primary → Conferences*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: conferences.default.primary.conferences[].image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Conference Link field in *Conferences → Default → Primary → Conferences*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: conferences.default.primary.conferences[].conference_link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  conference_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+}
+
+/**
+ * Primary content in *Conferences → Default → Primary*
+ */
+export interface ConferencesSliceDefaultPrimary {
+  /**
+   * Tag field in *Conferences → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: conferences.default.primary.tag
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  tag: prismic.KeyTextField;
+
+  /**
+   * Heading field in *Conferences → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: conferences.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Description field in *Conferences → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: conferences.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  description: prismic.KeyTextField;
+
+  /**
+   * Conferences field in *Conferences → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: conferences.default.primary.conferences[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  conferences: prismic.GroupField<
+    Simplify<ConferencesSliceDefaultPrimaryConferencesItem>
+  >;
+}
+
+/**
+ * Default variation for Conferences Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ConferencesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ConferencesSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Conferences*
+ */
+type ConferencesSliceVariation = ConferencesSliceDefault;
+
+/**
+ * Conferences Shared Slice
+ *
+ * - **API ID**: `conferences`
+ * - **Description**: Conferences
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ConferencesSlice = prismic.SharedSlice<
+  "conferences",
+  ConferencesSliceVariation
+>;
 
 /**
  * Item in *Hero → Default → Primary → Stats*
@@ -619,6 +777,11 @@ declare module "@prismicio/client" {
       SettingsDocumentDataContactItem,
       SettingsDocumentDataSocialMediaItem,
       AllDocumentTypes,
+      ConferencesSlice,
+      ConferencesSliceDefaultPrimaryConferencesItem,
+      ConferencesSliceDefaultPrimary,
+      ConferencesSliceVariation,
+      ConferencesSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimaryStatsItem,
       HeroSliceDefaultPrimary,
