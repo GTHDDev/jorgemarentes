@@ -69,7 +69,11 @@ type ContentRelationshipFieldWithData<
   >;
 }[Exclude<TCustomType[number], string>["id"]];
 
-type HomeDocumentDataSlicesSlice = ConferencesSlice | ServicesSlice | HeroSlice;
+type HomeDocumentDataSlicesSlice =
+  | AboutSlice
+  | ConferencesSlice
+  | ServicesSlice
+  | HeroSlice;
 
 /**
  * Content for Home documents
@@ -292,6 +296,228 @@ export type SettingsDocument<Lang extends string = string> =
   >;
 
 export type AllDocumentTypes = HomeDocument | SettingsDocument;
+
+/**
+ * Item in *About → Default → Primary → Highlights*
+ */
+export interface AboutSliceDefaultPrimaryHighlightsItem {
+  /**
+   * Icon field in *About → Default → Primary → Highlights*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.default.primary.highlights[].icon
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  icon: prismic.SelectField<"GraduationCap" | "FileText" | "Award">;
+
+  /**
+   * Title field in *About → Default → Primary → Highlights*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.default.primary.highlights[].title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *About → Default → Primary → Highlights*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.default.primary.highlights[].description
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  description: prismic.KeyTextField;
+
+  /**
+   * Color field in *About → Default → Primary → Highlights*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.default.primary.highlights[].color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  color: prismic.ColorField;
+}
+
+/**
+ * Item in *About → Default → Primary → Milestones*
+ */
+export interface AboutSliceDefaultPrimaryMilestonesItem {
+  /**
+   * Icon field in *About → Default → Primary → Milestones*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.default.primary.milestones[].icon
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  icon: prismic.SelectField<"GraduationCap" | "FileText" | "Award">;
+
+  /**
+   * Year field in *About → Default → Primary → Milestones*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.default.primary.milestones[].year
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  year: prismic.KeyTextField;
+
+  /**
+   * Title field in *About → Default → Primary → Milestones*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.default.primary.milestones[].title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Institution field in *About → Default → Primary → Milestones*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.default.primary.milestones[].institution
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  institution: prismic.KeyTextField;
+
+  /**
+   * Description field in *About → Default → Primary → Milestones*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.default.primary.milestones[].description
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  description: prismic.KeyTextField;
+
+  /**
+   * Color field in *About → Default → Primary → Milestones*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.default.primary.milestones[].color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  color: prismic.ColorField;
+}
+
+/**
+ * Primary content in *About → Default → Primary*
+ */
+export interface AboutSliceDefaultPrimary {
+  /**
+   * Tag field in *About → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.default.primary.tag
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  tag: prismic.KeyTextField;
+
+  /**
+   * Heading field in *About → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Description field in *About → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  description: prismic.KeyTextField;
+
+  /**
+   * Button Link field in *About → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.default.primary.button_link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  button_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Button field in *About → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.default.primary.button
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  button: prismic.KeyTextField;
+
+  /**
+   * Highlights field in *About → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.default.primary.highlights[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  highlights: prismic.GroupField<
+    Simplify<AboutSliceDefaultPrimaryHighlightsItem>
+  >;
+
+  /**
+   * Milestones field in *About → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.default.primary.milestones[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  milestones: prismic.GroupField<
+    Simplify<AboutSliceDefaultPrimaryMilestonesItem>
+  >;
+}
+
+/**
+ * Default variation for About Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type AboutSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<AboutSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *About*
+ */
+type AboutSliceVariation = AboutSliceDefault;
+
+/**
+ * About Shared Slice
+ *
+ * - **API ID**: `about`
+ * - **Description**: About
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type AboutSlice = prismic.SharedSlice<"about", AboutSliceVariation>;
 
 /**
  * Item in *Conferences → Default → Primary → Conferences*
@@ -777,6 +1003,12 @@ declare module "@prismicio/client" {
       SettingsDocumentDataContactItem,
       SettingsDocumentDataSocialMediaItem,
       AllDocumentTypes,
+      AboutSlice,
+      AboutSliceDefaultPrimaryHighlightsItem,
+      AboutSliceDefaultPrimaryMilestonesItem,
+      AboutSliceDefaultPrimary,
+      AboutSliceVariation,
+      AboutSliceDefault,
       ConferencesSlice,
       ConferencesSliceDefaultPrimaryConferencesItem,
       ConferencesSliceDefaultPrimary,
