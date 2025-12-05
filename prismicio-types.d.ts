@@ -211,26 +211,15 @@ export interface SettingsDocumentDataSocialMediaItem {
  */
 interface SettingsDocumentData {
   /**
-   * Heading field in *Settings*
+   * Website Name field in *Settings*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: settings.heading
+   * - **API ID Path**: settings.website_name
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   * - **Documentation**: https://prismic.io/docs/fields/text
    */
-  heading: prismic.RichTextField;
-
-  /**
-   * Description field in *Settings*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: settings.description
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  description: prismic.RichTextField;
+  website_name: prismic.KeyTextField;
 
   /**
    * Services field in *Settings*
@@ -277,6 +266,28 @@ interface SettingsDocumentData {
   social_media: prismic.GroupField<
     Simplify<SettingsDocumentDataSocialMediaItem>
   >;
+
+  /**
+   * Heading field in *Settings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.heading
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Description field in *Settings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  description: prismic.KeyTextField;
 }
 
 /**
