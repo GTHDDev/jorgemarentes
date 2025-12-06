@@ -38,6 +38,7 @@ const Conferences: FC<ConferencesProps> = ({ slice }) => {
       className="relative py-24 lg:py-32 bg-soft-beige dark:bg-ink-black overflow-hidden"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      id="conferencias"
     >
       <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12">
         {/* Section Header */}

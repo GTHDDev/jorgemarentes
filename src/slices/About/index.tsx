@@ -34,7 +34,7 @@ const About: FC<AboutProps> = ({ slice }) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       className="relative py-24 lg:py-32 bg-white dark:bg-[#0a0a0a] overflow-hidden"
-      id="about"
+      id="acerca"
     >
       <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">

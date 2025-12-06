@@ -32,6 +32,7 @@ const Services: FC<ServicesProps> = ({ slice }) => {
       data-slice-variation={slice.variation}
       className="relative py-24 lg:py-32 bg-white dark:bg-[#0a0a0a] overflow-hidden"
       ref={ref}
+      id="servicios"
     >
       <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12">
         {/* Section Header */}
