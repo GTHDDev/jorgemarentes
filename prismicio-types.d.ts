@@ -135,21 +135,6 @@ export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
 
 /**
- * Item in *Settings → Services*
- */
-export interface SettingsDocumentDataServicesItem {
-  /**
-   * Service field in *Settings → Services*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: settings.services[].service
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  service: prismic.KeyTextField;
-}
-
-/**
  * Item in *Settings → Navigation*
  */
 export interface SettingsDocumentDataNavigationItem {
@@ -165,9 +150,34 @@ export interface SettingsDocumentDataNavigationItem {
 }
 
 /**
+ * Item in *Settings → Services*
+ */
+export interface SettingsDocumentDataServicesItem {
+  /**
+   * Service field in *Settings → Services*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.services[].service
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  service: prismic.KeyTextField;
+}
+
+/**
  * Item in *Settings → Contact*
  */
 export interface SettingsDocumentDataContactItem {
+  /**
+   * Type field in *Settings → Contact*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.contact[].type
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  type: prismic.KeyTextField;
+
   /**
    * Contact field in *Settings → Contact*
    *
@@ -177,6 +187,16 @@ export interface SettingsDocumentDataContactItem {
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
   contact: prismic.KeyTextField;
+
+  /**
+   * Icon field in *Settings → Contact*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.contact[].icon
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  icon: prismic.SelectField<"Phone" | "Mail" | "MapPin">;
 }
 
 /**
@@ -222,15 +242,26 @@ interface SettingsDocumentData {
   website_name: prismic.KeyTextField;
 
   /**
-   * Services field in *Settings*
+   * Heading field in *Settings*
    *
-   * - **Field Type**: Group
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: settings.services[]
+   * - **API ID Path**: settings.heading
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   * - **Documentation**: https://prismic.io/docs/fields/text
    */
-  services: prismic.GroupField<Simplify<SettingsDocumentDataServicesItem>>;
+  heading: prismic.KeyTextField;
+
+  /**
+   * Description field in *Settings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  description: prismic.KeyTextField;
 
   /**
    * Navigation field in *Settings*
@@ -242,6 +273,17 @@ interface SettingsDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
    */
   navigation: prismic.GroupField<Simplify<SettingsDocumentDataNavigationItem>>;
+
+  /**
+   * Services field in *Settings*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.services[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  services: prismic.GroupField<Simplify<SettingsDocumentDataServicesItem>>;
 
   /**
    * Contact field in *Settings*
@@ -266,28 +308,6 @@ interface SettingsDocumentData {
   social_media: prismic.GroupField<
     Simplify<SettingsDocumentDataSocialMediaItem>
   >;
-
-  /**
-   * Heading field in *Settings*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: settings.heading
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  heading: prismic.KeyTextField;
-
-  /**
-   * Description field in *Settings*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: settings.description
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  description: prismic.KeyTextField;
 }
 
 /**
@@ -1009,8 +1029,8 @@ declare module "@prismicio/client" {
       HomeDocumentDataSlicesSlice,
       SettingsDocument,
       SettingsDocumentData,
-      SettingsDocumentDataServicesItem,
       SettingsDocumentDataNavigationItem,
+      SettingsDocumentDataServicesItem,
       SettingsDocumentDataContactItem,
       SettingsDocumentDataSocialMediaItem,
       AllDocumentTypes,

@@ -13,20 +13,18 @@
           "placeholder": ""
         }
       },
-      "services": {
-        "type": "Group",
+      "heading": {
+        "type": "Text",
         "config": {
-          "label": "Services",
-          "repeat": true,
-          "fields": {
-            "service": {
-              "type": "Text",
-              "config": {
-                "label": "Service",
-                "placeholder": ""
-              }
-            }
-          }
+          "label": "Heading",
+          "placeholder": ""
+        }
+      },
+      "description": {
+        "type": "Text",
+        "config": {
+          "label": "Description",
+          "placeholder": ""
         }
       },
       "navigation": {
@@ -45,17 +43,48 @@
           }
         }
       },
+      "services": {
+        "type": "Group",
+        "config": {
+          "label": "Services",
+          "repeat": true,
+          "fields": {
+            "service": {
+              "type": "Text",
+              "config": {
+                "label": "Service",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
       "contact": {
         "type": "Group",
         "config": {
           "label": "Contact",
           "repeat": true,
           "fields": {
+            "type": {
+              "type": "Text",
+              "config": {
+                "label": "Type",
+                "placeholder": ""
+              }
+            },
             "contact": {
               "type": "Text",
               "config": {
                 "label": "Contact",
                 "placeholder": ""
+              }
+            },
+            "icon": {
+              "type": "Select",
+              "config": {
+                "label": "Icon",
+                "placeholder": "",
+                "options": ["Phone", "Mail", "MapPin"]
               }
             }
           }
@@ -93,20 +122,6 @@
               }
             }
           }
-        }
-      },
-      "heading": {
-        "type": "Text",
-        "config": {
-          "label": "Heading",
-          "placeholder": ""
-        }
-      },
-      "description": {
-        "type": "Text",
-        "config": {
-          "label": "Description",
-          "placeholder": ""
         }
       }
     }
