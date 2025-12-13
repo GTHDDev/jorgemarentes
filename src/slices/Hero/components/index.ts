@@ -1,0 +1,9 @@
+export { default as HeroBadge } from "./hero-badge";
+export { default as HeroHeading } from "./hero-heading";
+export { default as HeroDescription } from "./hero-description";
+export { default as HeroLink } from "./hero-link";
+export { default as HeroLinks } from "./hero-links";
+export { default as HeroStatItem } from "./hero-stat-item";
+export { default as HeroStats } from "./hero-stats";
+export { default as HeroImage } from "./hero-image";
+export { default as ScrollIndicator } from "./scroll-indicator";

@@ -50,7 +50,9 @@ const SectionHeader: FC<SectionHeaderProps> = ({ tag, heading, description }) =>
       className="max-w-3xl mb-12 lg:mb-16"
     >
       <motion.div variants={itemVariants} className="mb-6">
-        <TagBadge tag={tag} />
+        <TagBadge>
+          {tag}
+        </TagBadge>
       </motion.div>
 
       <motion.h2
