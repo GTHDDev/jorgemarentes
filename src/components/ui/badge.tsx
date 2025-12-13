@@ -18,6 +18,7 @@ const badgeVariants = cva(
         // Custom variants for project design system
         tag: "border-transparent bg-white/60 dark:bg-white/5 backdrop-blur-sm text-ink-black/70 dark:text-white/70 shadow-soft",
         type: "border-transparent bg-mango-gold text-ink-black shadow-soft",
+        highlight: "bg-steel-blue/10 dark:bg-steel-blue/20 text-steel-blue border border-steel-blue/30 dark:border-steel-blue/40",
       },
     },
     defaultVariants: {
