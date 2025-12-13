@@ -6,6 +6,7 @@ import { SliceComponentProps } from "@prismicio/react";
 import { Brain, Users, Heart, Sparkles } from "lucide-react";
 import { motion, useInView } from "motion/react";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
+import TagBadge from "@/components/tag-badge";
 
 /**
  * Props for `Services`.
@@ -42,10 +43,10 @@ const Services: FC<ServicesProps> = ({ slice }) => {
           transition={{ duration: 0.6 }}
           className="max-w-3xl mb-16 lg:mb-20"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#F3EDE7] dark:bg-white/5 rounded-full mb-6">
-            <span className="text-sm font-medium text-ink-black/70 dark:text-white/70">
+          <div className="mb-6">
+            <TagBadge variant="tag" size="md">
               {slice.primary.tag}
-            </span>
+            </TagBadge>
           </div>
           <h2 className="font-['Space_Grotesk'] text-4xl sm:text-5xl lg:text-6xl tracking-tight text-[#0F0F0F] dark:text-white mb-6">
             {slice.primary.heading}

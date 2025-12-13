@@ -2,7 +2,7 @@
 
 import { FC } from "react";
 import { motion } from "motion/react";
-import { Badge } from "@/components/ui/badge";
+import TagBadge from "@/components/tag-badge";
 
 interface SectionHeaderProps {
   tag: string;
@@ -48,9 +48,9 @@ const SectionHeader: FC<SectionHeaderProps> = ({ tag, heading, description }) =>
     >
       <div>
         <motion.div variants={itemVariants} className="mb-6">
-          <Badge variant="tag" className="px-4 py-2">
+          <TagBadge variant="tag" size="md">
             {tag}
-          </Badge>
+          </TagBadge>
         </motion.div>
 
         <motion.h2
