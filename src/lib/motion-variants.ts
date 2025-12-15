@@ -27,6 +27,12 @@ export const fadeInScale = {
   animate: { opacity: 1, scale: 1 },
 };
 
+// Slide In From Left
+export const slideInLeft = {
+  initial: { opacity: 0, scale: 0.95, x: -20 },
+  animate: { opacity: 1, scale: 1, x: 0 },
+};
+
 // Slide In From Right
 export const slideInRight = {
   initial: { opacity: 0, scale: 0.95, x: 50 },

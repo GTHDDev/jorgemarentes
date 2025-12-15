@@ -1,11 +1,12 @@
 "use client";
 
 import { FC } from "react";
-import { motion } from "motion/react";
+import * as m from "motion/react-m";
 import { ArrowRight } from "lucide-react";
 import { PrismicNextLink } from "@prismicio/next";
 import { Button } from "@/components/ui/button";
 import { Content } from "@prismicio/client";
+import { hoverLift, tapScale } from "@/lib/motion-variants";
 
 interface AboutButtonProps {
   button: string;
@@ -15,12 +16,13 @@ interface AboutButtonProps {
 /**
  * Button component with animations.
  * Client Component - requires framer motion for animations.
+ * Optimized with LazyMotion (m component).
  */
 const AboutButton: FC<AboutButtonProps> = ({ button, buttonLink }) => {
   return (
-    <motion.div
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
+    <m.div
+      whileHover={hoverLift}
+      whileTap={tapScale}
       className="inline-block"
     >
       <PrismicNextLink field={buttonLink}>
@@ -29,7 +31,7 @@ const AboutButton: FC<AboutButtonProps> = ({ button, buttonLink }) => {
           <ArrowRight className="w-5 h-5" />
         </Button>
       </PrismicNextLink>
-    </motion.div>
+    </m.div>
   );
 };
 

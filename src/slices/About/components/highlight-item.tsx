@@ -1,8 +1,9 @@
 "use client";
 
 import { FC } from "react";
-import { motion } from "motion/react";
+import * as m from "motion/react-m";
 import { LucideIcon } from "lucide-react";
+import { slideInLeft } from "@/lib/motion-variants";
 
 interface HighlightItemProps {
   title: string;
@@ -15,6 +16,7 @@ interface HighlightItemProps {
 /**
  * Individual highlight item component.
  * Client Component - requires animations.
+ * Optimized with LazyMotion (m component).
  */
 const HighlightItem: FC<HighlightItemProps> = ({
   title,
@@ -31,14 +33,15 @@ const HighlightItem: FC<HighlightItemProps> = ({
     return `rgba(${r}, ${g}, ${b}, ${alpha})`;
   };
 
-  const bgColor = color && color.startsWith("#") 
-    ? hexToRgba(color, 0.1) 
+  const bgColor = color && color.startsWith("#")
+    ? hexToRgba(color, 0.1)
     : undefined;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, x: -20 }}
-      whileInView={{ opacity: 1, x: 0 }}
+    <m.div
+      variants={slideInLeft}
+      initial="initial"
+      whileInView="animate"
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       className="flex items-start gap-4"
@@ -66,7 +69,7 @@ const HighlightItem: FC<HighlightItemProps> = ({
           {description}
         </div>
       </div>
-    </motion.div>
+    </m.div>
   );
 };
 

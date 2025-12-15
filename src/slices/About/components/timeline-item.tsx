@@ -1,8 +1,9 @@
-"use client";
-
 import { FC } from "react";
-import { motion } from "motion/react";
+import * as m from "motion/react-m";
 import { LucideIcon } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+import { fadeInUpDeep } from "@/lib/motion-variants";
 
 interface TimelineItemProps {
   year: string;
@@ -18,6 +19,7 @@ interface TimelineItemProps {
 /**
  * Individual timeline item component.
  * Client Component - requires animations.
+ * Optimized with LazyMotion (m component).
  */
 const TimelineItem: FC<TimelineItemProps> = ({
   year,
@@ -37,17 +39,18 @@ const TimelineItem: FC<TimelineItemProps> = ({
     return `rgba(${r}, ${g}, ${b}, ${alpha})`;
   };
 
-  const bgColor10 = color && color.startsWith("#") 
-    ? hexToRgba(color, 0.1) 
+  const bgColor10 = color && color.startsWith("#")
+    ? hexToRgba(color, 0.1)
     : undefined;
-  const bgColor15 = color && color.startsWith("#") 
-    ? hexToRgba(color, 0.15) 
+  const bgColor15 = color && color.startsWith("#")
+    ? hexToRgba(color, 0.15)
     : undefined;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
+    <m.div
+      variants={fadeInUpDeep}
+      initial="initial"
+      whileInView="animate"
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6, delay: 0.3 + index * 0.15 }}
       className="relative"
@@ -60,51 +63,53 @@ const TimelineItem: FC<TimelineItemProps> = ({
         />
       )}
 
-      <div className="relative bg-pearl-white dark:bg-[#1a1a1a] rounded-[2rem] p-6 lg:p-8 border border-ink-black/5 dark:border-white/10 hover:border-ink-black/10 dark:hover:border-white/20 shadow-soft hover:shadow-medium transition-smooth group">
-        {/* Icon */}
-        {Icon && (
+      <Card className="relative bg-pearl-white dark:bg-[#1a1a1a] rounded-[2rem] border border-ink-black/5 dark:border-white/10 hover:border-ink-black/10 dark:hover:border-white/20 shadow-soft hover:shadow-medium transition-smooth group p-0">
+        <CardContent className="p-6 lg:p-8">
+          {/* Icon */}
+          {Icon && (
+            <div
+              className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 transition-smooth group-hover:scale-110"
+              style={{
+                backgroundColor: bgColor15,
+              }}
+            >
+              <Icon
+                className="w-6 h-6"
+                style={{
+                  color: color || undefined,
+                }}
+              />
+            </div>
+          )}
+
+          {/* Year Badge */}
           <div
-            className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 transition-smooth group-hover:scale-110"
+            className="inline-block px-3 py-1 rounded-full text-xs font-medium mb-3"
             style={{
               backgroundColor: bgColor15,
+              color: color || undefined,
             }}
           >
-            <Icon
-              className="w-6 h-6"
-              style={{
-                color: color || undefined,
-              }}
-            />
+            {year}
           </div>
-        )}
 
-        {/* Year Badge */}
-        <div
-          className="inline-block px-3 py-1 rounded-full text-xs font-medium mb-3"
-          style={{
-            backgroundColor: bgColor15,
-            color: color || undefined,
-          }}
-        >
-          {year}
-        </div>
+          {/* Title */}
+          <h3 className="font-['Space_Grotesk'] text-xl lg:text-2xl text-ink-black dark:text-white mb-2 tracking-tight">
+            {title}
+          </h3>
 
-        {/* Title */}
-        <h3 className="font-['Space_Grotesk'] text-xl lg:text-2xl text-ink-black dark:text-white mb-2 tracking-tight">
-          {title}
-        </h3>
+          {/* Institution */}
+          <div className="text-base font-medium text-ink-black/70 dark:text-white/70 mb-3">
+            {institution}
+          </div>
 
-        {/* Institution */}
-        <div className="text-base font-medium text-ink-black/70 dark:text-white/70 mb-3">
-          {institution}
-        </div>
-
-        {/* Description */}
-        <p className="text-sm lg:text-base text-ink-black/60 dark:text-white/60 leading-relaxed">
-          {description}
-        </p>
-      </div>
-    </motion.div>
+          {/* Description */}
+          <p className="text-sm lg:text-base text-ink-black/60 dark:text-white/60 leading-relaxed">
+            {description}
+          </p>
+        </CardContent>
+      </Card>
+    </m.div>
   );
 };
 

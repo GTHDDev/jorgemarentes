@@ -3,13 +3,13 @@
 import { FC } from "react";
 import { Content } from "@prismicio/client";
 import HighlightItem from "./highlight-item";
-import { Award, FileText, GraduationCap } from "lucide-react";
+import { Award, FileText, GraduationCap, LucideIcon } from "lucide-react";
 
 interface HighlightsListProps {
   highlights: Content.AboutSliceDefaultPrimaryHighlightsItem[];
 }
 
-const icons: Record<string, React.ComponentType<{ className?: string; style?: React.CSSProperties }>> = {
+const icons: Record<string, LucideIcon> = {
   Award,
   FileText,
   GraduationCap,

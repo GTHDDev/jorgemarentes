@@ -1,16 +1,17 @@
 "use client";
 
 import { FC } from "react";
-import { motion } from "motion/react";
+import * as m from "motion/react-m";
 import { Content } from "@prismicio/client";
 import TimelineItem from "./timeline-item";
-import { Award, FileText, GraduationCap } from "lucide-react";
+import { Award, FileText, GraduationCap, LucideIcon } from "lucide-react";
+import { slideInRight, transitionDefaults } from "@/lib/motion-variants";
 
 interface TimelineProps {
   milestones: Content.AboutSliceDefaultPrimaryMilestonesItem[];
 }
 
-const icons: Record<string, React.ComponentType<{ className?: string; style?: React.CSSProperties }>> = {
+const icons: Record<string, LucideIcon> = {
   Award,
   FileText,
   GraduationCap,
@@ -19,14 +20,16 @@ const icons: Record<string, React.ComponentType<{ className?: string; style?: Re
 /**
  * Timeline component for displaying milestones.
  * Client Component - requires animations.
+ * Optimized with LazyMotion (m component).
  */
 const Timeline: FC<TimelineProps> = ({ milestones }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0, x: 30 }}
-      whileInView={{ opacity: 1, x: 0 }}
+    <m.div
+      variants={slideInRight}
+      initial="initial"
+      whileInView="animate"
       viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.6, delay: 0.2 }}
+      transition={{ ...transitionDefaults, delay: 0.2 }}
       className="relative"
     >
       <div className="space-y-8">
@@ -50,7 +53,7 @@ const Timeline: FC<TimelineProps> = ({ milestones }) => {
           );
         })}
       </div>
-    </motion.div>
+    </m.div>
   );
 };
 
