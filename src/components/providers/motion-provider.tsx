@@ -2,7 +2,7 @@
 
 import { FC, ReactNode } from "react";
 import { LazyMotion } from "motion/react";
-import loadFeatures from "./motion-features";
+import loadFeatures from "@/lib/motion-features";
 
 interface MotionProviderProps {
   children: ReactNode;
