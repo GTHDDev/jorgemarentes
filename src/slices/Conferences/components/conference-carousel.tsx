@@ -1,11 +1,11 @@
 "use client";
-
-import { FC, useState, useCallback } from "react";
-import { motion } from "motion/react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { FC, useState, useCallback, Activity } from "react";
+import * as m from "motion/react-m";
+import { ChevronLeft, ChevronRight, Activity as ActivityIcon } from "lucide-react";
 import { Content } from "@prismicio/client";
 import { Button } from "@/components/ui/button";
 import ConferenceCard from "./conference-card";
+import { fadeInUpDeep, transitionSlow } from "@/lib/motion-variants";
 
 interface ConferenceCarouselProps {
   conferences: Content.ConferencesSliceDefaultPrimaryConferencesItem[];
@@ -14,6 +14,7 @@ interface ConferenceCarouselProps {
 /**
  * Carousel component for displaying conference cards.
  * Client Component - requires state management for carousel navigation.
+ * Optimized with LazyMotion (m component).
  */
 const ConferenceCarousel: FC<ConferenceCarouselProps> = ({ conferences }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -42,23 +43,12 @@ const ConferenceCarousel: FC<ConferenceCarouselProps> = ({ conferences }) => {
     []
   );
 
-  const containerVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: [0.4, 0.0, 0.2, 1] as [number, number, number, number],
-      },
-    },
-  } as const;
-
   return (
-    <motion.div
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
+    <m.div
+      variants={fadeInUpDeep}
+      initial="initial"
+      whileInView="animate"
+      viewport={{ once: true, margin: "-100px" }}
       className="relative"
       role="region"
       aria-roledescription="carousel"
@@ -68,7 +58,7 @@ const ConferenceCarousel: FC<ConferenceCarouselProps> = ({ conferences }) => {
         {/* Carousel Track */}
         <div
           className="flex transition-transform duration-700 ease-out"
-          style={{ 
+          style={{
             transform: `translateX(-${currentIndex * 100}%)`,
             transitionTimingFunction: 'var(--transition-smooth)'
           }}
@@ -77,12 +67,17 @@ const ConferenceCarousel: FC<ConferenceCarouselProps> = ({ conferences }) => {
           id="carousel-track"
         >
           {conferences.map((conference, index) => (
-            <ConferenceCard
-              key={index}
-              conference={conference}
-              index={index}
-              isActive={index === currentIndex}
-            />
+            <Activity
+              key={index} // Key must be on the outermost element of the map
+              mode={index === currentIndex ? 'visible' : 'hidden'}
+            >
+              <ConferenceCard
+                key={index}
+                conference={conference}
+                index={index}
+                isActive={index === currentIndex}
+              />
+            </Activity>
           ))}
         </div>
       </div>
@@ -116,16 +111,19 @@ const ConferenceCarousel: FC<ConferenceCarouselProps> = ({ conferences }) => {
               key={index}
               onClick={() => handleGoToSlide(index)}
               onKeyDown={(e) => handleKeyDown(e, () => handleGoToSlide(index))}
-              className={`transition-smooth rounded-full focus:outline-none focus:ring-2 focus:ring-steel-blue focus:ring-offset-2 ${
-                index === currentIndex
-                  ? "w-8 h-2 bg-steel-blue"
-                  : "w-2 h-2 bg-ink-black/20 dark:bg-white/20 hover:bg-ink-black/40 dark:hover:bg-white/40"
-              }`}
+              className={`transition-smooth rounded-full focus:outline-none focus:ring-2 focus:ring-steel-blue focus:ring-offset-2 flex items-center justify-center ${index === currentIndex
+                ? "w-8 h-8 scale-110"
+                : "w-2 h-2 bg-ink-black/20 dark:bg-white/20 hover:bg-ink-black/40 dark:hover:bg-white/40"
+                }`}
               aria-label={`Go to slide ${index + 1} of ${conferences.length}`}
               aria-current={index === currentIndex}
               role="tab"
               tabIndex={index === currentIndex ? 0 : -1}
-            />
+            >
+              {index === currentIndex && (
+                <ActivityIcon className="w-5 h-5 text-steel-blue animate-pulse" />
+              )}
+            </button>
           ))}
         </div>
 
@@ -145,7 +143,7 @@ const ConferenceCarousel: FC<ConferenceCarouselProps> = ({ conferences }) => {
           />
         </Button>
       </div>
-    </motion.div>
+    </m.div>
   );
 };
 

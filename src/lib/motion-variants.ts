@@ -78,3 +78,14 @@ export const tapScale = {
 export const tapScaleSubtle = {
   scale: 0.98,
 };
+
+export const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.1,
+    },
+  },
+};
