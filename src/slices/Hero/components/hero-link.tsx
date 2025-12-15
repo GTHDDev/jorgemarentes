@@ -4,7 +4,12 @@ import { FC, ReactNode, memo } from "react";
 import * as m from "motion/react-m";
 import { PrismicNextLink } from "@prismicio/next";
 import { Content } from "@prismicio/client";
-import { fadeInUp, transitionFast, hoverScale, tapScale } from "./motion-variants";
+import {
+  fadeInUp,
+  transitionFast,
+  hoverLift as hoverScale,
+  tapScaleSubtle as tapScale,
+} from "@/lib/motion-variants";
 
 interface HeroLinkProps {
   href: Content.HeroSliceDefaultPrimary["link"] | Content.HeroSliceDefaultPrimary["schedule_link"];

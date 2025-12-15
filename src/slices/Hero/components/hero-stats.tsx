@@ -4,7 +4,7 @@ import { FC, memo, useMemo } from "react";
 import * as m from "motion/react-m";
 import { Content } from "@prismicio/client";
 import HeroStatItem from "./hero-stat-item";
-import { fadeInUp, transitionFast, delays } from "./motion-variants";
+import { fadeInUp, transitionFast, heroDelays as delays } from "@/lib/motion-variants";
 
 interface HeroStatsProps {
   stats: Content.HeroSliceDefaultPrimaryStatsItem[];

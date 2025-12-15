@@ -4,7 +4,7 @@ import { FC, memo } from "react";
 import * as m from "motion/react-m";
 import { PrismicNextImage } from "@prismicio/next";
 import { Content } from "@prismicio/client";
-import { slideInRight, transitionSlow, delays } from "./motion-variants";
+import { slideInRight, transitionSlow, heroDelays as delays } from "@/lib/motion-variants";
 
 interface HeroImageProps {
   image: Content.HeroSliceDefaultPrimary["image"];

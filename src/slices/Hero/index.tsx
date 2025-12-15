@@ -10,7 +10,7 @@ import {
   HeroStats,
   ScrollIndicator,
 } from "./components";
-import MotionProvider from "./components/motion-provider";
+import MotionProvider from "@/components/providers/motion-provider";
 
 // Lazy load the hero image with optimized loading strategy
 const HeroImage = dynamic(() => import("./components/hero-image"), {

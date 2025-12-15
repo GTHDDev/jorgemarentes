@@ -2,7 +2,7 @@
 
 import { FC, memo } from "react";
 import MotionBadge from "@/components/motion-badge";
-import { delays } from "./motion-variants";
+import { heroDelays as delays } from "@/lib/motion-variants";
 
 interface HeroBadgeProps {
   specialization: string | null | undefined;

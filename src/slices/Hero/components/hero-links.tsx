@@ -5,7 +5,7 @@ import * as m from "motion/react-m";
 import { Content } from "@prismicio/client";
 import { CalendarIcon } from "@radix-ui/react-icons";
 import HeroLink from "./hero-link";
-import { fadeIn, transitionFast, delays } from "./motion-variants";
+import { fadeIn, transitionFast, heroDelays as delays } from "@/lib/motion-variants";
 
 interface HeroLinksProps {
   scheduleLink: Content.HeroSliceDefaultPrimary["schedule_link"];

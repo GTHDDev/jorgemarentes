@@ -2,7 +2,7 @@
 
 import { FC, memo } from "react";
 import * as m from "motion/react-m";
-import { fadeInUp, transitionDefaults, delays } from "./motion-variants";
+import { fadeInUp, transitionDefaults, heroDelays as delays } from "@/lib/motion-variants";
 
 interface HeroDescriptionProps {
   introduction: string | null | undefined;
