@@ -1,10 +1,13 @@
 "use client";
 
 import { memo } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import { Content } from "@prismicio/client";
 import { NavLink } from "../atoms/nav-link";
 import { CTAButton } from "../atoms/cta-button";
+import { getHref } from "../utils";
+import { expandVertical } from "@/lib/motion-variants";
 
 interface MobileNavProps {
   isOpen: boolean;
@@ -21,35 +24,29 @@ export const MobileNav = memo(function MobileNav({
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
-          exit={{ opacity: 0, height: 0 }}
+          variants={expandVertical}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
           transition={{ duration: 0.3 }}
           className="lg:hidden overflow-hidden"
         >
-          <div className="pt-4 pb-6 space-y-2">
-            {navigation.map((link, index) => {
-              const getHref = (label: string | null | undefined) => {
-                if (!label) return "#";
-                return label.startsWith("#") ? label : `#${label.toLowerCase().replace(/\s+/g, "-")}`;
-              };
-
-              return (
-                <NavLink
-                  key={link.label}
-                  label={link.label || ""}
-                  href={getHref(link.label)}
-                  onClick={onClose}
-                  className="block px-4 py-3 hover:bg-[#F3EDE7] dark:hover:bg-white/5 rounded-lg"
-                  delay={index * 0.1}
-                />
-              );
-            })}
+          <div className="mt-4 pt-4 pb-6 space-y-2 bg-transparent backdrop-blur-2xl rounded-2xl">
+            {navigation.map((link, index) => (
+              <NavLink
+                key={link.label}
+                label={link.label || ""}
+                href={getHref(link.label)}
+                onClick={onClose}
+                className="block mx-4 px-4 py-3 text-base font-medium text-ink-black/70 dark:text-white/70 hover:text-ink-black dark:hover:text-white hover:bg-soft-beige dark:hover:bg-white/5 rounded-full transition-colors"
+                delay={index * 0.1}
+              />
+            ))}
             <CTAButton
               href="#contact"
               label="Agendar una sesión"
               onClick={onClose}
-              className="block mx-4 mt-4 text-center"
+              className="block mx-4 mt-4 px-6 py-3 bg-steel-blue text-white text-center rounded-full text-base font-medium"
               delay={navigation.length * 0.1}
             />
           </div>

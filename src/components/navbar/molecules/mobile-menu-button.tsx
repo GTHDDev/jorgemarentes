@@ -1,7 +1,7 @@
 "use client";
 
-import { Menu, X } from "lucide-react";
-import { motion } from "motion/react";
+import { Icons } from "@/lib/icons";
+import * as m from "motion/react-m";
 import { memo } from "react";
 
 interface MobileMenuButtonProps {
@@ -14,15 +14,15 @@ export const MobileMenuButton = memo(function MobileMenuButton({
   onToggle,
 }: MobileMenuButtonProps) {
   return (
-    <motion.button
+    <m.button
       onClick={onToggle}
       className="p-2 text-[#0F0F0F] dark:text-white"
       whileTap={{ scale: 0.9 }}
       aria-label="Toggle menu"
       aria-expanded={isOpen}
     >
-      {isOpen ? <X size={24} /> : <Menu size={24} />}
-    </motion.button>
+      {isOpen ? <Icons.X size={24} /> : <Icons.Menu size={24} />}
+    </m.button>
   );
 });
 

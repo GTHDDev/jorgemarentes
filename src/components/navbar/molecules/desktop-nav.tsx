@@ -5,17 +5,13 @@ import { Content } from "@prismicio/client";
 import { NavLink } from "../atoms/nav-link";
 import { CTAButton } from "../atoms/cta-button";
 import { ThemeToggle } from "../atoms/theme-toggle";
+import { getHref } from "../utils";
 
 interface DesktopNavProps {
   navigation: Content.SettingsDocumentData["navigation"];
 }
 
 export const DesktopNav = memo(function DesktopNav({ navigation }: DesktopNavProps) {
-  const getHref = (label: string | null | undefined) => {
-    if (!label) return "#";
-    return label.startsWith("#") ? label : `#${label.toLowerCase().replace(/\s+/g, "-")}`;
-  };
-
   return (
     <div className="hidden lg:flex items-center gap-2">
       {navigation.map((link) => (
