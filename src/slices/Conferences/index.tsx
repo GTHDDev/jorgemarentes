@@ -5,6 +5,7 @@ import { SliceComponentProps } from "@prismicio/react";
 import { Skeleton } from "@/components/ui/skeleton";
 import MotionProvider from "@/components/providers/motion-provider";
 import SectionHeader from "./components/section-header";
+import { Bounded } from "@/components/bounded";
 
 // Skeleton fallback that mimics a conference card
 const CarouselSkeleton = () => (
@@ -55,26 +56,24 @@ const Conferences: FC<ConferencesProps> = ({ slice }) => {
 
   return (
     <MotionProvider>
-      <section
-        className="relative py-24 lg:py-32 bg-soft-beige dark:bg-ink-black overflow-hidden"
+      <Bounded
+        className="bg-soft-beige dark:bg-ink-black"
         data-slice-type={slice.slice_type}
         data-slice-variation={slice.variation}
         id="conferencias"
       >
-        <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12">
-          {/* Section Header */}
-          <SectionHeader
-            tag={slice.primary.tag || ""}
-            heading={slice.primary.heading || ""}
-            description={slice.primary.description || ""}
-          />
+        {/* Section Header */}
+        <SectionHeader
+          tag={slice.primary.tag || ""}
+          heading={slice.primary.heading || ""}
+          description={slice.primary.description || ""}
+        />
 
-          {/* Carousel - Lazy loaded */}
-          <Suspense fallback={<CarouselSkeleton />}>
-            <ConferenceCarousel conferences={conferences} />
-          </Suspense>
-        </div>
-      </section>
+        {/* Carousel - Lazy loaded */}
+        <Suspense fallback={<CarouselSkeleton />}>
+          <ConferenceCarousel conferences={conferences} />
+        </Suspense>
+      </Bounded>
     </MotionProvider>
   );
 };

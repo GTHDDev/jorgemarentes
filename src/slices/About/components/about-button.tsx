@@ -2,7 +2,7 @@
 
 import { FC } from "react";
 import * as m from "motion/react-m";
-import { ArrowRight } from "lucide-react";
+import { Icons } from "@/lib/icons";
 import { PrismicNextLink } from "@prismicio/next";
 import { Button } from "@/components/ui/button";
 import { Content } from "@prismicio/client";
@@ -28,7 +28,7 @@ const AboutButton: FC<AboutButtonProps> = ({ button, buttonLink }) => {
       <PrismicNextLink field={buttonLink}>
         <Button variant="default" size="lg">
           {button}
-          <ArrowRight className="w-5 h-5" />
+          <Icons.ArrowRight className="w-5 h-5" />
         </Button>
       </PrismicNextLink>
     </m.div>

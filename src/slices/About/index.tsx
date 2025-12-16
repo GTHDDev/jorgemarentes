@@ -7,6 +7,7 @@ import MotionProvider from "@/components/providers/motion-provider";
 import SectionHeader from "./components/section-header";
 import HighlightsList from "./components/highlights-list";
 import AboutButton from "./components/about-button";
+import { Bounded } from "@/components/bounded";
 
 // Skeleton for the Timeline to provide a better loading experience
 const TimelineSkeleton = () => (
@@ -40,45 +41,43 @@ const About: FC<AboutProps> = ({ slice }) => {
 
   return (
     <MotionProvider>
-      <section
+      <Bounded
         data-slice-type={slice.slice_type}
         data-slice-variation={slice.variation}
-        className="relative py-24 lg:py-32 bg-white dark:bg-[#0a0a0a] overflow-hidden"
+        className="bg-white dark:bg-[#0a0a0a]"
         id="acerca"
       >
-        <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            {/* Left Column - Header */}
-            <div className="space-y-8">
-              <SectionHeader
-                tag={slice.primary.tag || ""}
-                heading={slice.primary.heading || ""}
-                description={slice.primary.description || ""}
-              />
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          {/* Left Column - Header */}
+          <div className="space-y-8">
+            <SectionHeader
+              tag={slice.primary.tag || ""}
+              heading={slice.primary.heading || ""}
+              description={slice.primary.description || ""}
+            />
 
-              {highlights.length > 0 && (
-                <HighlightsList highlights={highlights} />
-              )}
+            {highlights.length > 0 && (
+              <HighlightsList highlights={highlights} />
+            )}
 
-              {slice.primary.button && slice.primary.button_link && (
-                <div className="pt-4">
-                  <AboutButton
-                    button={slice.primary.button}
-                    buttonLink={slice.primary.button_link}
-                  />
-                </div>
-              )}
-            </div>
-
-            {/* Right Column - Timeline */}
-            {milestones.length > 0 && (
-              <Suspense fallback={<TimelineSkeleton />}>
-                <Timeline milestones={milestones} />
-              </Suspense>
+            {slice.primary.button && slice.primary.button_link && (
+              <div className="pt-4">
+                <AboutButton
+                  button={slice.primary.button}
+                  buttonLink={slice.primary.button_link}
+                />
+              </div>
             )}
           </div>
+
+          {/* Right Column - Timeline */}
+          {milestones.length > 0 && (
+            <Suspense fallback={<TimelineSkeleton />}>
+              <Timeline milestones={milestones} />
+            </Suspense>
+          )}
         </div>
-      </section>
+      </Bounded>
     </MotionProvider>
   );
 };

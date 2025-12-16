@@ -2,7 +2,7 @@
 
 import { FC, memo } from "react";
 import { Content } from "@prismicio/client";
-import { Brain, Users, Heart, Sparkles } from "lucide-react";
+import { Icons } from "@/lib/icons";
 import ServiceCard from "./service-card";
 
 interface ServicesGridProps {
@@ -10,10 +10,10 @@ interface ServicesGridProps {
 }
 
 const icons: Record<string, React.ComponentType<{ className?: string; style?: React.CSSProperties }>> = {
-  Brain,
-  Users,
-  Heart,
-  Sparkles,
+  Brain: Icons.Brain,
+  Users: Icons.Users,
+  Heart: Icons.Heart,
+  Sparkles: Icons.Sparkles,
 };
 
 const ServicesGrid: FC<ServicesGridProps> = ({ services }) => {

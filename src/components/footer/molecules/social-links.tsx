@@ -1,7 +1,7 @@
 "use client";
 
 import { memo } from "react";
-import { Linkedin, Youtube, Facebook, Instagram, Music } from "lucide-react";
+import { Icons, type LucideIcon } from "@/lib/icons";
 import { Content } from "@prismicio/client";
 import { SocialIcon } from "../atoms/social-icon";
 
@@ -9,15 +9,12 @@ interface SocialLinksProps {
   socialMedia: Content.SettingsDocumentData["social_media"];
 }
 
-const iconMap: Record<
-  string,
-  React.ComponentType<{ className?: string; style?: React.CSSProperties }>
-> = {
-  Linkedin,
-  Youtube,
-  Facebook,
-  Instagram,
-  TikTok: Music, // Using Music icon as TikTok icon (closest available in lucide-react)
+const iconMap: Record<string, LucideIcon> = {
+  Linkedin: Icons.Linkedin,
+  Youtube: Icons.Youtube,
+  Facebook: Icons.Facebook,
+  Instagram: Icons.Instagram,
+  TikTok: Icons.Music, // Using Music icon as TikTok icon (closest available in lucide-react)
 };
 
 export const SocialLinks = memo(function SocialLinks({

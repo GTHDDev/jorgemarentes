@@ -26,6 +26,8 @@ import {
   Mail,
   Phone,
   MapPin,
+  Play,
+  Calendar,
   type LucideIcon,
 } from "lucide-react";
 
@@ -53,6 +55,8 @@ export const Icons = {
   Mail,
   Phone,
   MapPin,
+  Play,
+  Calendar,
 };
 
 export type { LucideIcon };

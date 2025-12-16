@@ -3,16 +3,16 @@
 import { FC } from "react";
 import { Content } from "@prismicio/client";
 import HighlightItem from "./highlight-item";
-import { Award, FileText, GraduationCap, LucideIcon } from "lucide-react";
+import { Icons, type LucideIcon } from "@/lib/icons";
 
 interface HighlightsListProps {
   highlights: Content.AboutSliceDefaultPrimaryHighlightsItem[];
 }
 
 const icons: Record<string, LucideIcon> = {
-  Award,
-  FileText,
-  GraduationCap,
+  Award: Icons.Award,
+  FileText: Icons.FileText,
+  GraduationCap: Icons.GraduationCap,
 };
 
 /**

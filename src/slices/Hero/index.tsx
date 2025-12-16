@@ -11,6 +11,8 @@ import {
   ScrollIndicator,
 } from "./components";
 import MotionProvider from "@/components/providers/motion-provider";
+import { Bounded } from "@/components/bounded";
+import { Skeleton } from "@/components/ui/skeleton";
 
 // Lazy load the hero image with optimized loading strategy
 const HeroImage = dynamic(() => import("./components/hero-image"), {
@@ -46,53 +48,51 @@ const Hero: FC<HeroProps> = ({ slice }) => {
 
   return (
     <MotionProvider>
-      <section
+      <Bounded
         data-slice-type={slice.slice_type}
         data-slice-variation={slice.variation}
         id="home"
-        className="relative min-h-screen flex items-center justify-center overflow-hidden bg-pearl-white dark:bg-ink-black"
+        className="bg-pearl-white dark:bg-ink-black"
       >
         {/* Background Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-soft-beige via-pearl-white to-white dark:from-[#1a1a1a] dark:via-ink-black dark:to-[#0a0a0a] opacity-60" />
+        <div className="absolute inset-0 bg-gradient-to-br from-soft-beige via-pearl-white to-white dark:from-[#1a1a1a] dark:via-ink-black dark:to-[#0a0a0a] opacity-60 pointer-events-none" />
 
-        <div className="relative max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 py-24 lg:py-32 w-full">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            {/* Left Column - Text Content */}
-            <div className="space-y-8 lg:space-y-10 max-w-2xl">
-              <div className="space-y-4">
-                <HeroBadge specialization={specialization} />
-              </div>
-
-              <HeroHeading heading={heading} subheading={subheading} />
-
-              <HeroDescription introduction={introduction} />
-
-              {/* Links section */}
-              <HeroLinks
-                scheduleLink={schedule_link}
-                scheduleButton={schedule_button}
-                link={link}
-                linkButton={link_button}
-              />
-
-              {/* Stats */}
-              <HeroStats stats={stats} />
+        <div className="relative grid lg:grid-cols-2 gap-12 lg:gap-20 items-center w-full">
+          {/* Left Column - Text Content */}
+          <div className="space-y-8 lg:space-y-10 max-w-2xl">
+            <div className="space-y-4">
+              <HeroBadge specialization={specialization} />
             </div>
 
-            {/* Right Column - Hero Image */}
-            <Suspense
-              fallback={
-                <div className="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-strong bg-pearl-white dark:bg-[#1a1a1a] animate-pulse" />
-              }
-            >
-              <HeroImage image={image} />
-            </Suspense>
+            <HeroHeading heading={heading} subheading={subheading} />
+
+            <HeroDescription introduction={introduction} />
+
+            {/* Links section */}
+            <HeroLinks
+              scheduleLink={schedule_link}
+              scheduleButton={schedule_button}
+              link={link}
+              linkButton={link_button}
+            />
+
+            {/* Stats */}
+            <HeroStats stats={stats} />
           </div>
+
+          {/* Right Column - Hero Image */}
+          <Suspense
+            fallback={
+              <Skeleton className="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-strong bg-pearl-white dark:bg-[#1a1a1a]" />
+            }
+          >
+            <HeroImage image={image} />
+          </Suspense>
         </div>
 
         {/* Scroll Indicator */}
         <ScrollIndicator />
-      </section>
+      </Bounded>
     </MotionProvider>
   );
 };

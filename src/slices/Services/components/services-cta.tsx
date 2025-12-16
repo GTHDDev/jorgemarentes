@@ -2,7 +2,7 @@
 
 import { FC, memo } from "react";
 import * as m from "motion/react-m";
-import { ArrowRight } from "lucide-react";
+import { Icons } from "@/lib/icons";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { fadeInUp, transitionDefaults } from "@/lib/motion-variants";
@@ -31,7 +31,7 @@ const ServicesCTA: FC<ServicesCTAProps> = ({ buttonText, link = "#contacto" }) =
           )}
         >
           {buttonText}
-          <ArrowRight className="w-5 h-5" />
+          <Icons.ArrowRight className="w-5 h-5" />
         </a>
       </m.div>
     </m.div>

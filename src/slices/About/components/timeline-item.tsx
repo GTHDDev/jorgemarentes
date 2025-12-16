@@ -1,6 +1,6 @@
 import { FC } from "react";
 import * as m from "motion/react-m";
-import { LucideIcon } from "lucide-react";
+import { type LucideIcon } from "@/lib/icons";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { fadeInUpDeep } from "@/lib/motion-variants";

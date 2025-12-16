@@ -2,7 +2,7 @@
 
 import { FC, Activity } from "react";
 import * as m from "motion/react-m";
-import { Calendar, MapPin, Play } from "lucide-react";
+import { Icons } from "@/lib/icons";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { Content } from "@prismicio/client";
 import TagBadge from "@/components/tag-badge";
@@ -72,7 +72,7 @@ const ConferenceCard: FC<ConferenceCardProps> = ({
               tabIndex={isActive ? 0 : -1}
               className="flex items-center justify-center"
             >
-              <Play className="w-8 h-8 ml-1" fill="currentColor" aria-hidden="true" />
+              <Icons.Play className="w-8 h-8 ml-1" fill="currentColor" aria-hidden="true" />
             </Button>
           </m.div>
 
@@ -94,7 +94,7 @@ const ConferenceCard: FC<ConferenceCardProps> = ({
 
           <div className="space-y-3 mb-8">
             <div className="flex items-start gap-3 text-ink-black/70 dark:text-white/70">
-              <MapPin
+              <Icons.MapPin
                 className="w-5 h-5 mt-0.5 flex-shrink-0 text-steel-blue"
                 aria-hidden="true"
               />
@@ -107,7 +107,7 @@ const ConferenceCard: FC<ConferenceCardProps> = ({
             </div>
 
             <div className="flex items-center gap-3 text-ink-black/70 dark:text-white/70">
-              <Calendar
+              <Icons.Calendar
                 className="w-5 h-5 flex-shrink-0 text-steel-blue"
                 aria-hidden="true"
               />
@@ -126,7 +126,7 @@ const ConferenceCard: FC<ConferenceCardProps> = ({
                 aria-label={`View event: ${conference.title}`}
                 tabIndex={isActive ? 0 : -1}
               >
-                <Play className="w-4 h-4" aria-hidden="true" />
+                <Icons.Play className="w-4 h-4" aria-hidden="true" />
                 Ver Evento
               </Button>
             </PrismicNextLink>

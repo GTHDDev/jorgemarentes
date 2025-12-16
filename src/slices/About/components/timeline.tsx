@@ -4,7 +4,7 @@ import { FC } from "react";
 import * as m from "motion/react-m";
 import { Content } from "@prismicio/client";
 import TimelineItem from "./timeline-item";
-import { Award, FileText, GraduationCap, LucideIcon } from "lucide-react";
+import { Icons, type LucideIcon } from "@/lib/icons";
 import { slideInRight, transitionDefaults } from "@/lib/motion-variants";
 
 interface TimelineProps {
@@ -12,9 +12,9 @@ interface TimelineProps {
 }
 
 const icons: Record<string, LucideIcon> = {
-  Award,
-  FileText,
-  GraduationCap,
+  Award: Icons.Award,
+  FileText: Icons.FileText,
+  GraduationCap: Icons.GraduationCap,
 };
 
 /**

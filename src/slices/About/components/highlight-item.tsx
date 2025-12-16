@@ -2,7 +2,7 @@
 
 import { FC } from "react";
 import * as m from "motion/react-m";
-import { LucideIcon } from "lucide-react";
+import { type LucideIcon } from "@/lib/icons";
 import { slideInLeft } from "@/lib/motion-variants";
 
 interface HighlightItemProps {

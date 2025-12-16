@@ -1,7 +1,7 @@
 "use client";
-import { FC, useState, useCallback, Activity } from "react"; // 💡 Activity imported from React
+import { FC, useState, useCallback } from "react";
 import * as m from "motion/react-m";
-import { ChevronLeft, ChevronRight, Activity as ActivityIcon } from "lucide-react"; // 💡 lucide icon renamed
+import { Icons } from "@/lib/icons";
 import { Content } from "@prismicio/client";
 import { Button } from "@/components/ui/button";
 import ConferenceCard from "./conference-card";
@@ -89,7 +89,7 @@ const ConferenceCarousel: FC<ConferenceCarouselProps> = ({ conferences }) => {
           aria-controls="carousel-track"
           tabIndex={0}
         >
-          <ChevronLeft
+          <Icons.ChevronLeft
             className="w-6 h-6 text-ink-black dark:text-white"
             aria-hidden="true"
           />
@@ -116,7 +116,7 @@ const ConferenceCarousel: FC<ConferenceCarouselProps> = ({ conferences }) => {
               tabIndex={index === currentIndex ? 0 : -1}
             >
               {index === currentIndex && (
-                <ActivityIcon className="w-5 h-5 text-steel-blue animate-pulse" />
+                <Icons.Activity className="w-5 h-5 text-steel-blue animate-pulse" />
               )}
             </button>
           ))}
@@ -132,7 +132,7 @@ const ConferenceCarousel: FC<ConferenceCarouselProps> = ({ conferences }) => {
           aria-controls="carousel-track"
           tabIndex={0}
         >
-          <ChevronRight
+          <Icons.ChevronRight
             className="w-6 h-6 text-ink-black dark:text-white"
             aria-hidden="true"
           />
