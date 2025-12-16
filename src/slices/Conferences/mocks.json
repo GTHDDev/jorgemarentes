@@ -1,0 +1,327 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"tag": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "Conferencias"
+			},
+			"heading": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "Compartiendo conocimientos en escenarios globales"
+			},
+			"description": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "Comprometidos con el avance del campo mediante la investigación, la educación y la colaboración con profesionales de la salud mental de todo el mundo."
+			},
+			"conferences": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"title",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "El futuro de la salud mental: IA y terapia"
+								}
+							],
+							[
+								"event",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Convención Anual de la Asociación Americana de Psicología"
+								}
+							],
+							[
+								"date",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Diciembre 2025"
+								}
+							],
+							[
+								"image",
+								{
+									"origin": {
+										"id": "main",
+										"url": "https://images.unsplash.com/photo-1593642532973-d31b6557fa68",
+										"width": 8640,
+										"height": 8640
+									},
+									"url": "https://images.unsplash.com/photo-1593642532973-d31b6557fa68",
+									"width": 8640,
+									"height": 8640,
+									"edit": {
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										},
+										"background": "transparent"
+									},
+									"alt": "pick",
+									"credits": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							],
+							[
+								"type",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Conferencia magistral"
+								}
+							],
+							[
+								"location",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Monterrey, LN"
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"title",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Trauma-Informed Care: A Holistic Approach"
+								}
+							],
+							[
+								"type",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Workshop"
+								}
+							],
+							[
+								"event",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "International Conference on Psychology"
+								}
+							],
+							[
+								"location",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "CDMX"
+								}
+							],
+							[
+								"date",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Enero 2026"
+								}
+							],
+							[
+								"image",
+								{
+									"provider": "imgix",
+									"url": "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwyfHxDb25mZXJlbmNpYXxlbnwwfHx8fDE3NjQzNzI1NTl8MA&ixlib=rb-4.1.0&q=85",
+									"alt": "people sitting on chairs watching a game",
+									"origin": {
+										"id": "6vAjp0pscX0",
+										"url": "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwyfHxDb25mZXJlbmNpYXxlbnwwfHx8fDE3NjQzNzI1NTl8MA&ixlib=rb-4.1.0&q=85",
+										"width": 3936,
+										"height": 2624
+									},
+									"width": 3936,
+									"height": 2624,
+									"edit": {
+										"background": "transparent",
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										}
+									},
+									"credits": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"title",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "The Future of Mental Health: AI & Therapy"
+								}
+							],
+							[
+								"event",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Convención Anual de Psicología"
+								}
+							],
+							[
+								"location",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "CDMX"
+								}
+							],
+							[
+								"date",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Enero 2026"
+								}
+							],
+							[
+								"image",
+								{
+									"__TYPE__": "ImageContent",
+									"provider": "imgix",
+									"url": "https://images.unsplash.com/photo-1560439514-e960a3ef5019?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwyNnx8Q29uZmVyZW5jZXxlbnwwfHx8fDE3NjQzNzI2ODN8MA&ixlib=rb-4.1.0&q=85",
+									"alt": "men's black blazer",
+									"origin": {
+										"id": "DL-yyYDDNX4",
+										"url": "https://images.unsplash.com/photo-1560439514-e960a3ef5019?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwyNnx8Q29uZmVyZW5jZXxlbnwwfHx8fDE3NjQzNzI2ODN8MA&ixlib=rb-4.1.0&q=85",
+										"width": 6000,
+										"height": 4000
+									},
+									"width": 6000,
+									"height": 4000,
+									"edit": {
+										"background": "transparent",
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										}
+									},
+									"thumbnails": {}
+								}
+							],
+							[
+								"type",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Conference"
+								}
+							],
+							[
+								"conference_link",
+								{
+									"key": "22950560-44eb-4060-8ad7-96b8cae29124",
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "https://youtube.com",
+										"target": "_blank"
+									}
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"title",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Mindfulness in Modern Psychology"
+								}
+							],
+							[
+								"type",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Pannel Discussion"
+								}
+							],
+							[
+								"date",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Noviembre 2023"
+								}
+							],
+							[
+								"location",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Monterrey"
+								}
+							],
+							[
+								"event",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Global Wellness Summit"
+								}
+							],
+							[
+								"image",
+								{
+									"provider": "imgix",
+									"url": "https://images.unsplash.com/photo-1582192730841-2a682d7375f9?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwxMHx8Q29uZmVyZW5jZXxlbnwwfHx8fDE3NjQzNzI2ODN8MA&ixlib=rb-4.1.0&q=85",
+									"alt": "black flat screen tv turned on displaying man in black suit",
+									"origin": {
+										"id": "dJICd7b_LlE",
+										"url": "https://images.unsplash.com/photo-1582192730841-2a682d7375f9?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwxMHx8Q29uZmVyZW5jZXxlbnwwfHx8fDE3NjQzNzI2ODN8MA&ixlib=rb-4.1.0&q=85",
+										"width": 4032,
+										"height": 3024
+									},
+									"width": 4032,
+									"height": 3024,
+									"edit": {
+										"background": "transparent",
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										}
+									},
+									"credits": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

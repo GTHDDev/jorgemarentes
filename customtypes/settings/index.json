@@ -1,0 +1,129 @@
+{
+  "id": "settings",
+  "label": "Settings",
+  "repeatable": false,
+  "status": true,
+  "format": "custom",
+  "json": {
+    "Main": {
+      "website_name": {
+        "type": "Text",
+        "config": {
+          "label": "Website Name",
+          "placeholder": ""
+        }
+      },
+      "heading": {
+        "type": "Text",
+        "config": {
+          "label": "Heading",
+          "placeholder": ""
+        }
+      },
+      "description": {
+        "type": "Text",
+        "config": {
+          "label": "Description",
+          "placeholder": ""
+        }
+      },
+      "navigation": {
+        "type": "Group",
+        "config": {
+          "label": "Navigation",
+          "repeat": true,
+          "fields": {
+            "label": {
+              "type": "Text",
+              "config": {
+                "label": "Label",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "services": {
+        "type": "Group",
+        "config": {
+          "label": "Services",
+          "repeat": true,
+          "fields": {
+            "service": {
+              "type": "Text",
+              "config": {
+                "label": "Service",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "contact": {
+        "type": "Group",
+        "config": {
+          "label": "Contact",
+          "repeat": true,
+          "fields": {
+            "type": {
+              "type": "Text",
+              "config": {
+                "label": "Type",
+                "placeholder": ""
+              }
+            },
+            "contact": {
+              "type": "Text",
+              "config": {
+                "label": "Contact",
+                "placeholder": ""
+              }
+            },
+            "icon": {
+              "type": "Select",
+              "config": {
+                "label": "Icon",
+                "placeholder": "",
+                "options": ["Phone", "Mail", "MapPin"]
+              }
+            }
+          }
+        }
+      },
+      "social_media": {
+        "type": "Group",
+        "config": {
+          "label": "Social Media",
+          "repeat": true,
+          "fields": {
+            "icon": {
+              "type": "Select",
+              "config": {
+                "label": "Icon",
+                "placeholder": "",
+                "options": [
+                  "Facebook",
+                  "Instagram",
+                  "TikTok",
+                  "Youtube",
+                  "Linkedin"
+                ]
+              }
+            },
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "Link",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": false
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
