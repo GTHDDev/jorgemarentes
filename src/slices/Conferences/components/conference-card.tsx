@@ -1,6 +1,6 @@
 "use client";
 
-import { FC } from "react";
+import { FC, Activity } from "react";
 import * as m from "motion/react-m";
 import { Calendar, MapPin, Play } from "lucide-react";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
@@ -52,6 +52,8 @@ const ConferenceCard: FC<ConferenceCardProps> = ({
           <PrismicNextImage
             field={conference.image}
             className="w-full h-full object-cover"
+            loading="lazy"
+            quality={80}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-ink-black/40 via-transparent to-transparent" />
 

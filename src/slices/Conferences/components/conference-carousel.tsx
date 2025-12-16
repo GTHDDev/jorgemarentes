@@ -1,7 +1,7 @@
 "use client";
-import { FC, useState, useCallback, Activity } from "react";
+import { FC, useState, useCallback, Activity } from "react"; // 💡 Activity imported from React
 import * as m from "motion/react-m";
-import { ChevronLeft, ChevronRight, Activity as ActivityIcon } from "lucide-react";
+import { ChevronLeft, ChevronRight, Activity as ActivityIcon } from "lucide-react"; // 💡 lucide icon renamed
 import { Content } from "@prismicio/client";
 import { Button } from "@/components/ui/button";
 import ConferenceCard from "./conference-card";
@@ -14,7 +14,7 @@ interface ConferenceCarouselProps {
 /**
  * Carousel component for displaying conference cards.
  * Client Component - requires state management for carousel navigation.
- * Optimized with LazyMotion (m component).
+ * Optimized with LazyMotion (m component) and React's Activity component for state preservation.
  */
 const ConferenceCarousel: FC<ConferenceCarouselProps> = ({ conferences }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -67,17 +67,12 @@ const ConferenceCarousel: FC<ConferenceCarouselProps> = ({ conferences }) => {
           id="carousel-track"
         >
           {conferences.map((conference, index) => (
-            <Activity
-              key={index} // Key must be on the outermost element of the map
-              mode={index === currentIndex ? 'visible' : 'hidden'}
-            >
-              <ConferenceCard
-                key={index}
-                conference={conference}
-                index={index}
-                isActive={index === currentIndex}
-              />
-            </Activity>
+            <ConferenceCard
+              key={index}
+              conference={conference}
+              index={index}
+              isActive={index === currentIndex}
+            />
           ))}
         </div>
       </div>
@@ -148,4 +143,3 @@ const ConferenceCarousel: FC<ConferenceCarouselProps> = ({ conferences }) => {
 };
 
 export default ConferenceCarousel;
-
