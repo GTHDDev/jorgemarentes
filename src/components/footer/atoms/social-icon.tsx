@@ -1,10 +1,11 @@
 "use client";
 
 import { memo } from "react";
-import { motion } from "motion/react";
-import { LucideIcon } from "lucide-react";
+import * as m from "motion/react-m";
+import { type LucideIcon } from "@/lib/icons";
 import { PrismicNextLink } from "@prismicio/next";
 import { LinkField } from "@prismicio/client";
+import { hoverLiftLarge, tapScale } from "@/lib/motion-variants";
 
 interface SocialIconProps {
   icon: LucideIcon;
@@ -18,9 +19,9 @@ export const SocialIcon = memo(function SocialIcon({
   label,
 }: SocialIconProps) {
   return (
-    <motion.div
-      whileHover={{ scale: 1.1, y: -2 }}
-      whileTap={{ scale: 0.95 }}
+    <m.div
+      whileHover={hoverLiftLarge}
+      whileTap={tapScale}
     >
       <PrismicNextLink
         field={field}
@@ -29,7 +30,7 @@ export const SocialIcon = memo(function SocialIcon({
       >
         <Icon className="w-5 h-5 text-white/60" />
       </PrismicNextLink>
-    </motion.div>
+    </m.div>
   );
 });
 

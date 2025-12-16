@@ -1,7 +1,8 @@
 "use client";
 
 import { memo } from "react";
-import { motion } from "motion/react";
+import * as m from "motion/react-m";
+import { fadeInUp, transitionDefaults } from "@/lib/motion-variants";
 
 interface FooterCTAProps {
   heading: string | null | undefined;
@@ -17,11 +18,12 @@ export const FooterCTA = memo(function FooterCTA({
   }
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
+    <m.div
+      variants={fadeInUp}
+      initial="initial"
+      whileInView="animate"
       viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
+      transition={{ ...transitionDefaults, duration: 0.6 }}
       className="space-y-6"
     >
       {heading && (
@@ -34,7 +36,7 @@ export const FooterCTA = memo(function FooterCTA({
           {description}
         </p>
       )}
-    </motion.div>
+    </m.div>
   );
 });
 

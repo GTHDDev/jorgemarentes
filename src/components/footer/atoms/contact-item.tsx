@@ -1,7 +1,7 @@
 "use client";
 
 import { memo } from "react";
-import { LucideIcon } from "lucide-react";
+import { type LucideIcon } from "@/lib/icons";
 
 interface ContactItemProps {
   icon: LucideIcon;

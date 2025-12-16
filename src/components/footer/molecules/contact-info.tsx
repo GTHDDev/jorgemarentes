@@ -1,10 +1,11 @@
 "use client";
 
 import { memo } from "react";
-import { motion } from "motion/react";
-import { Mail, Phone, MapPin, LucideIcon } from "lucide-react";
+import * as m from "motion/react-m";
+import { Icons, type LucideIcon } from "@/lib/icons";
 import { Content } from "@prismicio/client";
 import { ContactItem } from "../atoms/contact-item";
+import { fadeInUp, transitionDefaults } from "@/lib/motion-variants";
 
 interface ContactInfoProps {
   contacts: Content.SettingsDocumentData["contact"];
@@ -12,9 +13,9 @@ interface ContactInfoProps {
 
 // Map Prismic icon names to Lucide icons
 const iconMap: Record<string, LucideIcon> = {
-  Phone,
-  Mail,
-  MapPin,
+  Phone: Icons.Phone,
+  Mail: Icons.Mail,
+  MapPin: Icons.MapPin,
 };
 
 export const ContactInfo = memo(function ContactInfo({
@@ -31,24 +32,27 @@ export const ContactInfo = memo(function ContactInfo({
       // Get icon from Prismic field
       const Icon = iconName ? iconMap[iconName] : null;
 
+      if (!Icon) return null;
+
       return {
         icon: Icon,
         label: contactType || "Contact",
         value: contactValue,
       };
     })
-    .filter((item): item is NonNullable<typeof item> => item !== null);
+    .filter((item): item is { icon: LucideIcon; label: string; value: string } => item !== null);
 
   if (contactItems.length === 0) {
     return null;
   }
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
+    <m.div
+      variants={fadeInUp}
+      initial="initial"
+      whileInView="animate"
       viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: 0.1 }}
+      transition={{ ...transitionDefaults, delay: 0.1, duration: 0.6 }}
       className="space-y-6"
     >
       <h3 className="font-['Space_Grotesk'] text-2xl tracking-tight mb-6">
@@ -65,7 +69,7 @@ export const ContactInfo = memo(function ContactInfo({
           />
         ))}
       </div>
-    </motion.div>
+    </m.div>
   );
 });
 

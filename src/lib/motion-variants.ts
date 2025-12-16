@@ -95,3 +95,20 @@ export const staggerContainer = {
     },
   },
 };
+
+// Navbar / Menu Animations
+export const slideDown = {
+  hidden: { y: -100 },
+  visible: { y: 0 },
+};
+
+export const expandVertical = {
+  hidden: { opacity: 0, height: 0 },
+  visible: { opacity: 1, height: "auto" },
+  exit: { opacity: 0, height: 0 },
+};
+
+export const hoverLiftLarge = {
+  scale: 1.1,
+  y: -2,
+};
