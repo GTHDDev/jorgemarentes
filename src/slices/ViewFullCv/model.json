@@ -1,0 +1,60 @@
+{
+  "id": "view_full_cv",
+  "type": "SharedSlice",
+  "name": "ViewFullCv",
+  "description": "ViewFullCv",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "heading": {
+          "type": "Text",
+          "config": {
+            "label": "Heading",
+            "placeholder": ""
+          }
+        },
+        "description": {
+          "type": "Text",
+          "config": {
+            "label": "Description",
+            "placeholder": ""
+          }
+        },
+        "button_text": {
+          "type": "Text",
+          "config": {
+            "label": "Button Text",
+            "placeholder": ""
+          }
+        },
+        "download_button": {
+          "type": "Link",
+          "config": {
+            "label": "Download Button",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": false,
+            "repeat": false
+          }
+        },
+        "download_link": {
+          "type": "Link",
+          "config": {
+            "label": "download link",
+            "placeholder": "",
+            "select": "media",
+            "allowText": false
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

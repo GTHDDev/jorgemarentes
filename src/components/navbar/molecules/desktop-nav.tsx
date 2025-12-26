@@ -1,11 +1,12 @@
 "use client";
 
 import { memo } from "react";
-import { Content } from "@prismicio/client";
+import { Content, LinkField } from "@prismicio/client";
 import { NavLink } from "../atoms/nav-link";
 import { CTAButton } from "../atoms/cta-button";
 import { ThemeToggle } from "../atoms/theme-toggle";
-import { getHref } from "../utils";
+import { PrismicNextLink } from "@prismicio/next";
+
 
 interface DesktopNavProps {
   navigation: Content.SettingsDocumentData["navigation"];
@@ -14,11 +15,11 @@ interface DesktopNavProps {
 export const DesktopNav = memo(function DesktopNav({ navigation }: DesktopNavProps) {
   return (
     <div className="hidden lg:flex items-center gap-2">
-      {navigation.map((link) => (
+      {navigation.map(({ label, link }) => (
         <NavLink
-          key={link.label}
-          label={link.label || ""}
-          href={getHref(link.label)}
+          key={label}
+          label={label || ""}
+          href={link}
         />
       ))}
 

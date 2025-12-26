@@ -32,11 +32,11 @@ export const MobileNav = memo(function MobileNav({
           className="lg:hidden overflow-hidden"
         >
           <div className="mt-4 pt-4 pb-6 space-y-2 bg-transparent backdrop-blur-2xl rounded-2xl">
-            {navigation.map((link, index) => (
+            {navigation.map(({ label, link }, index) => (
               <NavLink
-                key={link.label}
-                label={link.label || ""}
-                href={getHref(link.label)}
+                key={label}
+                label={label || ""}
+                href={link}
                 onClick={onClose}
                 className="block mx-4 px-4 py-3 text-base font-medium text-ink-black/70 dark:text-white/70 hover:text-ink-black dark:hover:text-white hover:bg-soft-beige dark:hover:bg-white/5 rounded-full transition-colors"
                 delay={index * 0.1}

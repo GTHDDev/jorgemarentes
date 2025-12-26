@@ -14,18 +14,13 @@ export const NavigationSection = memo(function NavigationSection({
     return null;
   }
 
-  const getHref = (label: string | null | undefined) => {
-    if (!label) return "#";
-    return label.startsWith("#") ? label : `#${label.toLowerCase().replace(/\s+/g, "-")}`;
-  };
-
   return (
     <div>
       <FooterSectionTitle title="Navegación" />
       <ul className="space-y-3">
-        {navigation.map((link) => (
-          <li key={link.label}>
-            <FooterLink label={link.label || ""} href={getHref(link.label)} />
+        {navigation.map(({ link, label }) => (
+          <li key={label}>
+            <FooterLink label={label || ""} field={link} />
           </li>
         ))}
       </ul>

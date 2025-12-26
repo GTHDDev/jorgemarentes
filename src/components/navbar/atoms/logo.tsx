@@ -8,10 +8,10 @@ interface LogoProps {
   href?: string;
 }
 
-export const Logo = memo(function Logo({ websiteName, href = "#home" }: LogoProps) {
+export const Logo = memo(function Logo({ websiteName }: LogoProps) {
   return (
     <motion.a
-      href={href}
+      href='/'
       className="relative z-10"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}

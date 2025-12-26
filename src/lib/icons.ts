@@ -5,6 +5,7 @@
 import {
   Brain,
   Users,
+  Briefcase,
   Heart,
   Sparkles,
   ArrowRight,
@@ -12,6 +13,7 @@ import {
   ChevronRight,
   Activity,
   Award,
+  Download,
   FileText,
   GraduationCap,
   Menu,
@@ -28,11 +30,14 @@ import {
   MapPin,
   Play,
   Calendar,
+  BookOpen,
+  Target,
   type LucideIcon,
 } from "lucide-react";
 
 export const Icons = {
   Brain,
+  Briefcase,
   Users,
   Heart,
   Sparkles,
@@ -41,6 +46,7 @@ export const Icons = {
   ChevronRight,
   Activity,
   Award,
+  Download,
   FileText,
   GraduationCap,
   Menu,
@@ -57,6 +63,8 @@ export const Icons = {
   MapPin,
   Play,
   Calendar,
+  BookOpen,
+  Target,
 };
 
 export type { LucideIcon };

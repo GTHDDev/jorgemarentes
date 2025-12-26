@@ -39,6 +39,17 @@
                 "label": "Label",
                 "placeholder": ""
               }
+            },
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "Link",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": false,
+                "repeat": false
+              }
             }
           }
         }
