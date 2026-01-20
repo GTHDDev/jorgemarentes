@@ -96,6 +96,16 @@ export const staggerContainer = {
   },
 };
 
+/**
+ * For children of staggerContainer: uses hidden/visible keys so variant
+ * propagation from parent (initial="hidden", animate="visible") works.
+ * Same visual as fadeInUpDeep.
+ */
+export const staggerItemFadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0 },
+};
+
 // Navbar / Menu Animations
 export const slideDown = {
   hidden: { y: -100 },
@@ -111,4 +121,81 @@ export const expandVertical = {
 export const hoverLiftLarge = {
   scale: 1.1,
   y: -2,
+};
+
+// HighlightsCarousel Animations
+export const carouselHeader = {
+  initial: { opacity: 0, y: 30 },
+  animate: { opacity: 1, y: 0 },
+};
+
+export const carouselContainer = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+};
+
+export const carouselHint = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+};
+
+export const highlightsCarouselDelays = {
+  header: 0,
+  carousel: 0.2,
+  hint: 0.4,
+};
+
+export const carouselTransition = {
+  duration: 0.6,
+  ease: [0.4, 0.0, 0.2, 1] as const,
+};
+
+export const carouselTransitionSlow = {
+  duration: 0.8,
+  ease: [0.4, 0.0, 0.2, 1] as const,
+};
+
+// Timeline Animations
+export const timelineHeader = {
+  initial: { opacity: 0, y: 30 },
+  animate: { opacity: 1, y: 0 },
+};
+
+export const timelineItem = {
+  initial: { opacity: 0, y: 40 },
+  animate: { opacity: 1, y: 0 },
+};
+
+export const timelineDelays = {
+  header: 0,
+  itemBase: 0.2,
+  itemStagger: 0.15,
+};
+
+export const modalBackdrop = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  exit: { opacity: 0 },
+};
+
+export const modalContent = {
+  initial: { opacity: 0, scale: 0.95, y: 20 },
+  animate: { opacity: 1, scale: 1, y: 0 },
+  exit: { opacity: 0, scale: 0.95, y: 20 },
+};
+
+export const modalTransition = {
+  duration: 0.3,
+  ease: [0.4, 0.0, 0.2, 1] as const,
+};
+
+// ViewFullCv Animations
+export const viewFullCvCard = {
+  initial: { opacity: 0, y: 30 },
+  animate: { opacity: 1, y: 0 },
+};
+
+export const viewFullCvTransition = {
+  duration: 0.6,
+  ease: [0.4, 0.0, 0.2, 1] as const,
 };

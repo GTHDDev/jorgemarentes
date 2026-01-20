@@ -18,9 +18,9 @@ export const ServicesSection = memo(function ServicesSection({
     <div>
       <FooterSectionTitle title="Servicios" />
       <ul className="space-y-3">
-        {services.map((service, index) => (
-          <li key={service.service || index}>
-            <FooterLink label={service.service || ""} href="#servicios" />
+        {services.map(({ service }, index) => (
+          <li key={service || index}>
+            <FooterLink label={service || ""} href="#servicios" />
           </li>
         ))}
       </ul>
