@@ -14,6 +14,8 @@ interface AboutHeroHighlightsProps {
  * Highlights list component.
  * Optimized with LazyMotion (m component).
  * Uses staggerContainer for smooth sequential animations.
+ * initial={false} avoids hydration mismatch: server does not apply "hidden"
+ * (opacity/transform) while client would, so we skip the hidden state on mount.
  */
 const AboutHeroHighlights: FC<AboutHeroHighlightsProps> = ({ highlights }) => {
   if (!highlights || highlights.length === 0) return null;
@@ -21,7 +23,7 @@ const AboutHeroHighlights: FC<AboutHeroHighlightsProps> = ({ highlights }) => {
   return (
     <m.div
       variants={staggerContainer}
-      initial="hidden"
+      initial={false}
       animate="visible"
       className="flex flex-wrap items-center gap-6 pt-6 border-t border-ink-black/5 dark:border-white/10"
     >

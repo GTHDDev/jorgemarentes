@@ -3,7 +3,7 @@
 import { FC, memo } from "react";
 import * as m from "motion/react-m";
 import { Content } from "@prismicio/client";
-import { fadeInUpDeep } from "@/lib/motion-variants";
+import { staggerItemFadeInUp } from "@/lib/motion-variants";
 
 interface AboutHeroHighlightItemProps {
   highlight: Content.AboutHeroSliceDefaultPrimaryHighligthsItem;
@@ -28,7 +28,7 @@ const AboutHeroHighlightItem: FC<AboutHeroHighlightItemProps> = ({
       {index > 0 && (
         <div className="w-px h-12 bg-ink-black/10 dark:bg-white/10" />
       )}
-      <m.div variants={fadeInUpDeep}>
+      <m.div variants={staggerItemFadeInUp}>
         <div
           className="font-['Space_Grotesk'] text-2xl sm:text-3xl font-medium"
           style={color ? { color } : undefined}

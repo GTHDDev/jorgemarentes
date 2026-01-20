@@ -96,6 +96,16 @@ export const staggerContainer = {
   },
 };
 
+/**
+ * For children of staggerContainer: uses hidden/visible keys so variant
+ * propagation from parent (initial="hidden", animate="visible") works.
+ * Same visual as fadeInUpDeep.
+ */
+export const staggerItemFadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0 },
+};
+
 // Navbar / Menu Animations
 export const slideDown = {
   hidden: { y: -100 },
