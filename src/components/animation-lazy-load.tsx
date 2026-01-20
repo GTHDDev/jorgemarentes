@@ -2,6 +2,7 @@
 
 import { FC, ReactNode, memo } from "react";
 import * as m from "motion/react-m";
+import type { Variants } from "motion-dom";
 import { fadeInUpDeep, transitionDefaults } from "@/lib/motion-variants";
 
 export const animationLazyLoadViewport = {
@@ -12,7 +13,7 @@ export const animationLazyLoadViewport = {
 interface AnimationLazyLoadProps {
   children: ReactNode;
   className?: string;
-  variants?: { initial: object; animate: object };
+  variants?: Variants;
   transition?: object;
   viewport?: { once?: boolean; margin?: string };
 }

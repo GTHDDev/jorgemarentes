@@ -42,12 +42,12 @@ const HighlightCard: FC<HighlightCardProps> = ({ highlight, index }) => {
       <div className="bg-[#FAFAFA] dark:bg-[#1a1a1a] rounded-[2rem] p-8 border border-[#0F0F0F]/5 dark:border-white/10 hover:border-[#0F0F0F]/10 dark:hover:border-white/20 shadow-soft hover:shadow-medium transition-all duration-500 h-full">
         <div
           className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
-          style={{ backgroundColor: `${color}15` }}
+          style={{ backgroundColor: color ? `${color}15` : undefined }}
           aria-hidden="true"
         >
           <Icon
             className="w-7 h-7"
-            style={{ color: color }}
+            style={{ color: color ?? undefined }}
             aria-hidden="true"
           />
         </div>
