@@ -135,6 +135,7 @@ export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
 
 type PageDocumentDataSlicesSlice =
+  | ContactHeroSlice
   | ViewFullCvSlice
   | TimelineSlice
   | HighlightsCarouselSlice
@@ -906,6 +907,126 @@ export type ConferencesSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *ContactHero → Default → Primary → Socials*
+ */
+export interface ContactHeroSliceDefaultPrimarySocialsItem {
+  /**
+   * Social Link field in *ContactHero → Default → Primary → Socials*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_hero.default.primary.socials[].social_link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  social_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Icon field in *ContactHero → Default → Primary → Socials*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_hero.default.primary.socials[].icon
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  icon: prismic.SelectField<
+    "Instagram" | "Facebook" | "TikTok" | "Youtube" | "Linkedin"
+  >;
+}
+
+/**
+ * Primary content in *ContactHero → Default → Primary*
+ */
+export interface ContactHeroSliceDefaultPrimary {
+  /**
+   * Tag field in *ContactHero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_hero.default.primary.tag
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  tag: prismic.KeyTextField;
+
+  /**
+   * Heading field in *ContactHero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_hero.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Description field in *ContactHero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_hero.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  description: prismic.KeyTextField;
+
+  /**
+   * Socials Heading field in *ContactHero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_hero.default.primary.socials_heading
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  socials_heading: prismic.KeyTextField;
+
+  /**
+   * Socials field in *ContactHero → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_hero.default.primary.socials[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  socials: prismic.GroupField<
+    Simplify<ContactHeroSliceDefaultPrimarySocialsItem>
+  >;
+}
+
+/**
+ * Default variation for ContactHero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ContactHeroSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ContactHeroSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ContactHero*
+ */
+type ContactHeroSliceVariation = ContactHeroSliceDefault;
+
+/**
+ * ContactHero Shared Slice
+ *
+ * - **API ID**: `contact_hero`
+ * - **Description**: ContactHero
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ContactHeroSlice = prismic.SharedSlice<
+  "contact_hero",
+  ContactHeroSliceVariation
+>;
+
+/**
  * Item in *Hero → Default → Primary → Stats*
  */
 export interface HeroSliceDefaultPrimaryStatsItem {
@@ -1599,6 +1720,11 @@ declare module "@prismicio/client" {
       ConferencesSliceDefaultPrimary,
       ConferencesSliceVariation,
       ConferencesSliceDefault,
+      ContactHeroSlice,
+      ContactHeroSliceDefaultPrimarySocialsItem,
+      ContactHeroSliceDefaultPrimary,
+      ContactHeroSliceVariation,
+      ContactHeroSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimaryStatsItem,
       HeroSliceDefaultPrimary,

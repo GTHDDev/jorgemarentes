@@ -32,6 +32,7 @@ import {
   Calendar,
   BookOpen,
   Target,
+  MessageCircle,
   type LucideIcon,
 } from "lucide-react";
 
@@ -65,6 +66,7 @@ export const Icons = {
   Calendar,
   BookOpen,
   Target,
+  MessageCircle,
 };
 
 export type { LucideIcon };
