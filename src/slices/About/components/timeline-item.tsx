@@ -1,26 +1,23 @@
-import { FC } from "react";
-import * as m from "motion/react-m";
-import { type LucideIcon } from "@/lib/icons";
-import { Card, CardContent } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
-import { fadeInUpDeep } from "@/lib/motion-variants";
+'use client'
+
+import { FC } from 'react'
+import * as m from 'motion/react-m'
+import { type LucideIcon } from '@/lib/icons'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { fadeInUpDeep, DURATION, EASE } from '@/lib/motion-variants'
+import { ColorField, KeyTextField } from '@prismicio/client'
 
 interface TimelineItemProps {
-  year: string;
-  title: string;
-  institution: string;
-  description: string;
-  icon?: LucideIcon | null;
-  color?: string;
-  index: number;
-  isLast: boolean;
+  year: KeyTextField
+  title: KeyTextField
+  institution: KeyTextField
+  description: KeyTextField
+  icon?: LucideIcon | null
+  color?: ColorField
+  index: number
+  isLast: boolean
 }
 
-/**
- * Individual timeline item component.
- * Client Component - requires animations.
- * Optimized with LazyMotion (m component).
- */
 const TimelineItem: FC<TimelineItemProps> = ({
   year,
   title,
@@ -31,87 +28,65 @@ const TimelineItem: FC<TimelineItemProps> = ({
   index,
   isLast,
 }) => {
-  // Convert hex color to rgba with opacity
-  const hexToRgba = (hex: string, alpha: number) => {
-    const r = parseInt(hex.slice(1, 3), 16);
-    const g = parseInt(hex.slice(3, 5), 16);
-    const b = parseInt(hex.slice(5, 7), 16);
-    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
-  };
-
-  const bgColor10 = color && color.startsWith("#")
-    ? hexToRgba(color, 0.1)
-    : undefined;
-  const bgColor15 = color && color.startsWith("#")
-    ? hexToRgba(color, 0.15)
-    : undefined;
+  const safeColor = color ?? '#4A6FA5'
 
   return (
     <m.div
       variants={fadeInUpDeep}
       initial="initial"
       whileInView="animate"
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.6, delay: 0.3 + index * 0.15 }}
+      viewport={{ once: true, margin: '-50px' }}
+      transition={{ duration: DURATION.DEFAULT, delay: 0.3 + index * 0.15, ease: EASE }}
       className="relative"
     >
-      {/* Timeline Line */}
       {!isLast && (
         <div
-          className="absolute left-6 top-16 bottom-0 w-0.5 bg-gradient-to-b from-ink-black/10 dark:from-white/10 to-transparent"
-          style={{ height: "calc(100% + 2rem)" }}
+          className="from-ink-black/10 absolute bottom-0 left-6 top-16 w-0.5 bg-gradient-to-b to-transparent dark:from-white/10"
+          style={{ height: 'calc(100% + 2rem)' }}
+          aria-hidden="true"
         />
       )}
 
-      <Card className="relative bg-pearl-white dark:bg-[#1a1a1a] rounded-[2rem] border border-ink-black/5 dark:border-white/10 hover:border-ink-black/10 dark:hover:border-white/20 shadow-soft hover:shadow-medium transition-smooth group p-0">
-        <CardContent className="p-6 lg:p-8">
-          {/* Icon */}
+      <Card className="bg-pearl-white border-ink-black/5 hover:border-ink-black/10 shadow-soft hover:shadow-medium group relative overflow-hidden rounded-[2rem] border transition-all duration-500 dark:border-white/10 dark:bg-[#1a1a1a] dark:hover:border-white/20">
+        <CardHeader className="block space-y-2 p-6 pb-0 lg:p-8">
           {Icon && (
             <div
-              className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 transition-smooth group-hover:scale-110"
+              className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl transition-transform duration-500 group-hover:scale-110"
               style={{
-                backgroundColor: bgColor15,
+                backgroundColor: `${safeColor}26`,
               }}
             >
-              <Icon
-                className="w-6 h-6"
-                style={{
-                  color: color || undefined,
-                }}
-              />
+              <Icon className="h-6 w-6" style={{ color: safeColor }} aria-hidden="true" />
             </div>
           )}
 
-          {/* Year Badge */}
           <div
-            className="inline-block px-3 py-1 rounded-full text-xs font-medium mb-3"
+            className="mb-1 inline-block rounded-full px-3 py-1 text-xs font-medium"
             style={{
-              backgroundColor: bgColor15,
-              color: color || undefined,
+              backgroundColor: `${safeColor}26`,
+              color: safeColor,
             }}
           >
             {year}
           </div>
 
-          {/* Title */}
-          <h3 className="font-['Space_Grotesk'] text-xl lg:text-2xl text-ink-black dark:text-white mb-2 tracking-tight">
+          <CardTitle className="font-space text-ink-black mb-1 text-xl tracking-tight lg:text-2xl dark:text-white">
             {title}
-          </h3>
+          </CardTitle>
+        </CardHeader>
 
-          {/* Institution */}
-          <div className="text-base font-medium text-ink-black/70 dark:text-white/70 mb-3">
+        <CardContent className="p-6 pt-0 lg:p-8 lg:pt-2">
+          <div className="text-ink-black/70 mb-3 text-base font-medium dark:text-white/70">
             {institution}
           </div>
 
-          {/* Description */}
-          <p className="text-sm lg:text-base text-ink-black/60 dark:text-white/60 leading-relaxed">
+          <p className="text-ink-black/60 text-sm leading-relaxed lg:text-base dark:text-white/60">
             {description}
           </p>
         </CardContent>
       </Card>
     </m.div>
-  );
-};
+  )
+}
 
-export default TimelineItem;
-
+export default TimelineItem

@@ -1,20 +1,17 @@
-"use client";
+'use client'
 
-import { FC, useState, useCallback, useMemo } from "react";
-import dynamic from "next/dynamic";
-import { Content } from "@prismicio/client";
-import TimelineList from "./timeline-list";
+import { FC, useState, useCallback, useMemo } from 'react'
+import dynamic from 'next/dynamic'
+import { Content } from '@prismicio/client'
+import TimelineList from './timeline-list'
 
 // Lazy load modal - only loads when a timeline item is clicked
-const CvModalLazy = dynamic(
-  () => import("./cv-modal"),
-  {
-    ssr: false,
-  }
-);
+const CvModalLazy = dynamic(() => import('./cv-modal'), {
+  ssr: false,
+})
 
 interface TimelineWrapperProps {
-  timeline: Content.TimelineSliceDefaultPrimaryTimelineItem[];
+  timeline: Content.TimelineSliceDefaultPrimaryTimelineItem[]
 }
 
 /**
@@ -22,17 +19,18 @@ interface TimelineWrapperProps {
  * Client Component - manages modal state and interactions.
  */
 const TimelineWrapper: FC<TimelineWrapperProps> = ({ timeline }) => {
-  const [selectedItem, setSelectedItem] = useState<Content.TimelineSliceDefaultPrimaryTimelineItem | null>(null);
+  const [selectedItem, setSelectedItem] =
+    useState<Content.TimelineSliceDefaultPrimaryTimelineItem | null>(null)
 
   const handleItemClick = useCallback((item: Content.TimelineSliceDefaultPrimaryTimelineItem) => {
-    setSelectedItem(item);
-  }, []);
+    setSelectedItem(item)
+  }, [])
 
   const handleCloseModal = useCallback(() => {
-    setSelectedItem(null);
-  }, []);
+    setSelectedItem(null)
+  }, [])
 
-  const isModalOpen = useMemo(() => !!selectedItem, [selectedItem]);
+  const isModalOpen = useMemo(() => !!selectedItem, [selectedItem])
 
   return (
     <>
@@ -43,14 +41,14 @@ const TimelineWrapper: FC<TimelineWrapperProps> = ({ timeline }) => {
         <CvModalLazy
           isOpen={isModalOpen}
           onClose={handleCloseModal}
-          title={selectedItem.title || ""}
-          year={selectedItem.year || ""}
-          institution={selectedItem.institution || ""}
-          description={selectedItem.description || ""}
+          title={selectedItem.title}
+          year={selectedItem.year}
+          institution={selectedItem.institution}
+          description={selectedItem.description}
         />
       )}
     </>
-  );
-};
+  )
+}
 
-export default TimelineWrapper;
+export default TimelineWrapper

@@ -1,4 +1,4 @@
-import { Skeleton } from "@/components/ui/skeleton";
+import { Skeleton } from '@/components/ui/skeleton'
 
 /**
  * Skeleton fallback for ViewFullCv while the main content loads.
@@ -7,22 +7,22 @@ import { Skeleton } from "@/components/ui/skeleton";
 export function ViewFullCvSkeleton() {
   return (
     <section
-      className="relative py-16 lg:py-24 bg-white dark:bg-[#0a0a0a]"
+      className="relative bg-white py-16 lg:py-24 dark:bg-[#0a0a0a]"
       aria-busy="true"
       aria-label="Loading curriculum section"
     >
-      <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-gradient-to-br from-[#4A6FA5]/20 to-[#3B5F52]/20 dark:from-[#4A6FA5]/10 dark:to-[#3B5F52]/10 rounded-[2.5rem] p-12 lg:p-16 relative overflow-hidden">
+      <div className="mx-auto max-w-[1440px] px-6 sm:px-8 lg:px-12">
+        <div className="mx-auto max-w-4xl">
+          <div className="from-steel-blue/20 to-deep-sage/20 dark:from-steel-blue/10 dark:to-deep-sage/10 relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br p-12 lg:p-16">
             {/* Decorative circles placeholder */}
-            <div className="absolute inset-0 opacity-10 pointer-events-none" aria-hidden="true">
-              <div className="absolute top-10 right-10 w-40 h-40 border-2 border-[#4A6FA5]/30 rounded-full" />
-              <div className="absolute bottom-10 left-10 w-60 h-60 border-2 border-[#3B5F52]/30 rounded-full" />
+            <div className="pointer-events-none absolute inset-0 opacity-10" aria-hidden="true">
+              <div className="border-steel-blue/30 absolute right-10 top-10 h-40 w-40 rounded-full border-2" />
+              <div className="border-deep-sage/30 absolute bottom-10 left-10 h-60 w-60 rounded-full border-2" />
             </div>
 
             <div className="relative z-10 flex flex-col items-center gap-6 text-center">
               <Skeleton
-                className="w-20 h-20 rounded-full bg-white/30 dark:bg-white/10"
+                className="h-20 w-20 rounded-full bg-white/30 dark:bg-white/10"
                 aria-hidden="true"
               />
 
@@ -41,7 +41,7 @@ export function ViewFullCvSkeleton() {
               />
 
               <Skeleton
-                className="h-12 w-48 rounded-full mt-2 bg-white/30 dark:bg-white/10"
+                className="mt-2 h-12 w-48 rounded-full bg-white/30 dark:bg-white/10"
                 aria-hidden="true"
               />
             </div>
@@ -49,5 +49,5 @@ export function ViewFullCvSkeleton() {
         </div>
       </div>
     </section>
-  );
+  )
 }

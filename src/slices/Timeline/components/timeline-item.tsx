@@ -1,128 +1,114 @@
-"use client";
+'use client'
 
-import { FC, memo, useMemo } from "react";
-import * as m from "motion/react-m";
-import { Content } from "@prismicio/client";
-import { Icons } from "@/lib/icons";
-import { timelineItem, timelineDelays, hoverLift, tapScale } from "@/lib/motion-variants";
-import { transitionDefaults } from "@/lib/motion-variants";
+import { FC, memo, useMemo } from 'react'
+import * as m from 'motion/react-m'
+import { Content } from '@prismicio/client'
+import { Icons } from '@/lib/icons'
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
+import { fadeInUpDeep, hoverLift, tapScale, DURATION, EASE } from '@/lib/motion-variants'
+import { cn } from '@/lib/utils'
 
-const icons: Record<string, React.ComponentType<{ className?: string; style?: React.CSSProperties }>> = {
+const icons: Record<
+  string,
+  React.ComponentType<{ className?: string; style?: React.CSSProperties }>
+> = {
   Award: Icons.Award,
   BookOpen: Icons.BookOpen,
   GraduationCap: Icons.GraduationCap,
   Briefcase: Icons.Briefcase,
-};
-
-interface TimelineItemProps {
-  item: Content.TimelineSliceDefaultPrimaryTimelineItem;
-  index: number;
-  isInView: boolean;
-  onItemClick: (item: Content.TimelineSliceDefaultPrimaryTimelineItem) => void;
 }
 
-/**
- * Individual timeline item component.
- * Client Component - memoized for performance optimization.
- * Optimized with LazyMotion (m component).
- */
-const TimelineItem: FC<TimelineItemProps> = ({ item, index, isInView, onItemClick }) => {
-  const isEven = useMemo(() => index % 2 === 0, [index]);
+interface TimelineItemProps {
+  item: Content.TimelineSliceDefaultPrimaryTimelineItem
+  index: number
+  isInView: boolean
+  onItemClick: (item: Content.TimelineSliceDefaultPrimaryTimelineItem) => void
+}
 
-  const color = item.color || "#4A6FA5";
+const TimelineItem: FC<TimelineItemProps> = ({ item, index, isInView, onItemClick }) => {
+  const isEven = useMemo(() => index % 2 === 0, [index])
+  const color = item.color || '#4A6FA5'
 
   const Icon = useMemo(() => {
-    return icons[item.icon as keyof typeof icons];
-  }, [item.icon]);
-
-  if (!Icon) return null;
-
-  const handleClick = () => {
-    onItemClick(item);
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      handleClick();
-    }
-  };
+    return icons[item.icon as keyof typeof icons] || Icons.BookOpen
+  }, [item.icon])
 
   return (
     <m.div
-      variants={timelineItem}
-      initial={false}
-      animate={isInView ? "animate" : "initial"}
+      variants={fadeInUpDeep}
+      initial="initial"
+      animate={isInView ? 'animate' : 'initial'}
       transition={{
-        ...transitionDefaults,
-        delay: (timelineDelays?.itemBase ?? 0.2) + index * (timelineDelays?.itemStagger ?? 0.15),
+        duration: DURATION.SLOW,
+        ease: EASE,
+        delay: 0.2 + (index % 5) * 0.15,
       }}
-      className={`relative grid lg:grid-cols-2 gap-8 lg:gap-16 items-center ${isEven ? "" : "lg:flex-row-reverse"
-        }`}
+      className={cn(
+        'relative grid items-center gap-8 lg:grid-cols-2 lg:gap-16',
+        !isEven && 'lg:flex-row-reverse'
+      )}
     >
-      {/* Timeline Dot */}
+      {/* Timeline Dot Central */}
       <div
-        className="absolute left-6 lg:left-1/2 top-8 -translate-x-1/2 w-12 h-12 rounded-full flex items-center justify-center z-10 border-4 border-[#F3EDE7] dark:border-[#0F0F0F] transition-transform duration-500 hover:scale-125"
+        className="absolute left-6 top-8 z-10 flex h-12 w-12 -translate-x-1/2 items-center justify-center rounded-full border-4 border-[#F3EDE7] shadow-sm transition-transform duration-500 hover:scale-125 lg:left-1/2 dark:border-[#0F0F0F]"
         style={{ backgroundColor: color }}
-        aria-hidden="true"
       >
-        <Icon className="w-6 h-6 text-white" aria-hidden="true" />
+        <Icon className="h-6 w-6 text-white" />
       </div>
 
-      {/* Content Card */}
       <div
-        className={`lg:col-span-1 ${isEven
-            ? "lg:col-start-1 lg:text-right lg:pr-12"
-            : "lg:col-start-2 lg:pl-12"
-          } ml-20 lg:ml-0`}
+        className={cn(
+          'ml-20 lg:col-span-1 lg:ml-0',
+          isEven ? 'lg:col-start-1 lg:pr-12 lg:text-right' : 'lg:col-start-2 lg:pl-12'
+        )}
       >
         <m.button
-          onClick={handleClick}
-          onKeyDown={handleKeyDown}
-          className="w-full bg-white dark:bg-[#1a1a1a] rounded-[2rem] p-6 lg:p-8 border border-[#0F0F0F]/5 dark:border-white/10 hover:border-[#0F0F0F]/10 dark:hover:border-white/20 shadow-soft hover:shadow-medium transition-all duration-500 text-left group cursor-pointer"
+          onClick={() => onItemClick(item)}
+          className="group w-full cursor-pointer border-none bg-transparent p-0 text-left"
           whileHover={hoverLift}
           whileTap={tapScale}
-          aria-label={`View details about ${item.title}`}
-          tabIndex={0}
         >
-          {/* Year Badge */}
-          <div
-            className={`inline-block px-4 py-2 rounded-full text-sm font-medium mb-4 ${isEven ? "lg:float-right lg:ml-4" : "lg:float-left lg:mr-4"
-              }`}
-            style={{
-              backgroundColor: `${color}15`,
-              color: color,
-            }}
-          >
-            {item.year}
-          </div>
+          <Card className="border-ink-black/5 hover:border-ink-black/10 shadow-soft hover:shadow-medium overflow-hidden rounded-[2rem] border bg-white py-0 transition-all duration-500 dark:border-white/10 dark:bg-[#1a1a1a] dark:hover:border-white/20">
+            <CardHeader className="block space-y-0 p-8 pb-0">
+              <div
+                className={cn(
+                  'mb-4 inline-block rounded-full px-4 py-2 text-sm font-medium',
+                  isEven ? 'lg:float-right lg:ml-4' : 'lg:float-left lg:mr-4'
+                )}
+                style={{
+                  backgroundColor: `${color}1A`,
+                  color: color,
+                }}
+              >
+                {item.year}
+              </div>
 
-          {/* Title */}
-          <h3 className="font-['Space_Grotesk'] text-2xl lg:text-3xl text-[#0F0F0F] dark:text-white mb-3 tracking-tight group-hover:text-[#4A6FA5] dark:group-hover:text-[#4A6FA5] transition-colors duration-300">
-            {item.title}
-          </h3>
+              <div className="clear-both lg:hidden" />
 
-          {/* Institution */}
-          <div className="font-medium text-[#0F0F0F]/70 dark:text-white/70 mb-4">
-            {item.institution}
-          </div>
+              <CardTitle className="font-space text-ink-black group-hover:text-steel-blue mb-3 text-2xl tracking-tight transition-colors lg:text-3xl dark:text-white">
+                {item.title}
+              </CardTitle>
+            </CardHeader>
 
-          {/* Description Preview */}
-          <p className="text-sm lg:text-base text-[#0F0F0F]/60 dark:text-white/60 leading-relaxed line-clamp-2">
-            {item.description}
-          </p>
+            <CardContent className="p-8 pt-0">
+              <div className="text-ink-black/70 mb-4 font-medium dark:text-white/70">
+                {item.institution}
+              </div>
+              <p className="text-ink-black/60 line-clamp-2 text-pretty text-sm leading-relaxed lg:text-base dark:text-white/60">
+                {item.description}
+              </p>
 
-          {/* Click to Learn More */}
-          <div className="mt-4 text-sm font-medium text-[#4A6FA5] group-hover:underline">
-            Click para ver más →
-          </div>
+              <div className="text-steel-blue mt-4 text-sm font-medium group-hover:underline">
+                Ver detalles →
+              </div>
+            </CardContent>
+          </Card>
         </m.button>
       </div>
 
-      {/* Spacer for alternating layout */}
-      <div className="hidden lg:block lg:col-span-1" />
+      <div className="hidden lg:col-span-1 lg:block" />
     </m.div>
-  );
-};
+  )
+}
 
-export default memo(TimelineItem);
+export default memo(TimelineItem)

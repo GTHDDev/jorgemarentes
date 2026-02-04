@@ -1,182 +1,191 @@
 [
-	{
-		"__TYPE__": "SharedSliceContent",
-		"variation": "default",
-		"primary": {
-			"tag": {
-				"__TYPE__": "FieldContent",
-				"type": "Text",
-				"value": "Servicios especializados"
-			},
-			"heading": {
-				"__TYPE__": "FieldContent",
-				"type": "Text",
-				"value": "Atención personalizada para su camino único"
-			},
-			"description": {
-				"__TYPE__": "FieldContent",
-				"type": "Text",
-				"value": "El camino hacia el bienestar es diferente para cada persona. Ofrezco una variedad de enfoques terapéuticos adaptados a sus necesidades y objetivos específicos."
-			},
-			"services": {
-				"__TYPE__": "GroupContentType",
-				"value": [
-					{
-						"__TYPE__": "GroupItemContent",
-						"value": [
-							[
-								"icon",
-								{
-									"__TYPE__": "FieldContent",
-									"type": "Select",
-									"value": "Brain"
-								}
-							],
-							[
-								"title",
-								{
-									"__TYPE__": "FieldContent",
-									"type": "Text",
-									"value": "Terapia cognitivo-conductual"
-								}
-							],
-							[
-								"description",
-								{
-									"__TYPE__": "FieldContent",
-									"type": "Text",
-									"value": "Tratamiento basado en la evidencia que le ayuda a identificar y modificar patrones de pensamiento que conducen a conductas dañinas y angustia emocional."
-								}
-							],
-							[
-								"color",
-								{
-									"__TYPE__": "FieldContent",
-									"type": "Color",
-									"value": "#4A6FA5"
-								}
-							]
-						]
-					},
-					{
-						"__TYPE__": "GroupItemContent",
-						"value": [
-							[
-								"icon",
-								{
-									"__TYPE__": "FieldContent",
-									"type": "Select",
-									"value": "Heart"
-								}
-							],
-							[
-								"title",
-								{
-									"__TYPE__": "FieldContent",
-									"type": "Text",
-									"value": "Terapia Centrada en el Trauma"
-								}
-							],
-							[
-								"description",
-								{
-									"__TYPE__": "FieldContent",
-									"type": "Text",
-									"value": "Atención especializada para procesar experiencias traumáticas mediante EMDR y enfoques somáticos en un entorno seguro y de apoyo."
-								}
-							],
-							[
-								"color",
-								{
-									"__TYPE__": "FieldContent",
-									"type": "Color",
-									"value": "#3B5F52"
-								}
-							]
-						]
-					},
-					{
-						"__TYPE__": "GroupItemContent",
-						"value": [
-							[
-								"icon",
-								{
-									"__TYPE__": "FieldContent",
-									"type": "Select",
-									"value": "Users"
-								}
-							],
-							[
-								"title",
-								{
-									"__TYPE__": "FieldContent",
-									"type": "Text",
-									"value": "Terapia de Pareja y Familia"
-								}
-							],
-							[
-								"description",
-								{
-									"__TYPE__": "FieldContent",
-									"type": "Text",
-									"value": "Fortalecemos las relaciones mediante una mejor comunicación, la resolución de conflictos y una comprensión más profunda de las necesidades de cada uno."
-								}
-							],
-							[
-								"color",
-								{
-									"__TYPE__": "FieldContent",
-									"type": "Color",
-									"value": "#F2B544"
-								}
-							]
-						]
-					},
-					{
-						"__TYPE__": "GroupItemContent",
-						"value": [
-							[
-								"icon",
-								{
-									"__TYPE__": "FieldContent",
-									"type": "Select",
-									"value": "Sparkles"
-								}
-							],
-							[
-								"title",
-								{
-									"__TYPE__": "FieldContent",
-									"type": "Text",
-									"value": "Consciencia Plena y Bienestar"
-								}
-							],
-							[
-								"description",
-								{
-									"__TYPE__": "FieldContent",
-									"type": "Text",
-									"value": "Integramos prácticas de conciencia plena y estrategias holísticas de bienestar para lograr el equilibrio, reducir el estrés y mejorar el bienestar."
-								}
-							],
-							[
-								"color",
-								{
-									"__TYPE__": "FieldContent",
-									"type": "Color",
-									"value": "#4A6FA5"
-								}
-							]
-						]
-					}
-				]
-			},
-			"services_button": {
-				"__TYPE__": "FieldContent",
-				"type": "Text",
-				"value": "Todos Los Servicios"
-			}
-		},
-		"items": []
-	}
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "tag": {
+        "__TYPE__": "FieldContent",
+        "type": "Text",
+        "value": "Servicios especializados"
+      },
+      "heading": {
+        "__TYPE__": "FieldContent",
+        "type": "Text",
+        "value": "Atención personalizada para su camino único"
+      },
+      "description": {
+        "__TYPE__": "FieldContent",
+        "type": "Text",
+        "value": "El camino hacia el bienestar es diferente para cada persona. Ofrezco una variedad de enfoques terapéuticos adaptados a sus necesidades y objetivos específicos."
+      },
+      "services": {
+        "__TYPE__": "GroupContentType",
+        "value": [
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "icon",
+                {
+                  "__TYPE__": "FieldContent",
+                  "type": "Select",
+                  "value": "Brain"
+                }
+              ],
+              [
+                "title",
+                {
+                  "__TYPE__": "FieldContent",
+                  "type": "Text",
+                  "value": "Terapia cognitivo-conductual"
+                }
+              ],
+              [
+                "description",
+                {
+                  "__TYPE__": "FieldContent",
+                  "type": "Text",
+                  "value": "Tratamiento basado en la evidencia que le ayuda a identificar y modificar patrones de pensamiento que conducen a conductas dañinas y angustia emocional."
+                }
+              ],
+              [
+                "color",
+                {
+                  "__TYPE__": "FieldContent",
+                  "type": "Color",
+                  "value": "#4A6FA5"
+                }
+              ]
+            ]
+          },
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "icon",
+                {
+                  "__TYPE__": "FieldContent",
+                  "type": "Select",
+                  "value": "Heart"
+                }
+              ],
+              [
+                "title",
+                {
+                  "__TYPE__": "FieldContent",
+                  "type": "Text",
+                  "value": "Terapia Centrada en el Trauma"
+                }
+              ],
+              [
+                "description",
+                {
+                  "__TYPE__": "FieldContent",
+                  "type": "Text",
+                  "value": "Atención especializada para procesar experiencias traumáticas mediante EMDR y enfoques somáticos en un entorno seguro y de apoyo."
+                }
+              ],
+              [
+                "color",
+                {
+                  "__TYPE__": "FieldContent",
+                  "type": "Color",
+                  "value": "#3B5F52"
+                }
+              ]
+            ]
+          },
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "icon",
+                {
+                  "__TYPE__": "FieldContent",
+                  "type": "Select",
+                  "value": "Users"
+                }
+              ],
+              [
+                "title",
+                {
+                  "__TYPE__": "FieldContent",
+                  "type": "Text",
+                  "value": "Terapia de Pareja y Familia"
+                }
+              ],
+              [
+                "description",
+                {
+                  "__TYPE__": "FieldContent",
+                  "type": "Text",
+                  "value": "Fortalecemos las relaciones mediante una mejor comunicación, la resolución de conflictos y una comprensión más profunda de las necesidades de cada uno."
+                }
+              ],
+              [
+                "color",
+                {
+                  "__TYPE__": "FieldContent",
+                  "type": "Color",
+                  "value": "#F2B544"
+                }
+              ]
+            ]
+          },
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "icon",
+                {
+                  "__TYPE__": "FieldContent",
+                  "type": "Select",
+                  "value": "Sparkles"
+                }
+              ],
+              [
+                "title",
+                {
+                  "__TYPE__": "FieldContent",
+                  "type": "Text",
+                  "value": "Consciencia Plena y Bienestar"
+                }
+              ],
+              [
+                "description",
+                {
+                  "__TYPE__": "FieldContent",
+                  "type": "Text",
+                  "value": "Integramos prácticas de conciencia plena y estrategias holísticas de bienestar para lograr el equilibrio, reducir el estrés y mejorar el bienestar."
+                }
+              ],
+              [
+                "color",
+                {
+                  "__TYPE__": "FieldContent",
+                  "type": "Color",
+                  "value": "#4A6FA5"
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      "services_button": {
+        "__TYPE__": "FieldContent",
+        "type": "Text",
+        "value": "Todos Los Servicios"
+      },
+      "button_link": {
+        "__TYPE__": "LinkContent",
+        "key": "fca9ce74-62d8-4284-a4f1-6231ed5063f3",
+        "value": {
+          "__TYPE__": "ExternalLink",
+          "url": "https://prismic.io",
+          "text": "palace"
+        }
+      }
+    },
+    "items": []
+  }
 ]

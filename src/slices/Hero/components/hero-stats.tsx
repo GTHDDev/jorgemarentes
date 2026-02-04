@@ -1,47 +1,29 @@
-"use client";
+'use client'
 
-import { FC, memo, useMemo } from "react";
-import * as m from "motion/react-m";
-import { Content } from "@prismicio/client";
-import HeroStatItem from "./hero-stat-item";
-import { fadeInUp, transitionFast, heroDelays as delays } from "@/lib/motion-variants";
+import * as m from 'motion/react-m'
+import { Content } from '@prismicio/client'
+import HeroStatItem from './hero-stat-item'
+import { staggerContainer, HERO_DELAYS } from '@/lib/motion-variants'
 
 interface HeroStatsProps {
-  stats: Content.HeroSliceDefaultPrimaryStatsItem[];
+  stats: Content.HeroSliceDefaultPrimaryStatsItem[]
 }
 
-/**
- * Hero stats container component.
- * Optimized with LazyMotion (m component) and shared variants.
- */
-const HeroStats: FC<HeroStatsProps> = ({ stats }) => {
-  const validStats = useMemo(
-    () =>
-      stats?.filter(
-        (item) => item.stat !== null && item.stat !== undefined
-      ) || [],
-    [stats]
-  );
-
-  if (!validStats.length) return null;
+export default function HeroStats({ stats }: HeroStatsProps) {
+  //inline validation
+  const validStats = stats?.filter((s) => s.stat !== null && s.stat !== undefined)
 
   return (
     <m.div
-      variants={fadeInUp}
+      variants={staggerContainer}
       initial="initial"
       animate="animate"
-      transition={{ ...transitionFast, delay: delays.stats }}
-      className="flex items-center gap-8 pt-6 border-t border-ink-black/5 dark:border-white/10"
+      transition={{ delayChildren: HERO_DELAYS.stats }}
+      className="border-ink-black/10 flex flex-wrap items-center gap-x-12 gap-y-6 border-t pt-8 dark:border-white/10"
     >
       {validStats.map((item, idx) => (
-        <HeroStatItem
-          key={`${item.stat}-${idx}`}
-          stat={Number(item.stat) || 0}
-          description={item.description || ""}
-        />
+        <HeroStatItem key={idx} stat={Number(item.stat)} description={item.description || ''} />
       ))}
     </m.div>
-  );
-};
-
-export default memo(HeroStats);
+  )
+}

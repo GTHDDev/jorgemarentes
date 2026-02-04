@@ -1,57 +1,43 @@
-"use client";
+'use client'
 
-import { FC, memo } from "react";
-import * as m from "motion/react-m";
-import { Content } from "@prismicio/client";
-import { CalendarIcon } from "@radix-ui/react-icons";
-import HeroLink from "./hero-link";
-import { fadeIn, transitionFast, heroDelays as delays } from "@/lib/motion-variants";
+import * as m from 'motion/react-m'
+import { Content } from '@prismicio/client'
+import { CalendarIcon } from '@radix-ui/react-icons'
+import HeroLink from './hero-link'
+import { staggerContainer, HERO_DELAYS } from '@/lib/motion-variants'
 
 interface HeroLinksProps {
-  scheduleLink: Content.HeroSliceDefaultPrimary["schedule_link"];
-  scheduleButton: string | null | undefined;
-  link: Content.HeroSliceDefaultPrimary["link"];
-  linkButton: string | null | undefined;
+  scheduleLink: Content.HeroSliceDefaultPrimary['schedule_link']
+  scheduleButton: string | null | undefined
+  link: Content.HeroSliceDefaultPrimary['link']
+  linkButton: string | null | undefined
 }
 
-/**
- * Hero links container component.
- * Optimized with LazyMotion (m component) and shared variants.
- */
-const HeroLinks: FC<HeroLinksProps> = ({
-  scheduleLink,
-  scheduleButton,
-  link,
-  linkButton,
-}) => {
-  if (!scheduleLink || !link || !scheduleButton || !linkButton) return null;
+function HeroLinks({ scheduleLink, scheduleButton, link, linkButton }: HeroLinksProps) {
+  const hasSchedule = scheduleLink && scheduleButton
+  const hasLink = link && linkButton
 
   return (
     <m.div
-      variants={fadeIn}
+      variants={staggerContainer}
       initial="initial"
       animate="animate"
-      transition={{ ...transitionFast, delay: delays.links }}
-      className="flex flex-col sm:flex-row gap-4 pt-4"
+      transition={{ delayChildren: HERO_DELAYS.actions }}
+      className="flex flex-col gap-4 pt-6 sm:flex-row"
     >
-      <HeroLink
-        href={scheduleLink}
-        variant="primary"
-        icon={<CalendarIcon className="w-5 h-5" />}
-        delay={delays.links}
-      >
-        {scheduleButton}
-      </HeroLink>
+      {hasSchedule && (
+        <HeroLink href={scheduleLink} variant="primary" icon={<CalendarIcon className="h-5 w-5" />}>
+          {scheduleButton}
+        </HeroLink>
+      )}
 
-      <HeroLink
-        href={link}
-        variant="secondary"
-        delay={delays.links + 0.1}
-      >
-        {linkButton}
-      </HeroLink>
+      {hasLink && (
+        <HeroLink href={link} variant="outline">
+          {linkButton}
+        </HeroLink>
+      )}
     </m.div>
-  );
-};
+  )
+}
 
-export default memo(HeroLinks);
+export default HeroLinks

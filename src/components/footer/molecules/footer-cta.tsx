@@ -1,42 +1,32 @@
-"use client";
+'use client'
 
-import { memo } from "react";
-import * as m from "motion/react-m";
-import { fadeInUp, transitionDefaults } from "@/lib/motion-variants";
+import { m } from 'framer-motion'
+import { fadeInUp, DURATION, EASE } from '@/lib/motion-variants'
 
 interface FooterCTAProps {
-  heading: string | null | undefined;
-  description: string | null | undefined;
+  heading: string | null | undefined
+  description: string | null | undefined
 }
 
-export const FooterCTA = memo(function FooterCTA({
-  heading,
-  description,
-}: FooterCTAProps) {
-  if (!heading && !description) {
-    return null;
-  }
+export function FooterCTA({ heading, description }: FooterCTAProps) {
+  if (!heading && !description) return null
 
   return (
     <m.div
       variants={fadeInUp}
-      initial="initial"
-      whileInView="animate"
-      viewport={{ once: true }}
-      transition={{ ...transitionDefaults, duration: 0.6 }}
+      transition={{ duration: DURATION.DEFAULT, ease: EASE }}
       className="space-y-6"
     >
       {heading && (
-        <h2 className="font-['Space_Grotesk'] text-4xl sm:text-5xl lg:text-6xl tracking-tight">
+        <h2 className="font-space text-balance text-4xl tracking-tight sm:text-5xl lg:text-6xl">
           {heading}
         </h2>
       )}
       {description && (
-        <p className="text-lg lg:text-xl text-white/60 leading-relaxed max-w-xl">
+        <p className="max-w-xl text-pretty text-lg leading-relaxed text-white/60 lg:text-xl">
           {description}
         </p>
       )}
     </m.div>
-  );
-});
-
+  )
+}

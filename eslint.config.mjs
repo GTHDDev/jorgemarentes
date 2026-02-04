@@ -12,12 +12,21 @@ const compat = new FlatCompat({
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
+    rules: {
+      "@next/next/no-img-element": "error",
+      "react/display-name": "off",
+      "no-console": ["warn", { "allow": ["warn", "error"] }],
+      "@typescript-eslint/no-unused-vars": ["error"]
+    }
+  },
+  {
     ignores: [
       "node_modules/**",
       ".next/**",
       "out/**",
       "build/**",
       "next-env.d.ts",
+      "slicemachine.config.json"
     ],
   },
 ];

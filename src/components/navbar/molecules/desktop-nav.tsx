@@ -1,35 +1,32 @@
-"use client";
+'use client'
 
-import { memo } from "react";
-import { Content, LinkField } from "@prismicio/client";
-import { NavLink } from "../atoms/nav-link";
-import { CTAButton } from "../atoms/cta-button";
-import { ThemeToggle } from "../atoms/theme-toggle";
-import { PrismicNextLink } from "@prismicio/next";
-
+import { Content } from '@prismicio/client'
+import { NavLink } from '../atoms/nav-link'
+import { ThemeToggle } from '../atoms/theme-toggle'
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 
 interface DesktopNavProps {
-  navigation: Content.SettingsDocumentData["navigation"];
+  navigation: Content.SettingsDocumentData['navigation']
 }
 
-export const DesktopNav = memo(function DesktopNav({ navigation }: DesktopNavProps) {
+export function DesktopNav({ navigation }: DesktopNavProps) {
   return (
-    <div className="hidden lg:flex items-center gap-2">
-      {navigation.map(({ label, link }) => (
-        <NavLink
-          key={label}
-          label={label || ""}
-          href={link}
-        />
-      ))}
-
-      {/* Theme Toggle */}
-      <div className="ml-2 mr-2">
-        <ThemeToggle />
+    <div className="hidden items-center gap-8 lg:flex">
+      <div className="flex items-center gap-6">
+        {navigation.map((item, i) => (
+          <NavLink key={i} label={item.label || ''} href={item.link} />
+        ))}
       </div>
 
-      <CTAButton href="#contact" label="Agendar una sesión" className="ml-2" />
-    </div>
-  );
-});
+      <div className="bg-ink-black/10 h-5 w-px dark:bg-white/10" aria-hidden="true" />
 
+      <div className="flex items-center gap-4">
+        <ThemeToggle />
+        <Button asChild variant="primary" size="sm">
+          <Link href="/contact">Agendar Cita</Link>
+        </Button>
+      </div>
+    </div>
+  )
+}

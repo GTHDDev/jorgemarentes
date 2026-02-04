@@ -1,41 +1,58 @@
-import * as React from "react"
-import { cva, type VariantProps } from "class-variance-authority"
+'use client'
 
-import { cn } from "@/lib/utils"
+import * as React from 'react'
+import { cva, type VariantProps } from 'class-variance-authority'
+import { m, HTMLMotionProps } from 'framer-motion'
+import { cn } from '@/lib/utils'
 
 const badgeVariants = cva(
-  "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+  'inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-all backdrop-blur-sm',
   {
     variants: {
       variant: {
         default:
-          "border-transparent bg-primary text-primary-foreground shadow hover:bg-primary/80",
+          'bg-white/80 dark:bg-white/10 border-ink-black/5 dark:border-white/10 text-ink-black/70 dark:text-white/70 shadow-soft',
         secondary:
-          "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        destructive:
-          "border-transparent bg-destructive text-destructive-foreground shadow hover:bg-destructive/80",
-        outline: "text-foreground",
-        // Custom variants for project design system
-        tag: "border-transparent bg-white/60 dark:bg-white/5 backdrop-blur-sm text-ink-black/70 dark:text-white/70 shadow-soft",
-        type: "border-transparent bg-mango-gold text-ink-black shadow-soft",
-        highlight: "bg-steel-blue/10 dark:bg-steel-blue/20 text-steel-blue border border-steel-blue/30 dark:border-steel-blue/40",
+          'bg-soft-beige dark:bg-white/5 border-transparent text-ink-black/70 dark:text-white/70',
+        highlight: 'bg-mango-gold text-ink-black border-transparent shadow-soft',
+        outline: 'border-ink-black/20 dark:border-white/20 text-ink-black dark:text-white',
+      },
+      size: {
+        sm: 'px-3 py-1 text-xs',
+        md: 'px-4 py-2 text-sm',
+        lg: 'px-5 py-2.5 text-base',
       },
     },
     defaultVariants: {
-      variant: "default",
+      variant: 'default',
+      size: 'md',
     },
   }
 )
 
 export interface BadgeProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof badgeVariants> {}
-
-function Badge({ className, variant, ...props }: BadgeProps) {
-  return (
-    <div className={cn(badgeVariants({ variant }), className)} {...props} />
-  )
+  extends Omit<HTMLMotionProps<'div'>, 'variant' | 'children'>, VariantProps<typeof badgeVariants> {
+  children?: React.ReactNode
+  showDot?: boolean
+  dotColor?: string
 }
 
-export { Badge, badgeVariants }
+const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
+  (
+    { className, variant, size, showDot = false, dotColor = 'bg-steel-blue', children, ...props },
+    ref
+  ) => {
+    return (
+      <m.div ref={ref} className={cn(badgeVariants({ variant, size }), className)} {...props}>
+        {showDot && (
+          <span className={cn('h-2 w-2 animate-pulse rounded-full', dotColor)} aria-hidden="true" />
+        )}
+        {children}
+      </m.div>
+    )
+  }
+)
 
+Badge.displayName = 'Badge'
+
+export { Badge, badgeVariants }

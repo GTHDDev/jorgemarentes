@@ -1,31 +1,39 @@
-"use client";
+'use client'
 
-import { FC, memo } from "react";
-import * as m from "motion/react-m";
-import { fadeInUp, transitionDefaults, heroDelays as delays } from "@/lib/motion-variants";
+import { m } from 'framer-motion'
+import { cn } from '@/lib/utils'
+import { fadeInUp, DURATION, EASE } from '@/lib/motion-variants'
 
 interface HeroDescriptionProps {
-  introduction: string | null | undefined;
+  children: React.ReactNode
+  align?: 'left' | 'center'
+  className?: string
+  delay?: number
 }
 
-/**
- * Hero description component - displays introduction text.
- * Optimized with LazyMotion (m component) and shared variants.
- */
-const HeroDescription: FC<HeroDescriptionProps> = ({ introduction }) => {
-  if (!introduction) return null;
+export default function HeroDescription({
+  children,
+  align = 'left',
+  className,
+  delay = 0.1,
+}: HeroDescriptionProps) {
+  const alignClasses = {
+    left: 'text-left',
+    center: 'text-center mx-auto',
+  }
 
   return (
     <m.p
       variants={fadeInUp}
-      initial="initial"
-      animate="animate"
-      transition={{ ...transitionDefaults, delay: delays.description }}
-      className="text-lg sm:text-xl lg:text-2xl text-ink-black/60 dark:text-white/60 leading-relaxed max-w-xl"
+      transition={{ duration: DURATION.DEFAULT, ease: EASE, delay }}
+      className={cn(
+        // Base styles
+        'text-ink-black/60 text-pretty text-lg leading-relaxed sm:text-xl lg:text-2xl dark:text-white/60',
+        alignClasses[align],
+        className
+      )}
     >
-      {introduction}
+      {children}
     </m.p>
-  );
-};
-
-export default memo(HeroDescription);
+  )
+}

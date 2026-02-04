@@ -1,24 +1,11 @@
-"use client";
+'use client'
 
-import { FC, ReactNode } from "react";
-import { LazyMotion } from "motion/react";
-import loadFeatures from "@/lib/motion-features";
+import { LazyMotion, domAnimation } from 'framer-motion'
 
-interface MotionProviderProps {
-  children: ReactNode;
-}
-
-/**
- * Motion provider wrapper for lazy loading animation features.
- * Reduces initial bundle size from 34kb to 4.6kb, then loads
- * animation features asynchronously after initial render.
- */
-const MotionProvider: FC<MotionProviderProps> = ({ children }) => {
+export default function MotionProvider({ children }: { children: React.ReactNode }) {
   return (
-    <LazyMotion features={loadFeatures} strict>
+    <LazyMotion features={domAnimation} strict>
       {children}
     </LazyMotion>
-  );
-};
-
-export default MotionProvider;
+  )
+}

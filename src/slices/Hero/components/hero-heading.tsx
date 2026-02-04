@@ -1,35 +1,52 @@
-"use client";
+'use client'
 
-import { FC, memo } from "react";
-import * as m from "motion/react-m";
-import { fadeInUp, transitionDefaults, heroDelays as delays } from "@/lib/motion-variants";
+import * as m from 'motion/react-m'
+import { cn } from '@/lib/utils'
+import { fadeInUp, DURATION, EASE } from '@/lib/motion-variants'
 
 interface HeroHeadingProps {
-  heading: string | null | undefined;
-  subheading: string | null | undefined;
+  children: React.ReactNode
+  subtitle?: string | null
+  size?: 'default' | 'large' | 'medium'
+  align?: 'left' | 'center'
+  className?: string
+  as?: 'h1' | 'h2'
 }
 
-/**
- * Hero heading component - displays main title and subheading.
- * Optimized with LazyMotion (m component) and shared variants.
- */
-const HeroHeading: FC<HeroHeadingProps> = ({ heading, subheading }) => {
-  if (!heading) return null;
+export default function HeroHeading({
+  children,
+  subtitle,
+  size = 'default',
+  align = 'left',
+  className,
+  as: Component = 'h1',
+}: HeroHeadingProps) {
+  const sizeClasses = {
+    large: 'text-5xl sm:text-6xl lg:text-7xl xl:text-display-lg',
+    default: 'text-4xl sm:text-5xl lg:text-6xl',
+    medium: 'text-3xl sm:text-4xl lg:text-5xl',
+  }
+
+  const alignClasses = {
+    left: 'text-left',
+    center: 'text-center mx-auto',
+  }
 
   return (
-    <m.h1
+    <m.div
       variants={fadeInUp}
-      initial="initial"
-      animate="animate"
-      transition={{ ...transitionDefaults, delay: delays.heading }}
-      className="font-['Space_Grotesk'] text-5xl sm:text-6xl lg:text-7xl xl:text-display-lg tracking-tight text-ink-black dark:text-white"
+      transition={{ duration: DURATION.DEFAULT, ease: EASE }}
+      className={cn('space-y-2', alignClasses[align], className)}
     >
-      {heading}{" "}
-      <span className="text-steel-blue inline-block">
-        {subheading}
-      </span>
-    </m.h1>
-  );
-};
-
-export default memo(HeroHeading);
+      <Component
+        className={cn(
+          'font-space text-ink-black text-balance font-medium tracking-tight dark:text-white',
+          sizeClasses[size]
+        )}
+      >
+        {children}
+        {subtitle && <span className="text-steel-blue ml-2 inline-block md:ml-3">{subtitle}</span>}
+      </Component>
+    </m.div>
+  )
+}

@@ -1,62 +1,28 @@
-"use client";
+'use client'
 
-import { FC, memo, useEffect, useRef } from "react";
-import { useAnimate } from "motion/react";
+import * as m from 'motion/react-m'
 
-/**
- * Scroll indicator component - animated scroll hint.
- * Optimized with useAnimate hook (2.3kb mini version) instead of motion component.
- * This reduces bundle size significantly while maintaining performance.
- */
-const ScrollIndicator: FC = () => {
-  const [scope, animate] = useAnimate();
-  const bounceRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!scope.current || !bounceRef.current) return;
-
-    // Animate opacity fade in
-    const fadeIn = animate(
-      scope.current,
-      { opacity: 1 },
-      { delay: 1.2, duration: 0.5 }
-    );
-
-    // Animate scroll bounce using selector within scope
-    const bounceAnimation = animate(
-      ".scroll-bounce",
-      { y: [0, 8, 0] },
-      {
-        duration: 1.5,
-        repeat: Infinity,
-        ease: "easeInOut",
-      }
-    );
-
-    return () => {
-      fadeIn.stop();
-      bounceAnimation.stop();
-    };
-  }, [scope, animate]);
-
+export default function ScrollIndicator() {
   return (
-    <div
-      ref={scope}
-      className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:block"
-      style={{ opacity: 0, willChange: "opacity" }}
+    <m.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 1.5, duration: 0.8 }}
+      className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 lg:block"
     >
-      <div
-        ref={bounceRef}
-        className="scroll-bounce w-6 h-10 border-2 border-ink-black/20 dark:border-white/20 rounded-full p-1"
-        style={{ willChange: "transform" }}
-      >
-        <div
-          className="w-1.5 h-1.5 bg-steel-blue rounded-full mx-auto"
-          style={{ willChange: "transform" }}
+      <div className="border-ink-black/20 h-10 w-6 rounded-full border-2 p-1 dark:border-white/20">
+        <m.div
+          animate={{
+            y: [0, 12, 0],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+          className="bg-steel-blue mx-auto h-1.5 w-1.5 rounded-full"
         />
       </div>
-    </div>
-  );
-};
-
-export default memo(ScrollIndicator);
+    </m.div>
+  )
+}

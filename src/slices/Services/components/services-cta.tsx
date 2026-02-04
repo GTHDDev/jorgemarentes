@@ -1,41 +1,37 @@
-"use client";
+'use client'
 
-import { FC, memo } from "react";
-import * as m from "motion/react-m";
-import { Icons } from "@/lib/icons";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { fadeInUp, transitionDefaults } from "@/lib/motion-variants";
+import { m } from 'framer-motion'
+import { Button } from '@/components/ui/button'
+import { fadeInUp, DURATION, EASE } from '@/lib/motion-variants'
+import { ArrowRightIcon } from 'lucide-react'
+import { PrismicNextLink } from '@prismicio/next'
+import { LinkField } from '@prismicio/client'
 
 interface ServicesCTAProps {
-  buttonText: string | null;
-  link?: string;
+  buttonText: string | null
+  link?: LinkField
 }
 
-const ServicesCTA: FC<ServicesCTAProps> = ({ buttonText, link = "#contacto" }) => {
+export default function ServicesCTA({ buttonText, link }: ServicesCTAProps) {
   return (
     <m.div
       initial="initial"
       whileInView="animate"
-      viewport={{ once: true, margin: "-100px" }}
+      viewport={{ once: true, margin: '-50px' }}
       variants={fadeInUp}
-      transition={{ ...transitionDefaults, delay: 0.5 }}
-      className="text-center mt-16"
+      transition={{ duration: DURATION.DEFAULT, ease: EASE, delay: 0.2 }}
+      className="mt-16 text-center"
     >
-      <m.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="inline-block">
-        <a
-          href={link}
-          className={cn(
-            buttonVariants({ variant: "default", size: "lg" }),
-            "rounded-full px-8 py-4 h-auto text-base font-medium shadow-medium hover:shadow-strong transition-all duration-300 bg-[#0F0F0F] dark:bg-white text-white dark:text-[#0F0F0F]"
-          )}
-        >
+      <Button
+        asChild
+        size="lg"
+        className="shadow-medium hover:shadow-strong rounded-full px-8 py-6 text-base"
+      >
+        <PrismicNextLink field={link}>
           {buttonText}
-          <Icons.ArrowRight className="w-5 h-5" />
-        </a>
-      </m.div>
+          <ArrowRightIcon className="ml-2 h-5 w-5" />
+        </PrismicNextLink>
+      </Button>
     </m.div>
-  );
-};
-
-export default memo(ServicesCTA);
+  )
+}
