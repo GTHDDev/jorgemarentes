@@ -4,11 +4,11 @@ import { ReactNode } from 'react'
 import { m } from 'framer-motion'
 import { staggerContainerSlow } from '@/lib/motion-variants'
 
-interface ContactLayoutProps {
+interface AnimationLayoutProps {
   children: ReactNode
 }
 
-export function ContactLayout({ children }: ContactLayoutProps) {
+export function AnimationLayout({ children }: AnimationLayoutProps) {
   return (
     <m.div
       variants={staggerContainerSlow}

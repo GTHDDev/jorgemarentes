@@ -1,4 +1,5 @@
 import './globals.css'
+import { Analytics } from '@vercel/analytics/next'
 import { Inter, Space_Grotesk } from 'next/font/google'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -45,6 +46,7 @@ export default function RootLayout({
             <Footer />
           </MotionProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   )

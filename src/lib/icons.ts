@@ -9,6 +9,8 @@ import {
   Heart,
   Sparkles,
   ArrowRight,
+  ArrowUpRight,
+  ExternalLink,
   ChevronLeft,
   ChevronRight,
   Activity,
@@ -33,8 +35,15 @@ import {
   BookOpen,
   Target,
   MessageCircle,
+  Flower,
+  Wind,
+  Shield,
+  Zap,
+  Compass,
+  Lightbulb,
+  Eye,
   type LucideIcon,
-} from "lucide-react";
+} from 'lucide-react'
 
 export const Icons = {
   Brain,
@@ -43,6 +52,8 @@ export const Icons = {
   Heart,
   Sparkles,
   ArrowRight,
+  ArrowUpRight,
+  ExternalLink,
   ChevronLeft,
   ChevronRight,
   Activity,
@@ -67,6 +78,13 @@ export const Icons = {
   BookOpen,
   Target,
   MessageCircle,
-};
+  Flower,
+  Wind,
+  Shield,
+  Zap,
+  Compass,
+  Lightbulb,
+  Eye,
+}
 
-export type { LucideIcon };
+export type { LucideIcon }

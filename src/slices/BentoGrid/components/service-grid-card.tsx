@@ -5,29 +5,31 @@ import * as m from 'motion/react-m'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
 import { fadeInUp, hoverLift, tapScale, DURATION, EASE } from '@/lib/motion-variants'
-import { ColorField, KeyTextField } from '@prismicio/client'
+import { ColorField, KeyTextField, SelectField } from '@prismicio/client'
 
-interface ServiceCardProps {
+interface ServiceGridCardProps {
   title: KeyTextField
   description: KeyTextField
   icon?: React.ElementType
   color?: ColorField
   tag?: KeyTextField
-  size?: 'default' | 'large'
-  className?: KeyTextField
+  size?: SelectField
+  className?: string
   delay?: number
 }
 
-export default function ServiceCard({
+export default function ServiceGridCard({
   title,
   description,
   icon: Icon,
-  color,
+  color = '#4A6FA5', // Fallback color (Steel Blue)
   tag,
-  size = 'default',
+  size = 'M',
   className,
   delay = 0,
-}: ServiceCardProps) {
+}: ServiceGridCardProps) {
+  const isLarge = size === 'L'
+
   const styles = useMemo(
     () => ({
       background: color ? `${color}15` : undefined,
@@ -36,30 +38,26 @@ export default function ServiceCard({
     [color]
   )
 
-  const isLarge = size === 'large'
-
   return (
     <m.div
       variants={fadeInUp}
       transition={{ duration: DURATION.DEFAULT, ease: EASE, delay }}
       whileHover={hoverLift}
       whileTap={tapScale}
-      className={cn('h-full', className)}
+      className={cn('h-full w-full', isLarge ? 'md:col-span-2' : 'col-span-1', className)}
     >
       <Card
         className={cn(
-          'group relative h-full overflow-hidden rounded-[2rem] border-0 transition-all duration-500',
-          // Backgrounds & Borders
-          'bg-pearl-white dark:bg-[#1a1a1a]',
-          'border-ink-black/5 border dark:border-white/10',
-          'hover:border-ink-black/10 dark:hover:border-white/20',
-          // Shadows
+          'group relative flex h-full flex-col overflow-hidden rounded-[2rem] border transition-all duration-500',
+          // Colors & Borders match Figma
+          'bg-[#FAFAFA] dark:bg-[#1a1a1a]',
+          'border-[#0F0F0F]/5 dark:border-white/10',
+          'hover:border-[#0F0F0F]/10 dark:hover:border-white/20',
           'shadow-soft hover:shadow-medium',
-          // Reset default shadcn padding/gap if needed
-          'flex flex-col gap-0'
+          'p-8 lg:p-10'
         )}
       >
-        <CardHeader className="block w-full space-y-0 p-8 pb-0 lg:p-10">
+        <CardHeader className="mb-6 block w-full space-y-0 p-0">
           {/* Icon Container */}
           <div
             className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl transition-transform duration-500 group-hover:scale-110 lg:h-16 lg:w-16"
@@ -89,7 +87,7 @@ export default function ServiceCard({
           {/* Title */}
           <CardTitle
             className={cn(
-              'font-space text-ink-black font-medium leading-tight tracking-tight transition-colors dark:text-white',
+              'font-space font-medium tracking-tight text-[#0F0F0F] transition-colors dark:text-white',
               isLarge ? 'text-2xl lg:text-3xl' : 'text-xl lg:text-2xl'
             )}
           >
@@ -97,27 +95,16 @@ export default function ServiceCard({
           </CardTitle>
         </CardHeader>
 
-        <CardContent className="mt-auto p-8 pt-4 lg:p-10">
+        <CardContent className="mt-auto p-0">
           <p
             className={cn(
-              'text-ink-black/60 text-pretty leading-relaxed dark:text-white/60',
+              'text-pretty leading-relaxed text-[#0F0F0F]/60 dark:text-white/60',
               isLarge ? 'text-base lg:text-lg' : 'text-sm lg:text-base'
             )}
           >
             {description}
           </p>
         </CardContent>
-
-        {/* Gradient Overlay */}
-        <div
-          className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-10"
-          style={{
-            background: color
-              ? `linear-gradient(135deg, ${color} 0%, transparent 100%)`
-              : undefined,
-          }}
-          aria-hidden="true"
-        />
       </Card>
     </m.div>
   )

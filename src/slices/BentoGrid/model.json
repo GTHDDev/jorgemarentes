@@ -1,0 +1,172 @@
+{
+  "id": "bento_grid",
+  "type": "SharedSlice",
+  "name": "BentoGrid",
+  "description": "BentoGrid",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Conferences",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "conferences": {
+          "type": "Group",
+          "config": {
+            "label": "Conferences",
+            "repeat": true,
+            "fields": {
+              "size": {
+                "type": "Select",
+                "config": {
+                  "label": "Size",
+                  "placeholder": "",
+                  "options": ["M", "L"]
+                }
+              },
+              "conference_image": {
+                "type": "Image",
+                "config": {
+                  "label": "Conference Image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "tag": {
+                "type": "Text",
+                "config": {
+                  "label": "Tag",
+                  "placeholder": ""
+                }
+              },
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "Title",
+                  "placeholder": ""
+                }
+              },
+              "description": {
+                "type": "Text",
+                "config": {
+                  "label": "Description",
+                  "placeholder": ""
+                }
+              },
+              "date": {
+                "type": "Text",
+                "config": {
+                  "label": "Date",
+                  "placeholder": ""
+                }
+              },
+              "location": {
+                "type": "Text",
+                "config": {
+                  "label": "Location",
+                  "placeholder": ""
+                }
+              },
+              "conference_link": {
+                "type": "Link",
+                "config": {
+                  "label": "Conference Link",
+                  "placeholder": "",
+                  "select": null,
+                  "allowTargetBlank": true,
+                  "allowText": false,
+                  "repeat": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "services",
+      "name": "Services",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "services": {
+          "type": "Group",
+          "config": {
+            "label": "Services",
+            "repeat": true,
+            "fields": {
+              "tag": {
+                "type": "Text",
+                "config": {
+                  "label": "Tag",
+                  "placeholder": ""
+                }
+              },
+              "heading": {
+                "type": "Text",
+                "config": {
+                  "label": "Heading",
+                  "placeholder": ""
+                }
+              },
+              "description": {
+                "type": "Text",
+                "config": {
+                  "label": "Description",
+                  "placeholder": ""
+                }
+              },
+              "size": {
+                "type": "Select",
+                "config": {
+                  "label": "Size",
+                  "placeholder": "",
+                  "options": ["M", "L"]
+                }
+              },
+              "icon": {
+                "type": "Select",
+                "config": {
+                  "label": "Icon",
+                  "placeholder": "",
+                  "options": [
+                    "Brain",
+                    "BookOpen",
+                    "Heart",
+                    "Award",
+                    "Shield",
+                    "Zap",
+                    "Target",
+                    "Compass",
+                    "Lightbulb",
+                    "Activity",
+                    "Sun",
+                    "Moon",
+                    "Sparkles",
+                    "Eye",
+                    "Wind",
+                    "Users",
+                    "Flower"
+                  ]
+                }
+              },
+              "icon_color": {
+                "type": "Color",
+                "config": {
+                  "label": "Icon Color",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
