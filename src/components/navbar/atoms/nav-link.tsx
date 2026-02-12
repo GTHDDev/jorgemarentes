@@ -1,53 +1,28 @@
-"use client";
+'use client'
 
-import { memo } from "react";
-import { motion } from "motion/react";
-import { slideInLeft, transitionDefaults } from "@/lib/motion-variants";
-import { LinkField } from "@prismicio/client";
-import { PrismicNextLink } from "@prismicio/next";
+import { PrismicNextLink } from '@prismicio/next'
+import { LinkField } from '@prismicio/client'
+import { cn } from '@/lib/utils'
 
 interface NavLinkProps {
-  label: string;
-  onClick?: () => void;
-  className?: string;
-  delay?: number;
+  label: string
   href: LinkField
+  className?: string
+  onClick?: () => void
 }
 
-export const NavLink = memo(function NavLink({
-  label,
-  onClick,
-  className = "",
-  delay = 0,
-  href,
-}: NavLinkProps) {
-  const baseClasses =
-    "px-4 py-2 text-sm font-medium text-ink-black/70 dark:text-white/70 hover:text-ink-black dark:hover:text-white transition-colors duration-300";
-
-  const content = (
+export function NavLink({ label, href, className, onClick }: NavLinkProps) {
+  return (
     <PrismicNextLink
       field={href}
-      className={`${baseClasses} ${className}`}
       onClick={onClick}
-      aria-label={`Navigate to ${label}`}
+      className={cn(
+        'text-ink-black/70 hover:text-ink-black group relative text-sm font-medium transition-colors dark:text-white/70 dark:hover:text-white',
+        className
+      )}
     >
       {label}
+      <span className="bg-steel-blue absolute -bottom-1 left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full" />
     </PrismicNextLink>
-  );
-
-  if (delay > 0) {
-    return (
-      <motion.div
-        variants={slideInLeft}
-        initial="initial"
-        animate="animate"
-        transition={{ ...transitionDefaults, delay }}
-      >
-        {content}
-      </motion.div>
-    );
-  }
-
-  return content;
-});
-
+  )
+}

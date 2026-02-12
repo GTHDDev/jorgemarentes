@@ -1,25 +1,25 @@
-"use client";
+'use client'
 
-import { motion } from "motion/react";
-import { memo } from "react";
+import { motion } from 'motion/react'
+import { memo } from 'react'
 
 interface CTAButtonProps {
-  href: string;
-  label: string;
-  onClick?: () => void;
-  className?: string;
-  delay?: number;
+  href: string
+  label: string
+  onClick?: () => void
+  className?: string
+  delay?: number
 }
 
 export const CTAButton = memo(function CTAButton({
   href,
   label,
   onClick,
-  className = "",
+  className = '',
   delay = 0,
 }: CTAButtonProps) {
   const baseClasses =
-    "px-6 py-2.5 bg-[#4A6FA5] text-white rounded-full text-sm font-medium hover:bg-[#3B5F52] transition-all duration-300";
+    'px-6 py-2.5 bg-steel-blue text-white rounded-full text-sm font-medium hover:bg-deep-sage transition-all duration-300'
 
   const content = (
     <motion.a
@@ -32,7 +32,7 @@ export const CTAButton = memo(function CTAButton({
     >
       {label}
     </motion.a>
-  );
+  )
 
   if (delay > 0) {
     return (
@@ -43,9 +43,8 @@ export const CTAButton = memo(function CTAButton({
       >
         {content}
       </motion.div>
-    );
+    )
   }
 
-  return content;
-});
-
+  return content
+})

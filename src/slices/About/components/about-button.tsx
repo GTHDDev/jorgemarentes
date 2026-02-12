@@ -1,39 +1,32 @@
-"use client";
+'use client'
 
-import { FC } from "react";
-import * as m from "motion/react-m";
-import { Icons } from "@/lib/icons";
-import { PrismicNextLink } from "@prismicio/next";
-import { Button } from "@/components/ui/button";
-import { Content } from "@prismicio/client";
-import { hoverLift, tapScale } from "@/lib/motion-variants";
+import * as m from 'motion/react-m'
+import { PrismicNextLink } from '@prismicio/next'
+import { Button } from '@/components/ui/button' // Componente global
+import { Content } from '@prismicio/client'
+import { fadeInUp, DURATION, EASE } from '@/lib/motion-variants'
+import { ArrowRightIcon } from '@radix-ui/react-icons'
 
 interface AboutButtonProps {
-  button: string;
-  buttonLink: Content.AboutSliceDefaultPrimary["button_link"];
+  button: string
+  buttonLink: Content.AboutSliceDefaultPrimary['button_link']
 }
 
-/**
- * Button component with animations.
- * Client Component - requires framer motion for animations.
- * Optimized with LazyMotion (m component).
- */
-const AboutButton: FC<AboutButtonProps> = ({ button, buttonLink }) => {
+export default function AboutButton({ button, buttonLink }: AboutButtonProps) {
   return (
     <m.div
-      whileHover={hoverLift}
-      whileTap={tapScale}
-      className="inline-block"
+      variants={fadeInUp}
+      initial="initial"
+      whileInView="animate"
+      viewport={{ once: true }}
+      transition={{ duration: DURATION.DEFAULT, ease: EASE }}
     >
-      <PrismicNextLink field={buttonLink}>
-        <Button variant="default" size="lg">
+      <Button asChild size="lg" className="shadow-medium rounded-full">
+        <PrismicNextLink field={buttonLink}>
           {button}
-          <Icons.ArrowRight className="w-5 h-5" />
-        </Button>
-      </PrismicNextLink>
+          <ArrowRightIcon className="ml-2 h-5 w-5" />
+        </PrismicNextLink>
+      </Button>
     </m.div>
-  );
-};
-
-export default AboutButton;
-
+  )
+}

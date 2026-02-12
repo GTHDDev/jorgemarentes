@@ -1,227 +1,377 @@
 [
-	{
-		"__TYPE__": "SharedSliceContent",
-		"variation": "default",
-		"primary": {
-			"heading": {
-				"__TYPE__": "FieldContent",
-				"type": "Text",
-				"value": "Transformando vidas"
-			},
-			"experience": {
-				"__TYPE__": "FieldContent",
-				"type": "Text",
-				"value": "15"
-			},
-			"specialization": {
-				"__TYPE__": "FieldContent",
-				"type": "Text",
-				"value": "Dr. Psicología"
-			},
-			"image": {
-				"origin": {
-					"id": "main",
-					"url": "https://images.unsplash.com/photo-1471897488648-5eae4ac6686b",
-					"width": 3560,
-					"height": 5340
-				},
-				"url": "https://images.unsplash.com/photo-1471897488648-5eae4ac6686b",
-				"width": 3560,
-				"height": 5340,
-				"edit": {
-					"zoom": 1,
-					"crop": {
-						"x": 0,
-						"y": 0
-					},
-					"background": "transparent"
-				},
-				"alt": "famous",
-				"credits": null,
-				"__TYPE__": "ImageContent",
-				"thumbnails": {}
-			},
-			"schedule_button": {
-				"__TYPE__": "FieldContent",
-				"type": "Text",
-				"value": "Agenda una cita"
-			},
-			"clients": {
-				"__TYPE__": "FieldContent",
-				"type": "Text",
-				"value": "1000"
-			},
-			"stats": {
-				"__TYPE__": "GroupContentType",
-				"value": [
-					{
-						"__TYPE__": "GroupItemContent",
-						"value": [
-							[
-								"stat",
-								{
-									"__TYPE__": "FieldContent",
-									"type": "Number",
-									"value": "10"
-								}
-							],
-							[
-								"description",
-								{
-									"__TYPE__": "FieldContent",
-									"type": "Text",
-									"value": "Años de Experencia"
-								}
-							]
-						]
-					},
-					{
-						"__TYPE__": "GroupItemContent",
-						"value": [
-							[
-								"stat",
-								{
-									"__TYPE__": "FieldContent",
-									"type": "Number",
-									"value": "459"
-								}
-							],
-							[
-								"description",
-								{
-									"__TYPE__": "FieldContent",
-									"type": "Text",
-									"value": "Clientes"
-								}
-							]
-						]
-					},
-					{
-						"__TYPE__": "GroupItemContent",
-						"value": [
-							[
-								"stat",
-								{
-									"__TYPE__": "FieldContent",
-									"type": "Number",
-									"value": "80"
-								}
-							],
-							[
-								"description",
-								{
-									"__TYPE__": "FieldContent",
-									"type": "Text",
-									"value": "Satisfacción"
-								}
-							]
-						]
-					}
-				]
-			},
-			"link_button": {
-				"__TYPE__": "FieldContent",
-				"type": "Text",
-				"value": "Servicios"
-			},
-			"subheading": {
-				"__TYPE__": "FieldContent",
-				"type": "Text",
-				"value": "Atención basada en la evidencia"
-			},
-			"introduction": {
-				"__TYPE__": "FieldContent",
-				"type": "Text",
-				"value": "Empoderando a las personas para que alcancen el bienestar mental mediante enfoques terapéuticos compasivos y personalizados, respaldados por investigaciones y décadas de experiencia."
-			},
-			"counter": {
-				"__TYPE__": "GroupContentType",
-				"value": [
-					{
-						"__TYPE__": "GroupItemContent",
-						"value": [
-							[
-								"stat",
-								{
-									"__TYPE__": "FieldContent",
-									"type": "Number",
-									"value": "98"
-								}
-							],
-							[
-								"description",
-								{
-									"__TYPE__": "FieldContent",
-									"type": "Text",
-									"value": "Satisfacción"
-								}
-							]
-						]
-					},
-					{
-						"__TYPE__": "GroupItemContent",
-						"value": [
-							[
-								"stat",
-								{
-									"__TYPE__": "FieldContent",
-									"type": "Number",
-									"value": "15"
-								}
-							],
-							[
-								"description",
-								{
-									"__TYPE__": "FieldContent",
-									"type": "Text",
-									"value": "Años de experiencia"
-								}
-							]
-						]
-					},
-					{
-						"__TYPE__": "GroupItemContent",
-						"value": [
-							[
-								"stat",
-								{
-									"__TYPE__": "FieldContent",
-									"type": "Number",
-									"value": "1000"
-								}
-							],
-							[
-								"description",
-								{
-									"__TYPE__": "FieldContent",
-									"type": "Text",
-									"value": "Clientes"
-								}
-							]
-						]
-					}
-				]
-			},
-			"schedule_link": {
-				"key": "b580c1de-b2ad-48b3-9460-fa77047157bb",
-				"__TYPE__": "LinkContent",
-				"value": {
-					"__TYPE__": "ExternalLink",
-					"url": "https://api.whatsapp.com/send/?phone=8663862590&text&type=phone_number&app_absent=0&wame_ctl=1",
-					"target": "_blank",
-					"text": ""
-				}
-			},
-			"link": {
-				"__TYPE__": "LinkContent",
-				"key": "ef837383-8485-4688-88b5-f8241416ab27",
-				"value": {
-					"__TYPE__": "ExternalLink",
-					"url": "https://keyboardgthd.vercel.app/",
-					"text": "Servicios"
-				}
-			}
-		},
-		"items": []
-	}
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "heading": {
+        "__TYPE__": "FieldContent",
+        "type": "Text",
+        "value": "Transformando vidas"
+      },
+      "experience": {
+        "__TYPE__": "FieldContent",
+        "type": "Text",
+        "value": "15"
+      },
+      "specialization": {
+        "__TYPE__": "FieldContent",
+        "type": "Text",
+        "value": "Dr. Psicología"
+      },
+      "image": {
+        "origin": {
+          "id": "main",
+          "url": "https://images.unsplash.com/photo-1471897488648-5eae4ac6686b",
+          "width": 3560,
+          "height": 5340
+        },
+        "url": "https://images.unsplash.com/photo-1471897488648-5eae4ac6686b",
+        "width": 3560,
+        "height": 5340,
+        "edit": {
+          "zoom": 1,
+          "crop": {
+            "x": 0,
+            "y": 0
+          },
+          "background": "transparent"
+        },
+        "alt": "famous",
+        "credits": null,
+        "__TYPE__": "ImageContent",
+        "thumbnails": {}
+      },
+      "schedule_button": {
+        "__TYPE__": "FieldContent",
+        "type": "Text",
+        "value": "Agenda una cita"
+      },
+      "clients": {
+        "__TYPE__": "FieldContent",
+        "type": "Text",
+        "value": "1000"
+      },
+      "stats": {
+        "__TYPE__": "GroupContentType",
+        "value": [
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "stat",
+                {
+                  "__TYPE__": "FieldContent",
+                  "type": "Number",
+                  "value": "10"
+                }
+              ],
+              [
+                "description",
+                {
+                  "__TYPE__": "FieldContent",
+                  "type": "Text",
+                  "value": "Años de Experencia"
+                }
+              ]
+            ]
+          },
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "stat",
+                {
+                  "__TYPE__": "FieldContent",
+                  "type": "Number",
+                  "value": "459"
+                }
+              ],
+              [
+                "description",
+                {
+                  "__TYPE__": "FieldContent",
+                  "type": "Text",
+                  "value": "Clientes"
+                }
+              ]
+            ]
+          },
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "stat",
+                {
+                  "__TYPE__": "FieldContent",
+                  "type": "Number",
+                  "value": "80"
+                }
+              ],
+              [
+                "description",
+                {
+                  "__TYPE__": "FieldContent",
+                  "type": "Text",
+                  "value": "Satisfacción"
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      "link_button": {
+        "__TYPE__": "FieldContent",
+        "type": "Text",
+        "value": "Servicios"
+      },
+      "subheading": {
+        "__TYPE__": "FieldContent",
+        "type": "Text",
+        "value": "Atención basada en la evidencia"
+      },
+      "introduction": {
+        "__TYPE__": "FieldContent",
+        "type": "Text",
+        "value": "Empoderando a las personas para que alcancen el bienestar mental mediante enfoques terapéuticos compasivos y personalizados, respaldados por investigaciones y décadas de experiencia."
+      },
+      "counter": {
+        "__TYPE__": "GroupContentType",
+        "value": [
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "stat",
+                {
+                  "__TYPE__": "FieldContent",
+                  "type": "Number",
+                  "value": "98"
+                }
+              ],
+              [
+                "description",
+                {
+                  "__TYPE__": "FieldContent",
+                  "type": "Text",
+                  "value": "Satisfacción"
+                }
+              ]
+            ]
+          },
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "stat",
+                {
+                  "__TYPE__": "FieldContent",
+                  "type": "Number",
+                  "value": "15"
+                }
+              ],
+              [
+                "description",
+                {
+                  "__TYPE__": "FieldContent",
+                  "type": "Text",
+                  "value": "Años de experiencia"
+                }
+              ]
+            ]
+          },
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "stat",
+                {
+                  "__TYPE__": "FieldContent",
+                  "type": "Number",
+                  "value": "1000"
+                }
+              ],
+              [
+                "description",
+                {
+                  "__TYPE__": "FieldContent",
+                  "type": "Text",
+                  "value": "Clientes"
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      "schedule_link": {
+        "key": "b580c1de-b2ad-48b3-9460-fa77047157bb",
+        "__TYPE__": "LinkContent",
+        "value": {
+          "__TYPE__": "ExternalLink",
+          "url": "https://api.whatsapp.com/send/?phone=8663862590&text&type=phone_number&app_absent=0&wame_ctl=1",
+          "target": "_blank",
+          "text": ""
+        }
+      },
+      "link": {
+        "key": "ef837383-8485-4688-88b5-f8241416ab27",
+        "__TYPE__": "LinkContent",
+        "value": {
+          "__TYPE__": "ExternalLink",
+          "url": "https://keyboardgthd.vercel.app/",
+          "text": "Servicios"
+        }
+      }
+    },
+    "items": []
+  },
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "contact",
+    "primary": {
+      "heading": {
+        "__TYPE__": "FieldContent",
+        "value": "sit",
+        "type": "Text"
+      },
+      "badge": {
+        "__TYPE__": "FieldContent",
+        "value": "start",
+        "type": "Text"
+      },
+      "social_heading": {
+        "__TYPE__": "FieldContent",
+        "value": "potatoes",
+        "type": "Text"
+      },
+      "socials": {
+        "__TYPE__": "GroupContentType",
+        "value": [
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "icon",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Linkedin",
+                  "type": "Select"
+                }
+              ],
+              [
+                "social_link",
+                {
+                  "__TYPE__": "LinkContent",
+                  "key": "78d8c7fa-d964-4bc7-b144-96c705dd1b49",
+                  "value": {
+                    "__TYPE__": "ExternalLink",
+                    "url": "https://prismic.io"
+                  }
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      "description": {
+        "__TYPE__": "FieldContent",
+        "value": "butter",
+        "type": "Text"
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": []
+      }
+    ]
+  },
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "about",
+    "primary": {
+      "badge": {
+        "__TYPE__": "FieldContent",
+        "value": "fence",
+        "type": "Text"
+      },
+      "paragraph": {
+        "__TYPE__": "FieldContent",
+        "value": "light",
+        "type": "Text"
+      },
+      "description": {
+        "__TYPE__": "FieldContent",
+        "value": "mile",
+        "type": "Text"
+      },
+      "profile_picture": {
+        "origin": {
+          "id": "main",
+          "url": "https://images.unsplash.com/photo-1560457079-9a6532ccb118",
+          "width": 4160,
+          "height": 3120
+        },
+        "url": "https://images.unsplash.com/photo-1560457079-9a6532ccb118",
+        "width": 4160,
+        "height": 3120,
+        "edit": {
+          "zoom": 1,
+          "crop": {
+            "x": 0,
+            "y": 0
+          },
+          "background": "transparent"
+        },
+        "alt": "water",
+        "credits": null,
+        "__TYPE__": "ImageContent",
+        "thumbnails": {}
+      },
+      "highlights": {
+        "__TYPE__": "GroupContentType",
+        "value": [
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "description",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "except",
+                  "type": "Text"
+                }
+              ],
+              [
+                "title",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "wealth",
+                  "type": "Text"
+                }
+              ],
+              [
+                "color",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "#6ebd25",
+                  "type": "Color"
+                }
+              ]
+            ]
+          }
+        ]
+      },
+      "name": {
+        "__TYPE__": "FieldContent",
+        "value": "fed",
+        "type": "Text"
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": []
+      }
+    ]
+  }
 ]

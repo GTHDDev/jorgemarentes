@@ -1,39 +1,38 @@
-"use client";
+'use client'
 
-import { FC, memo } from "react";
-import * as m from "motion/react-m";
-import TagBadge from "@/components/tag-badge";
-import { fadeInUp, transitionDefaults } from "@/lib/motion-variants";
+import * as m from 'motion/react-m'
+import { fadeInUp, DURATION, EASE } from '@/lib/motion-variants'
+import { Badge } from '@/components/ui/badge'
 
 interface ServicesHeaderProps {
-  tag: string | null;
-  heading: string | null;
-  description: string | null;
+  tag: string | null
+  heading: string | null
+  description: string | null
 }
 
-const ServicesHeader: FC<ServicesHeaderProps> = ({ tag, heading, description }) => {
+export default function ServicesHeader({ tag, heading, description }: ServicesHeaderProps) {
   return (
     <m.div
       initial="initial"
       whileInView="animate"
-      viewport={{ once: true, margin: "-100px" }}
+      viewport={{ once: true, margin: '-100px' }}
       variants={fadeInUp}
-      transition={transitionDefaults}
-      className="max-w-3xl mb-16 lg:mb-20"
+      transition={{ duration: DURATION.DEFAULT, ease: EASE }}
+      className="mb-16 max-w-3xl lg:mb-20"
     >
       <div className="mb-6">
-        <TagBadge variant="tag" size="md">
+        <Badge variant="default" size="md">
           {tag}
-        </TagBadge>
+        </Badge>
       </div>
-      <h2 className="font-['Space_Grotesk'] text-4xl sm:text-5xl lg:text-6xl tracking-tight text-[#0F0F0F] dark:text-white mb-6">
+
+      <h2 className="font-space text-ink-black mb-6 text-balance text-4xl tracking-tight sm:text-5xl lg:text-6xl dark:text-white">
         {heading}
       </h2>
-      <p className="text-lg lg:text-xl text-[#0F0F0F]/60 dark:text-white/60 leading-relaxed">
+
+      <p className="text-ink-black/60 text-pretty text-lg leading-relaxed lg:text-xl dark:text-white/60">
         {description}
       </p>
     </m.div>
-  );
-};
-
-export default memo(ServicesHeader);
+  )
+}

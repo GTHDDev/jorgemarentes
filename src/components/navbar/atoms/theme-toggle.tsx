@@ -1,59 +1,44 @@
-"use client";
+'use client'
 
-import { Moon, Sun } from "lucide-react";
-import { motion } from "motion/react";
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
-import { memo } from "react";
+import { useState, useEffect } from 'react'
+import { useTheme } from 'next-themes'
+import * as m from 'motion/react-m'
+import { Icons } from '@/lib/icons'
+import { tapScale } from '@/lib/motion-variants'
 
-export const ThemeToggle = memo(function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+export function ThemeToggle() {
+  const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  useEffect(() => setMounted(true), [])
 
-  if (!mounted) {
-    return (
-      <div className="relative w-14 h-8 rounded-full bg-[#F3EDE7] dark:bg-[#4A6FA5]" />
-    );
-  }
+  if (!mounted) return <div className="h-10 w-10" />
 
-  const isDark = theme === "dark";
-
-  const handleToggle = () => {
-    setTheme(isDark ? "light" : "dark");
-  };
+  const isDark = theme === 'dark'
 
   return (
-    <motion.button
-      onClick={handleToggle}
-      className={`relative w-14 h-8 rounded-full transition-colors duration-300 ${
-        isDark ? "bg-[#4A6FA5]" : "bg-[#F3EDE7]"
-      }`}
-      whileTap={{ scale: 0.95 }}
-      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+    <m.button
+      onClick={() => setTheme(isDark ? 'light' : 'dark')}
+      whileTap={tapScale}
+      className="bg-ink-black/5 hover:bg-ink-black/10 relative flex h-10 w-10 items-center justify-center rounded-full transition-colors dark:bg-white/10 dark:hover:bg-white/20"
+      aria-label="Cambiar tema"
     >
-      {/* Toggle Circle */}
-      <motion.div
-        className="absolute top-1 left-1 w-6 h-6 bg-white rounded-full shadow-md flex items-center justify-center"
-        animate={{
-          x: isDark ? 24 : 0,
-        }}
-        transition={{
-          type: "spring",
-          stiffness: 500,
-          damping: 30,
-        }}
-      >
-        {isDark ? (
-          <Moon className="w-3.5 h-3.5 text-[#4A6FA5]" />
-        ) : (
-          <Sun className="w-3.5 h-3.5 text-[#F2B544]" />
-        )}
-      </motion.div>
-    </motion.button>
-  );
-});
-
+      <div className="relative h-5 w-5">
+        <m.div
+          initial={false}
+          animate={{ rotate: isDark ? 90 : 0, scale: isDark ? 0 : 1 }}
+          className="absolute inset-0"
+        >
+          <Icons.Sun className="text-ink-black h-5 w-5" />
+        </m.div>
+        <m.div
+          initial={false}
+          animate={{ rotate: isDark ? 0 : -90, scale: isDark ? 1 : 0 }}
+          className="absolute inset-0"
+        >
+          <Icons.Moon className="h-5 w-5 text-white" />
+        </m.div>
+      </div>
+    </m.button>
+  )
+}

@@ -1,145 +1,117 @@
-"use client";
-import { FC, useState, useCallback } from "react";
-import * as m from "motion/react-m";
-import { Icons } from "@/lib/icons";
-import { Content } from "@prismicio/client";
-import { Button } from "@/components/ui/button";
-import ConferenceCard from "./conference-card";
-import { fadeInUpDeep, transitionSlow } from "@/lib/motion-variants";
+'use client'
+
+import { useState, useEffect, useCallback } from 'react'
+import * as m from 'motion/react-m'
+import { Content } from '@prismicio/client'
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
+} from '@/components/ui/carousel'
+import ConferenceCard from './conference-card'
+import { fadeInUpDeep, DURATION, EASE } from '@/lib/motion-variants'
+import { cn } from '@/lib/utils'
 
 interface ConferenceCarouselProps {
-  conferences: Content.ConferencesSliceDefaultPrimaryConferencesItem[];
+  conferences: Content.ConferencesSliceDefaultPrimaryConferencesItem[]
 }
 
-/**
- * Carousel component for displaying conference cards.
- * Client Component - requires state management for carousel navigation.
- * Optimized with LazyMotion (m component) and React's Activity component for state preservation.
- */
-const ConferenceCarousel: FC<ConferenceCarouselProps> = ({ conferences }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+export default function ConferenceCarousel({ conferences }: ConferenceCarouselProps) {
+  const [api, setApi] = useState<CarouselApi>()
+  const [current, setCurrent] = useState(0)
 
-  const handlePrevious = useCallback(() => {
-    setCurrentIndex((prev) => (prev === 0 ? conferences.length - 1 : prev - 1));
-  }, [conferences.length]);
+  useEffect(() => {
+    if (!api) return
 
-  const handleNext = useCallback(() => {
-    setCurrentIndex((prev) =>
-      prev === conferences.length - 1 ? 0 : prev + 1
-    );
-  }, [conferences.length]);
+    // Unified function to update status
+    const onSelect = () => {
+      setCurrent(api.selectedScrollSnap())
+    }
 
-  const handleGoToSlide = useCallback((index: number) => {
-    setCurrentIndex(index);
-  }, []);
+    // 1. Synchronize immediately upon mounting
+    onSelect()
 
-  const handleKeyDown = useCallback(
-    (e: React.KeyboardEvent, action: () => void) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        action();
-      }
+    // 2. Listen for key events (select = slide change, reInit = resized/loaded)
+    api.on('select', onSelect)
+    api.on('reInit', onSelect)
+
+    // 3. CLEANUP
+    return () => {
+      api.off('select', onSelect)
+      api.off('reInit', onSelect)
+    }
+  }, [api])
+
+  const scrollTo = useCallback(
+    (index: number) => {
+      api?.scrollTo(index)
     },
-    []
-  );
+    [api]
+  )
+
+  if (!conferences.length) return null
 
   return (
     <m.div
       variants={fadeInUpDeep}
       initial="initial"
       whileInView="animate"
-      viewport={{ once: true, margin: "-100px" }}
-      className="relative"
-      role="region"
-      aria-roledescription="carousel"
-      aria-label="Conference presentations"
+      viewport={{ once: true, margin: '-100px' }}
+      transition={{ duration: DURATION.DEFAULT, ease: EASE }}
+      className="relative mx-auto w-full max-w-5xl"
     >
-      <div className="relative overflow-hidden rounded-[2.5rem]">
-        {/* Carousel Track */}
-        <div
-          className="flex transition-transform duration-700 ease-out"
-          style={{
-            transform: `translateX(-${currentIndex * 100}%)`,
-            transitionTimingFunction: 'var(--transition-smooth)'
-          }}
-          aria-live="polite"
-          aria-atomic="true"
-          id="carousel-track"
-        >
+      <Carousel
+        setApi={setApi}
+        opts={{
+          align: 'start',
+          loop: true,
+        }}
+        className="w-full"
+      >
+        <CarouselContent>
           {conferences.map((conference, index) => (
-            <ConferenceCard
-              key={index}
-              conference={conference}
-              index={index}
-              isActive={index === currentIndex}
-            />
+            <CarouselItem key={index} className="basis-full">
+              <div className="h-full p-1">
+                <ConferenceCard conference={conference} />
+              </div>
+            </CarouselItem>
           ))}
-        </div>
-      </div>
+        </CarouselContent>
 
-      {/* Navigation Controls */}
-      <div className="flex items-center justify-center gap-4 mt-8" role="group" aria-label="Carousel navigation">
-        <Button
-          variant="outline"
-          size="icon"
-          onClick={handlePrevious}
-          onKeyDown={(e) => handleKeyDown(e, handlePrevious)}
-          className="w-12 h-12 bg-white dark:bg-[#1a1a1a] hover:bg-pearl-white dark:hover:bg-[#2a2a2a] shadow-soft hover:shadow-medium"
-          aria-label="Previous conference"
-          aria-controls="carousel-track"
-          tabIndex={0}
-        >
-          <Icons.ChevronLeft
-            className="w-6 h-6 text-ink-black dark:text-white"
-            aria-hidden="true"
+        <div className="mt-8 flex items-center justify-center gap-4 lg:mt-12">
+          <CarouselPrevious
+            className="border-ink-black/10 hover:text-steel-blue static h-12 w-12 translate-y-0 hover:bg-white dark:border-white/10 dark:hover:bg-white/10"
+            variant="outline"
           />
-        </Button>
 
-        {/* Indicators */}
-        <div
-          className="flex items-center gap-2"
-          role="tablist"
-          aria-label="Slide indicators"
-        >
-          {conferences.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => handleGoToSlide(index)}
-              onKeyDown={(e) => handleKeyDown(e, () => handleGoToSlide(index))}
-              className={`transition-smooth rounded-full focus:outline-none focus:ring-2 focus:ring-steel-blue focus:ring-offset-2 flex items-center justify-center ${index === currentIndex
-                ? "w-8 h-8 scale-110"
-                : "w-2 h-2 bg-ink-black/20 dark:bg-white/20 hover:bg-ink-black/40 dark:hover:bg-white/40"
-                }`}
-              aria-label={`Go to slide ${index + 1} of ${conferences.length}`}
-              aria-current={index === currentIndex}
-              role="tab"
-              tabIndex={index === currentIndex ? 0 : -1}
-            >
-              {index === currentIndex && (
-                <Icons.Activity className="w-5 h-5 text-steel-blue animate-pulse" />
-              )}
-            </button>
-          ))}
-        </div>
+          {/* Indicadores (Dots) */}
+          <div className="flex items-center gap-3 px-4">
+            {conferences.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => scrollTo(index)}
+                data-active={index === current}
+                className={cn(
+                  'focus:ring-steel-blue h-2 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2',
+                  index === current
+                    ? 'bg-steel-blue w-8' // Active state
+                    : 'bg-ink-black/20 hover:bg-ink-black/40 w-2 dark:bg-white/20' // Inactive state
+                )}
+                aria-label={`Ir a conferencia ${index + 1}`}
+                aria-current={index === current}
+              />
+            ))}
+          </div>
 
-        <Button
-          variant="outline"
-          size="icon"
-          onClick={handleNext}
-          onKeyDown={(e) => handleKeyDown(e, handleNext)}
-          className="w-12 h-12 bg-white dark:bg-[#1a1a1a] hover:bg-pearl-white dark:hover:bg-[#2a2a2a] shadow-soft hover:shadow-medium"
-          aria-label="Next conference"
-          aria-controls="carousel-track"
-          tabIndex={0}
-        >
-          <Icons.ChevronRight
-            className="w-6 h-6 text-ink-black dark:text-white"
-            aria-hidden="true"
+          <CarouselNext
+            className="border-ink-black/10 hover:text-steel-blue static h-12 w-12 translate-y-0 hover:bg-white dark:border-white/10 dark:hover:bg-white/10"
+            variant="outline"
           />
-        </Button>
-      </div>
+        </div>
+      </Carousel>
     </m.div>
-  );
-};
-
-export default ConferenceCarousel;
+  )
+}

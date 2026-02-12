@@ -17,7 +17,7 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "contact_hero": {
+            "hero": {
               "type": "SharedSlice"
             },
             "view_full_cv": {
@@ -27,9 +27,6 @@
               "type": "SharedSlice"
             },
             "highlights_carousel": {
-              "type": "SharedSlice"
-            },
-            "about_hero": {
               "type": "SharedSlice"
             }
           }

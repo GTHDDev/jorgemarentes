@@ -1,12 +1,3 @@
-import { memo } from "react";
-
-interface FooterSectionTitleProps {
-  title: string;
+export function FooterSectionTitle({ title }: { title: string }) {
+  return <h4 className="font-space mb-6 text-lg font-medium text-white">{title}</h4>
 }
-
-export const FooterSectionTitle = memo(function FooterSectionTitle({
-  title,
-}: FooterSectionTitleProps) {
-  return <h4 className="font-medium text-white mb-4">{title}</h4>;
-});
-

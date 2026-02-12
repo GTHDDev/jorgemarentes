@@ -1,141 +1,73 @@
-"use client";
+'use client'
 
-import { FC, Activity } from "react";
-import * as m from "motion/react-m";
-import { Icons } from "@/lib/icons";
-import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
-import { Content } from "@prismicio/client";
-import TagBadge from "@/components/tag-badge";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
-import { hoverExpand, tapScale } from "@/lib/motion-variants";
+import { Icons } from '@/lib/icons'
+import { PrismicNextImage, PrismicNextLink } from '@prismicio/next'
+import { Content } from '@prismicio/client'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
 
 interface ConferenceCardProps {
-  conference: Content.ConferencesSliceDefaultPrimaryConferencesItem;
-  index: number;
-  isActive: boolean;
+  conference: Content.ConferencesSliceDefaultPrimaryConferencesItem
 }
 
-/**
- * Individual conference card component.
- * Client Component - requires interactivity for play button and animations.
- * Optimized with LazyMotion (m component).
- */
-const ConferenceCard: FC<ConferenceCardProps> = ({
-  conference,
-  index,
-  isActive,
-}) => {
-  const handlePlayClick = () => {
-    // Handle play button click if needed
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      handlePlayClick();
-    }
-  };
-
+export default function ConferenceCard({ conference }: ConferenceCardProps) {
   return (
-    <div
-      className="min-w-full"
-      aria-hidden={!isActive}
-      role="group"
-      aria-roledescription="slide"
-      aria-label={`Conference ${index + 1}`}
-    >
-      <Card className="grid lg:grid-cols-2 gap-0 h-full bg-white dark:bg-[#1a1a1a] shadow-strong rounded-[2.5rem] overflow-hidden border-none p-0">
-        {/* Image Side */}
-        <div className="relative aspect-[4/3] lg:aspect-auto">
-          <PrismicNextImage
-            field={conference.image}
-            className="w-full h-full object-cover"
-            loading="lazy"
-            quality={80}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink-black/40 via-transparent to-transparent" />
+    <Card className="shadow-strong group grid h-full gap-0 overflow-hidden rounded-[2.5rem] border-none bg-white p-0 lg:grid-cols-2 dark:bg-[#1a1a1a]">
+      {/* Image Side */}
+      <div className="relative aspect-[4/3] h-full min-h-[300px] lg:aspect-auto">
+        <PrismicNextImage
+          field={conference.image}
+          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+          quality={80}
+          loading="lazy"
+        />
+        <div className="from-ink-black/60 pointer-events-none absolute inset-0 bg-gradient-to-t via-transparent to-transparent opacity-80" />
 
-          {/* Play Button Overlay */}
-          <m.div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            whileHover={hoverExpand}
-            whileTap={tapScale}
-          >
-            <Button
-              variant="play"
-              size="play"
-              onClick={handlePlayClick}
-              onKeyDown={handleKeyDown}
-              aria-label={`Play video for ${conference.title}`}
-              tabIndex={isActive ? 0 : -1}
-              className="flex items-center justify-center"
-            >
-              <Icons.Play className="w-8 h-8 ml-1" fill="currentColor" aria-hidden="true" />
-            </Button>
-          </m.div>
-
-          {/* Type Badge */}
-          <TagBadge
-            variant="type"
-            size="md"
-            className="absolute top-6 left-6"
-          >
-            {conference.type}
-          </TagBadge>
+        {/* Type Badge */}
+        <div className="absolute left-6 top-6 z-10">
+          <Badge variant="highlight" size="md">
+            {conference.type || 'Conferencia'}
+          </Badge>
         </div>
+      </div>
 
-        {/* Content Side */}
-        <div className="p-8 lg:p-12 flex flex-col justify-center">
-          <h3 className="font-['Space_Grotesk'] text-3xl lg:text-4xl text-ink-black dark:text-white mb-6 tracking-tight">
-            {conference.title}
-          </h3>
+      {/* Content Side */}
+      <div className="relative flex h-full flex-col justify-center p-8 lg:p-12">
+        <h3 className="font-space text-ink-black mb-6 text-balance text-2xl tracking-tight lg:text-3xl xl:text-4xl dark:text-white">
+          {conference.title}
+        </h3>
 
-          <div className="space-y-3 mb-8">
-            <div className="flex items-start gap-3 text-ink-black/70 dark:text-white/70">
-              <Icons.MapPin
-                className="w-5 h-5 mt-0.5 flex-shrink-0 text-steel-blue"
-                aria-hidden="true"
-              />
-              <div>
-                <div className="font-medium text-ink-black dark:text-white mb-1">
-                  {conference.event}
-                </div>
-                <div className="text-sm">{conference.location}</div>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-3 text-ink-black/70 dark:text-white/70">
-              <Icons.Calendar
-                className="w-5 h-5 flex-shrink-0 text-steel-blue"
-                aria-hidden="true"
-              />
-              <span>{conference.date}</span>
+        <div className="mb-8 space-y-4">
+          <div className="text-ink-black/70 flex items-start gap-3 dark:text-white/70">
+            <Icons.MapPin className="text-steel-blue mt-1 h-5 w-5 flex-shrink-0" />
+            <div>
+              <div className="text-ink-black font-medium dark:text-white">{conference.event}</div>
+              <div className="text-sm opacity-80">{conference.location}</div>
             </div>
           </div>
 
-          <m.div
-            whileHover={hoverExpand}
-            whileTap={tapScale}
-            className="self-start"
+          <div className="text-ink-black/70 flex items-center gap-3 dark:text-white/70">
+            <Icons.Calendar className="text-steel-blue h-5 w-5 flex-shrink-0" />
+            <span className="font-medium">{conference.date}</span>
+          </div>
+        </div>
+
+        <div className="mt-auto self-start">
+          <Button
+            asChild
+            variant="outline"
+            size="lg"
+            className="group-hover:bg-steel-blue group-hover:border-steel-blue rounded-full px-8 transition-all duration-300 group-hover:text-white"
           >
             <PrismicNextLink field={conference.conference_link}>
-              <Button
-                variant="default"
-                aria-label={`View event: ${conference.title}`}
-                tabIndex={isActive ? 0 : -1}
-              >
-                <Icons.Play className="w-4 h-4" aria-hidden="true" />
-                Ver Evento
-              </Button>
+              <Icons.Play className="mr-2 h-4 w-4" />
+              Ver Evento
             </PrismicNextLink>
-          </m.div>
+          </Button>
         </div>
-      </Card>
-    </div>
-  );
-};
-
-export default ConferenceCard;
-
+      </div>
+    </Card>
+  )
+}

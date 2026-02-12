@@ -1,12 +1,11 @@
-"use client";
+'use client'
 
-import { memo } from "react";
-import { Icons, type LucideIcon } from "@/lib/icons";
-import { Content } from "@prismicio/client";
-import { SocialIcon } from "../atoms/social-icon";
+import { Icons, type LucideIcon } from '@/lib/icons'
+import { Content } from '@prismicio/client'
+import { SocialIcon } from '../atoms/social-icon'
 
 interface SocialLinksProps {
-  socialMedia: Content.SettingsDocumentData["social_media"];
+  socialMedia: Content.SettingsDocumentData['social_media']
 }
 
 const iconMap: Record<string, LucideIcon> = {
@@ -14,36 +13,27 @@ const iconMap: Record<string, LucideIcon> = {
   Youtube: Icons.Youtube,
   Facebook: Icons.Facebook,
   Instagram: Icons.Instagram,
-  TikTok: Icons.Music, // Using Music icon as TikTok icon (closest available in lucide-react)
-};
+  TikTok: Icons.Music,
+}
 
-export const SocialLinks = memo(function SocialLinks({
-  socialMedia,
-}: SocialLinksProps) {
-  if (socialMedia.length === 0) {
-    return null;
-  }
+export function SocialLinks({ socialMedia }: SocialLinksProps) {
+  if (socialMedia.length === 0) return null
 
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-3">
       {socialMedia.map((social, index) => {
-        const iconName = social.icon;
-        const Icon = iconName ? iconMap[iconName] : null;
-
-        if (!Icon || !social.link) {
-          return null;
-        }
+        const Icon = social.icon ? iconMap[social.icon] : null
+        if (!Icon || !social.link) return null
 
         return (
           <SocialIcon
             key={index}
             icon={Icon}
             field={social.link}
-            label={iconName || undefined}
+            label={social.icon || undefined}
           />
-        );
+        )
       })}
     </div>
-  );
-});
-
+  )
+}

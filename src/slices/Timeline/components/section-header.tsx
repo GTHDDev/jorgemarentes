@@ -1,47 +1,44 @@
-"use client";
+'use client'
 
-import { FC, memo } from "react";
-import * as m from "motion/react-m";
-import { timelineHeader, transitionDefaults } from "@/lib/motion-variants";
-import TagBadge from "@/components/tag-badge";
+import { m } from 'framer-motion'
+import { Badge } from '@/components/ui/badge'
+import { fadeInUpDeep, DURATION, EASE } from '@/lib/motion-variants'
 
 interface SectionHeaderProps {
-  tag: string;
-  heading: string;
-  description: string;
+  tag: string
+  heading: string
+  description: string
 }
 
-/**
- * Section header component with animations.
- * Client Component - requires framer motion for animations.
- * Optimized with LazyMotion (m component).
- */
-const SectionHeader: FC<SectionHeaderProps> = ({ tag, heading, description }) => {
+export default function SectionHeader({ tag, heading, description }: SectionHeaderProps) {
   return (
     <m.div
-      variants={timelineHeader}
-      initial={false}
+      initial="initial"
       whileInView="animate"
-      viewport={{ once: true, margin: "-100px" }}
-      transition={transitionDefaults}
-      className="max-w-3xl mb-16"
+      viewport={{ once: true, margin: '-100px' }}
+      variants={fadeInUpDeep}
+      transition={{ duration: DURATION.DEFAULT, ease: EASE }}
+      className="mb-16 max-w-3xl lg:mb-20"
     >
-      <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/60 dark:bg-white/5 backdrop-blur-sm rounded-full mb-6">
-        <TagBadge className="text-sm font-medium text-[#0F0F0F]/70 dark:text-white/70">
-          {tag}
-        </TagBadge>
-      </div>
-      <h2
-        id="timeline-heading"
-        className="font-['Space_Grotesk'] text-4xl sm:text-5xl lg:text-6xl tracking-tight text-[#0F0F0F] dark:text-white mb-6"
-      >
-        {heading}
-      </h2>
-      <p className="text-lg lg:text-xl text-[#0F0F0F]/60 dark:text-white/60 leading-relaxed">
-        {description}
-      </p>
-    </m.div>
-  );
-};
+      {tag && (
+        <div className="mb-6">
+          <Badge variant="secondary" size="md">
+            {tag}
+          </Badge>
+        </div>
+      )}
 
-export default memo(SectionHeader);
+      {heading && (
+        <h2 className="font-space text-ink-black mb-6 text-balance text-4xl tracking-tight sm:text-5xl lg:text-6xl dark:text-white">
+          {heading}
+        </h2>
+      )}
+
+      {description && (
+        <p className="text-ink-black/60 text-pretty text-lg leading-relaxed lg:text-xl dark:text-white/60">
+          {description}
+        </p>
+      )}
+    </m.div>
+  )
+}

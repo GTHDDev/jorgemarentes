@@ -1,32 +1,27 @@
-"use client";
+'use client'
 
-import { FC, memo } from "react";
-import { NumberTicker } from "@/components/ui/number-ticker";
+import { NumberTicker } from '@/components/ui/number-ticker'
+import * as m from 'motion/react-m'
+import { fadeInUp } from '@/lib/motion-variants'
 
 interface HeroStatItemProps {
-  stat: number;
-  description: string;
+  stat: number
+  description: string
 }
 
-/**
- * Individual stat item component.
- * Client Component - requires number ticker animation.
- * Memoized to prevent unnecessary re-renders.
- */
-const HeroStatItem: FC<HeroStatItemProps> = ({ stat, description }) => {
+export default function HeroStatItem({ stat, description }: HeroStatItemProps) {
   return (
-    <div>
-      <NumberTicker
-        value={stat}
-        delay={0.5}
-        direction="up"
-        className="font-['Space_Grotesk'] text-3xl sm:text-4xl font-medium text-ink-black dark:text-white"
-      />
-      <div className="text-sm text-ink-black/60 dark:text-white/60 mt-1">
-        {description}
+    <m.div variants={fadeInUp}>
+      <div className="flex flex-col">
+        <NumberTicker
+          value={stat}
+          delay={0.5}
+          className="font-space text-ink-black text-3xl font-medium tracking-tight sm:text-4xl dark:text-white"
+        />
+        <span className="text-ink-black/60 mt-1 text-sm font-medium dark:text-white/60">
+          {description}
+        </span>
       </div>
-    </div>
-  );
-};
-
-export default memo(HeroStatItem);
+    </m.div>
+  )
+}

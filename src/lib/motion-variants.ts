@@ -1,201 +1,207 @@
 /**
- * Shared motion variants.
- * Reduces code duplication and ensures consistent animations across the application.
+ * CORE MOTION CONFIGURATION
  */
 
-// Fade Up Animations
-export const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-};
+// -----------------------------------------------------------------------------
+// 1. CONFIGURATION CONSTANTS
+// -----------------------------------------------------------------------------
 
-// Deep Fade Up (longer distance) - used in Services
-export const fadeInUpDeep = {
-  initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0 },
-};
+// Curva Bezier estándar para una sensación "premium" (Apple-like)
+export const EASE = [0.25, 0.1, 0.25, 1] as const
+
+export const DURATION = {
+  FAST: 0.3,
+  DEFAULT: 0.5,
+  SLOW: 0.8,
+}
+
+// -----------------------------------------------------------------------------
+// 2. ENTRY ANIMATIONS (Fade & Slide)
+// -----------------------------------------------------------------------------
 
 // Simple Fade
 export const fadeIn = {
   initial: { opacity: 0 },
-  animate: { opacity: 1 },
-};
-
-// Fade In with Scale
-export const fadeInScale = {
-  initial: { opacity: 0, scale: 0.95 },
-  animate: { opacity: 1, scale: 1 },
-};
-
-// Slide In From Left
-export const slideInLeft = {
-  initial: { opacity: 0, scale: 0.95, x: -20 },
-  animate: { opacity: 1, scale: 1, x: 0 },
-};
-
-// Slide In From Right
-export const slideInRight = {
-  initial: { opacity: 0, scale: 0.95, x: 50 },
-  animate: { opacity: 1, scale: 1, x: 0 },
-};
-
-// Transitions
-export const transitionDefaults = {
-  duration: 0.5,
-  ease: [0.4, 0.0, 0.2, 1] as const,
-};
-
-export const transitionSlow = {
-  duration: 0.8,
-  ease: [0.4, 0.0, 0.2, 1] as const,
-};
-
-export const transitionFast = {
-  duration: 0.3,
-  ease: "easeOut" as const,
-};
-
-// Animation delays for staggered animations (Hero specific but can be reused)
-export const heroDelays = {
-  badge: 0.2,
-  heading: 0.3,
-  description: 0.4,
-  links: 0.5,
-  stats: 0.6,
-  image: 0.2,
-  scrollIndicator: 1.2,
-};
-
-// Hover Animations
-export const hoverLift = {
-  scale: 1.02,
-  y: -2,
-};
-
-export const hoverExpand = {
-  scale: 1.05,
-};
-
-// Tap Animations
-export const tapScale = {
-  scale: 0.95,
-};
-
-export const tapScaleSubtle = {
-  scale: 0.98,
-};
-
-export const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
+  animate: {
     opacity: 1,
+    transition: { duration: DURATION.DEFAULT, ease: EASE },
+  },
+  exit: { opacity: 0 },
+}
+
+// Standard Fade Up (The "Bread and Butter")
+export const fadeInUp = {
+  initial: { opacity: 0, y: 20 },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: DURATION.DEFAULT, ease: EASE },
+  },
+  exit: { opacity: 0, y: 10 },
+}
+
+// Deep Fade Up (For larger sections or cards)
+export const fadeInUpDeep = {
+  initial: { opacity: 0, y: 40 },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: DURATION.SLOW, ease: EASE },
+  },
+}
+
+// Slide In From Left (Sidebar, highlights)
+export const slideInLeft = {
+  initial: { opacity: 0, x: -20 },
+  animate: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: DURATION.DEFAULT, ease: EASE },
+  },
+}
+
+// Slide In From Right (Hero Images, Timelines)
+export const slideInRight = {
+  initial: {
+    opacity: 0,
+    x: 30,
+    scale: 0.98, // Subtle scale for depth
+  },
+  animate: {
+    opacity: 1,
+    x: 0,
+    scale: 1,
+    transition: {
+      duration: DURATION.SLOW,
+      ease: EASE,
+    },
+  },
+  exit: {
+    opacity: 0,
+    x: 20,
+    transition: {
+      duration: DURATION.FAST,
+      ease: EASE,
+    },
+  },
+}
+
+// Scale In (Modals, Badges)
+export const scaleIn = {
+  initial: { opacity: 0, scale: 0.95 },
+  animate: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: DURATION.FAST, ease: 'easeOut' as const },
+  },
+}
+
+// -----------------------------------------------------------------------------
+// 3. ORCHESTRATION (Stagger)
+// -----------------------------------------------------------------------------
+
+// Standard Stagger (Grids, Lists)
+export const staggerContainer = {
+  initial: {},
+  animate: {
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.05,
+    },
+  },
+}
+
+// Slow Stagger (Hero sections, Features)
+export const staggerContainerSlow = {
+  initial: {},
+  animate: {
     transition: {
       staggerChildren: 0.2,
       delayChildren: 0.1,
     },
   },
-};
+}
+
+// -----------------------------------------------------------------------------
+// 4. INTERACTIVE ANIMATIONS (Hover & Tap)
+// -----------------------------------------------------------------------------
 
 /**
- * For children of staggerContainer: uses hidden/visible keys so variant
- * propagation from parent (initial="hidden", animate="visible") works.
- * Same visual as fadeInUpDeep.
+ * Universal Tap Effect.
+ * Use: whileTap={tapScale}
  */
-export const staggerItemFadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0 },
-};
+export const tapScale = {
+  scale: 0.95,
+  transition: { duration: 0.1, ease: 'linear' as const },
+}
 
-// Navbar / Menu Animations
-export const slideDown = {
-  hidden: { y: -100 },
-  visible: { y: 0 },
-};
-
-export const expandVertical = {
-  hidden: { opacity: 0, height: 0 },
-  visible: { opacity: 1, height: "auto" },
-  exit: { opacity: 0, height: 0 },
-};
-
-export const hoverLiftLarge = {
-  scale: 1.1,
+/**
+ * Standard Lift Effect.
+ * Use: whileHover={hoverLift} (Buttons, small cards)
+ */
+export const hoverLift = {
+  scale: 1.02,
   y: -2,
-};
+  transition: { duration: 0.2, ease: 'easeOut' as const },
+}
 
-// HighlightsCarousel Animations
-export const carouselHeader = {
-  initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0 },
-};
+/**
+ * Expand/Zoom Effect.
+ * Use: whileHover={hoverExpand} (Images, Featured Cards)
+ */
+export const hoverExpand = {
+  scale: 1.05,
+  transition: { duration: 0.4, ease: EASE },
+}
 
-export const carouselContainer = {
-  initial: { opacity: 0 },
-  animate: { opacity: 1 },
-};
+// Compatibility export (Deprecated - prefer atomic exports above)
+export const hoverAction = {
+  hover: hoverLift,
+  tap: tapScale,
+}
 
-export const carouselHint = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-};
+// -----------------------------------------------------------------------------
+// 5. SPECIFIC CONFIGURATIONS
+// -----------------------------------------------------------------------------
 
-export const highlightsCarouselDelays = {
-  header: 0,
-  carousel: 0.2,
-  hint: 0.4,
-};
+// Hero Section Choreography Delays
+export const HERO_DELAYS = {
+  badge: 0.1,
+  heading: 0.2,
+  description: 0.3,
+  actions: 0.4,
+  image: 0.5,
+  stats: 0.6,
+}
 
-export const carouselTransition = {
-  duration: 0.6,
-  ease: [0.4, 0.0, 0.2, 1] as const,
-};
+// -----------------------------------------------------------------------------
+// 6. UI SPECIFIC ANIMATIONS
+// -----------------------------------------------------------------------------
 
-export const carouselTransitionSlow = {
-  duration: 0.8,
-  ease: [0.4, 0.0, 0.2, 1] as const,
-};
+/**
+ * Slide Down (Navbar Entry)
+ */
+export const slideDown = {
+  hidden: { y: ' -100%' },
+  visible: {
+    y: 0,
+    transition: { duration: 0.6, ease: EASE },
+  },
+}
 
-// Timeline Animations
-export const timelineHeader = {
-  initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0 },
-};
-
-export const timelineItem = {
-  initial: { opacity: 0, y: 40 },
-  animate: { opacity: 1, y: 0 },
-};
-
-export const timelineDelays = {
-  header: 0,
-  itemBase: 0.2,
-  itemStagger: 0.15,
-};
-
-export const modalBackdrop = {
-  initial: { opacity: 0 },
-  animate: { opacity: 1 },
-  exit: { opacity: 0 },
-};
-
-export const modalContent = {
-  initial: { opacity: 0, scale: 0.95, y: 20 },
-  animate: { opacity: 1, scale: 1, y: 0 },
-  exit: { opacity: 0, scale: 0.95, y: 20 },
-};
-
-export const modalTransition = {
-  duration: 0.3,
-  ease: [0.4, 0.0, 0.2, 1] as const,
-};
-
-// ViewFullCv Animations
-export const viewFullCvCard = {
-  initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0 },
-};
-
-export const viewFullCvTransition = {
-  duration: 0.6,
-  ease: [0.4, 0.0, 0.2, 1] as const,
-};
+/**
+ * Expand Vertical (Mobile Menu Accordion)
+ */
+export const expandVertical = {
+  hidden: { opacity: 0, height: 0, overflow: 'hidden' },
+  visible: {
+    opacity: 1,
+    height: 'auto',
+    transition: { duration: DURATION.DEFAULT, ease: EASE },
+  },
+  exit: {
+    opacity: 0,
+    height: 0,
+    transition: { duration: DURATION.FAST, ease: EASE },
+  },
+}

@@ -1,43 +1,49 @@
-"use client";
+'use client'
 
-import { FC, memo } from "react";
-import { Content } from "@prismicio/client";
-import { Icons } from "@/lib/icons";
-import ServiceCard from "./service-card";
+import * as m from 'motion/react-m'
+import { Content } from '@prismicio/client'
+import { Icons } from '@/lib/icons'
+import { staggerContainer } from '@/lib/motion-variants'
+import ServiceCard from '@/components/ui/service-card'
 
 interface ServicesGridProps {
-  services: Content.ServicesSlice["primary"]["services"];
+  services: Content.ServicesSlice['primary']['services']
 }
 
-const icons: Record<string, React.ComponentType<{ className?: string; style?: React.CSSProperties }>> = {
+const ICON_MAP: Record<
+  string,
+  React.ComponentType<{ className?: string; style?: React.CSSProperties }>
+> = {
   Brain: Icons.Brain,
   Users: Icons.Users,
   Heart: Icons.Heart,
   Sparkles: Icons.Sparkles,
-};
+}
 
-const ServicesGrid: FC<ServicesGridProps> = ({ services }) => {
+export default function ServicesGrid({ services }: ServicesGridProps) {
   return (
-    <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-6 lg:gap-8">
+    <m.div
+      variants={staggerContainer}
+      initial="initial"
+      whileInView="animate"
+      viewport={{ once: true, margin: '-100px' }}
+      className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2 lg:gap-8"
+    >
       {services.map((service, index) => {
-        const iconName = service.icon;
-        // @ts-ignore - Indexing with string from CMS
-        const Icon = iconName ? icons[iconName] : undefined;
-        const color = service.color || undefined;
+        const iconName = service.icon || 'Sparkles'
+        const IconComponent = ICON_MAP[iconName] || Icons.Sparkles
 
         return (
           <ServiceCard
             key={index}
-            index={index}
-            title={service.title || ""}
-            description={service.description || ""}
-            Icon={Icon}
-            color={color}
+            title={service.title}
+            description={service.description}
+            icon={IconComponent}
+            color={service.color}
+            size="large"
           />
-        );
+        )
       })}
-    </div>
-  );
-};
-
-export default memo(ServicesGrid);
+    </m.div>
+  )
+}

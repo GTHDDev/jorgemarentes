@@ -1,41 +1,28 @@
-"use client";
+'use client'
 
-import { memo } from "react";
-import { PrismicNextLink } from "@prismicio/next";
-import { LinkField } from "@prismicio/client";
+import { PrismicNextLink } from '@prismicio/next'
+import { LinkField } from '@prismicio/client'
+import { cn } from '@/lib/utils'
 
 interface FooterLinkProps {
-  label: string;
-  href?: string;
-  field?: LinkField;
+  label: string
+  field?: LinkField
+  className?: string
 }
 
-export const FooterLink = memo(function FooterLink({
-  label,
-  href,
-  field,
-}: FooterLinkProps) {
-  const baseClasses =
-    "text-sm text-white/60 hover:text-white transition-colors duration-300";
+export function FooterLink({ label, field, className }: FooterLinkProps) {
+  const baseClasses = cn(
+    'text-base text-white/60 hover:text-white transition-colors duration-300 block w-fit',
+    className
+  )
 
   if (field) {
     return (
       <PrismicNextLink field={field} className={baseClasses}>
         {label}
       </PrismicNextLink>
-    );
+    )
   }
 
-  const getHref = () => {
-    if (href) return href;
-    if (label.startsWith("#")) return label;
-    return `#${label.toLowerCase().replace(/\s+/g, "-")}`;
-  };
-
-  return (
-    <a href={getHref()} className={baseClasses}>
-      {label}
-    </a>
-  );
-});
-
+  return <p className={cn(baseClasses, 'cursor-default hover:text-white/60')}>{label}</p>
+}

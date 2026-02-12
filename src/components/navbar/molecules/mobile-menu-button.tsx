@@ -1,28 +1,23 @@
-"use client";
+'use client'
 
-import { Icons } from "@/lib/icons";
-import * as m from "motion/react-m";
-import { memo } from "react";
+import * as m from 'motion/react-m'
+import { Icons } from '@/lib/icons'
+import { tapScale } from '@/lib/motion-variants'
 
 interface MobileMenuButtonProps {
-  isOpen: boolean;
-  onToggle: () => void;
+  isOpen: boolean
+  onToggle: () => void
 }
 
-export const MobileMenuButton = memo(function MobileMenuButton({
-  isOpen,
-  onToggle,
-}: MobileMenuButtonProps) {
+export function MobileMenuButton({ isOpen, onToggle }: MobileMenuButtonProps) {
   return (
     <m.button
       onClick={onToggle}
-      className="p-2 text-[#0F0F0F] dark:text-white"
-      whileTap={{ scale: 0.9 }}
-      aria-label="Toggle menu"
-      aria-expanded={isOpen}
+      whileTap={tapScale}
+      className="text-ink-black -mr-2 p-2 dark:text-white"
+      aria-label={isOpen ? 'Cerrar menú' : 'Abrir menú'}
     >
-      {isOpen ? <Icons.X size={24} /> : <Icons.Menu size={24} />}
+      {isOpen ? <Icons.X className="h-6 w-6" /> : <Icons.Menu className="h-6 w-6" />}
     </m.button>
-  );
-});
-
+  )
+}

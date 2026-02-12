@@ -1,63 +1,64 @@
-"use client";
+'use client'
 
-import { FC, memo } from "react";
-import * as m from "motion/react-m"
-import { Content } from "@prismicio/client";
-import { PrismicNextLink } from "@prismicio/next";
-import { Icons } from "@/lib/icons";
-import AnimationLazyLoad from "@/components/animation-lazy-load";
-import { viewFullCvCard, viewFullCvTransition, hoverLift, tapScale } from "@/lib/motion-variants";
+import * as m from 'motion/react-m'
+import { Content } from '@prismicio/client'
+import { PrismicNextLink } from '@prismicio/next'
+import { Icons } from '@/lib/icons'
+import { Button } from '@/components/ui/button'
+import { fadeInUpDeep, hoverLift, tapScale, DURATION, EASE } from '@/lib/motion-variants'
 
 interface ViewFullCvContentProps {
-  slice: Content.ViewFullCvSlice;
+  slice: Content.ViewFullCvSlice
 }
 
-/**
- * Client component for the ViewFullCv card and CTA.
- * Uses AnimationLazyLoad to animate only when in view and avoid hydration mismatch.
- */
-const ViewFullCvContent: FC<ViewFullCvContentProps> = ({ slice }) => {
+export default function ViewFullCvContent({ slice }: ViewFullCvContentProps) {
   return (
-    <AnimationLazyLoad
-      variants={viewFullCvCard}
-      transition={viewFullCvTransition}
-      className="max-w-4xl mx-auto"
+    <m.div
+      variants={fadeInUpDeep}
+      initial="initial"
+      whileInView="animate"
+      viewport={{ once: true, margin: '-100px' }}
+      transition={{ duration: DURATION.DEFAULT, ease: EASE }}
+      className="mx-auto max-w-4xl"
     >
-      <div className="bg-gradient-to-br from-[#4A6FA5] to-[#3B5F52] rounded-[2.5rem] p-12 lg:p-16 shadow-strong relative overflow-hidden">
+      <div className="from-steel-blue to-deep-sage shadow-strong relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br p-12 lg:p-16">
         {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10" aria-hidden="true">
-          <div className="absolute top-10 right-10 w-40 h-40 border-2 border-white rounded-full" />
-          <div className="absolute bottom-10 left-10 w-60 h-60 border-2 border-white rounded-full" />
+        <div className="pointer-events-none absolute inset-0 opacity-10" aria-hidden="true">
+          <div className="absolute right-10 top-10 h-40 w-40 rounded-full border-2 border-white" />
+          <div className="absolute bottom-10 left-10 h-60 w-60 rounded-full border-2 border-white" />
         </div>
 
-        <div className="relative z-10 text-center space-y-6">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full mb-4">
-            <Icons.FileText className="w-10 h-10 text-white" aria-hidden="true" />
+        <div className="relative z-10 space-y-8 text-center">
+          <div className="inline-flex h-20 w-20 items-center justify-center rounded-full border border-white/20 bg-white/20 shadow-sm backdrop-blur-sm">
+            <Icons.FileText className="h-10 w-10 text-white" aria-hidden="true" />
           </div>
 
-          <h2 className="font-['Space_Grotesk'] text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight">
+          <h2 className="font-space text-balance text-3xl tracking-tight text-white sm:text-4xl lg:text-5xl">
             {slice.primary.heading}
           </h2>
 
-          <p className="text-lg lg:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">
+          <p className="mx-auto max-w-2xl text-pretty text-lg leading-relaxed text-white/90 lg:text-xl">
             {slice.primary.description}
           </p>
 
-          <m.div whileHover={hoverLift} whileTap={tapScale} className="mt-6">
-            <PrismicNextLink
-              field={slice.primary.download_button}
-              className="inline-flex items-center gap-3 px-8 py-4 bg-white text-steel-blue rounded-full font-medium shadow-strong hover:shadow-medium transition-all duration-300"
-              target="_blank"
-              aria-label="View curriculum vitae in PDF"
+          <m.div whileHover={hoverLift} whileTap={tapScale} className="pt-2">
+            <Button
+              asChild
+              size="lg"
+              className="text-steel-blue h-auto rounded-full border-0 bg-white px-8 py-6 text-base shadow-lg hover:bg-white/90 hover:shadow-xl"
             >
-              <Icons.Download className="w-5 h-5" aria-hidden="true" />
-              {slice.primary.button_text}
-            </PrismicNextLink>
+              <PrismicNextLink
+                field={slice.primary.download_button}
+                target="_blank"
+                aria-label="Descargar curriculum vitae en PDF"
+              >
+                <Icons.Download className="mr-2 h-5 w-5" aria-hidden="true" />
+                {slice.primary.button_text || 'Descargar CV'}
+              </PrismicNextLink>
+            </Button>
           </m.div>
         </div>
       </div>
-    </AnimationLazyLoad>
-  );
-};
-
-export default memo(ViewFullCvContent);
+    </m.div>
+  )
+}
