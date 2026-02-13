@@ -1,0 +1,174 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "conferences": {
+        "__TYPE__": "GroupContentType",
+        "value": [
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "conference_image",
+                {
+                  "origin": {
+                    "id": "main",
+                    "url": "https://images.unsplash.com/photo-1586952518485-11b180e92764",
+                    "width": 4172,
+                    "height": 4000
+                  },
+                  "url": "https://images.unsplash.com/photo-1586952518485-11b180e92764",
+                  "width": 4172,
+                  "height": 4000,
+                  "edit": {
+                    "zoom": 1,
+                    "crop": {
+                      "x": 0,
+                      "y": 0
+                    },
+                    "background": "transparent"
+                  },
+                  "alt": "wind",
+                  "credits": null,
+                  "__TYPE__": "ImageContent",
+                  "thumbnails": {}
+                }
+              ],
+              [
+                "tag",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "mad",
+                  "type": "Text"
+                }
+              ],
+              [
+                "title",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "ever",
+                  "type": "Text"
+                }
+              ],
+              [
+                "description",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "remain",
+                  "type": "Text"
+                }
+              ],
+              [
+                "date",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "bar",
+                  "type": "Text"
+                }
+              ],
+              [
+                "location",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "trace",
+                  "type": "Text"
+                }
+              ],
+              [
+                "size",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "M",
+                  "type": "Select"
+                }
+              ],
+              [
+                "conference_link",
+                {
+                  "key": "76afd2f5-9c94-4e68-9b92-5d0e9fb96d39",
+                  "__TYPE__": "LinkContent",
+                  "value": {
+                    "__TYPE__": "ExternalLink",
+                    "url": "https://prismic.io"
+                  }
+                }
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "items": []
+  },
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "services",
+    "primary": {
+      "services": {
+        "__TYPE__": "GroupContentType",
+        "value": [
+          {
+            "__TYPE__": "GroupItemContent",
+            "value": [
+              [
+                "tag",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "flow",
+                  "type": "Text"
+                }
+              ],
+              [
+                "heading",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "toy",
+                  "type": "Text"
+                }
+              ],
+              [
+                "description",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "seldom",
+                  "type": "Text"
+                }
+              ],
+              [
+                "size",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "M",
+                  "type": "Select"
+                }
+              ],
+              [
+                "icon",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "Brain",
+                  "type": "Select"
+                }
+              ],
+              [
+                "icon_color",
+                {
+                  "__TYPE__": "FieldContent",
+                  "value": "#63dfa3",
+                  "type": "Color"
+                }
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": []
+      }
+    ]
+  }
+]

@@ -15,7 +15,7 @@ import {
 import { Skeleton } from '@/components/ui/skeleton'
 import { Bounded } from '@/components/bounded'
 import { isFilled } from '@prismicio/client'
-import { ContactLayout } from './components/contact-layout'
+import { AnimationLayout } from './components/animation-layout'
 import { Icons } from '@/lib/icons'
 
 /**
@@ -159,7 +159,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
 
           <div className="relative mx-auto w-full max-w-4xl px-6 sm:px-8 lg:px-12">
             {/* Use Client Wrapper for animations */}
-            <ContactLayout>
+            <AnimationLayout>
               {/* Animated Badge */}
               {isFilled.keyText(slice.primary.badge) && (
                 <HeroBadge
@@ -190,7 +190,42 @@ const Hero: FC<HeroProps> = ({ slice }) => {
                   socials={slice.primary.socials}
                 />
               )}
-            </ContactLayout>
+            </AnimationLayout>
+          </div>
+        </Bounded>
+      )}
+
+      {slice.variation === 'pageHeader' && (
+        <Bounded
+          data-slice-type={slice.slice_type}
+          data-slice-variation={slice.variation}
+          className="relative flex min-h-[70vh] items-center justify-center overflow-hidden bg-[#FAFAFA] pb-16 pt-32 lg:pb-24 lg:pt-40 dark:bg-[#0F0F0F]"
+        >
+          {/* Background Gradient */}
+          <div
+            className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#F3EDE7] via-[#FAFAFA] to-white opacity-60 dark:from-[#1a1a1a] dark:via-[#0F0F0F] dark:to-[#0a0a0a]"
+            aria-hidden="true"
+          />
+          <div className="relative z-10 w-full">
+            <AnimationLayout>
+              {isFilled.keyText(slice.primary.badge) && (
+                <HeroBadge variant="default" showDot={true} pulsing={true} centered={true}>
+                  {slice.primary.badge}
+                </HeroBadge>
+              )}
+
+              {isFilled.keyText(slice.primary.heading) && (
+                <HeroHeading size="large" align="center">
+                  {slice.primary.heading}
+                </HeroHeading>
+              )}
+
+              {isFilled.keyText(slice.primary.description) && (
+                <HeroDescription align="center" className="max-w-3xl">
+                  {slice.primary.description}
+                </HeroDescription>
+              )}
+            </AnimationLayout>
           </div>
         </Bounded>
       )}

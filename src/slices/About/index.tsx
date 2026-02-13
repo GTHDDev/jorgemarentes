@@ -20,6 +20,7 @@ const TimelineSkeleton = () => (
   </div>
 )
 
+// Lazy load timeline
 const Timeline = dynamic(() => import('./components/timeline'), {
   ssr: true,
   loading: () => <TimelineSkeleton />,
@@ -38,8 +39,7 @@ const About: FC<AboutProps> = ({ slice }) => {
       className="bg-white dark:bg-[#0a0a0a]"
     >
       <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-20">
-        {/* Left Column - Header & Highlights */}
-        <div className="sticky top-24 space-y-8">
+        <div className="space-y-8 lg:sticky lg:top-24">
           {isFilled.keyText(slice.primary.tag) &&
             isFilled.keyText(slice.primary.heading) &&
             isFilled.keyText(slice.primary.description) && (

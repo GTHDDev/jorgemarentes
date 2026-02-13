@@ -260,8 +260,8 @@
               [
                 "social_link",
                 {
-                  "__TYPE__": "LinkContent",
                   "key": "78d8c7fa-d964-4bc7-b144-96c705dd1b49",
+                  "__TYPE__": "LinkContent",
                   "value": {
                     "__TYPE__": "ExternalLink",
                     "url": "https://prismic.io"
@@ -364,6 +364,33 @@
       "name": {
         "__TYPE__": "FieldContent",
         "value": "fed",
+        "type": "Text"
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": []
+      }
+    ]
+  },
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "pageHeader",
+    "primary": {
+      "badge": {
+        "__TYPE__": "FieldContent",
+        "value": "magic",
+        "type": "Text"
+      },
+      "heading": {
+        "__TYPE__": "FieldContent",
+        "value": "dangerous",
+        "type": "Text"
+      },
+      "description": {
+        "__TYPE__": "FieldContent",
+        "value": "picture",
         "type": "Text"
       }
     },

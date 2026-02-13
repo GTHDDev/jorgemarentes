@@ -1,0 +1,61 @@
+# Robots.txt
+# Version: 1.0
+# Date: 2026-02-13
+
+# General settings for all bots
+User-agent: *
+
+# Allowed routes (by default everything is allowed except what is blocked)
+Allow: /
+
+# Lock internal Next.js files and paths
+Disallow: /_next/
+Disallow: /api/
+Disallow: *.json$
+
+# Block preview/draft paths (Prismic CMS and security)
+Disallow: /preview
+Disallow: /exit-preview
+Disallow: /admin/
+Disallow: /draft/
+
+# Lock files and system parameters
+Disallow: /?*
+Disallow: /*?*
+Disallow: /*utm_
+Disallow: /*ref=
+Disallow: /*sort=
+
+# Lock session and tracking parameters
+Disallow: /?s=
+Disallow: /?page=*
+Disallow: /*?page=
+
+# Crawl-delay for low-quality bots (not applicable to Googlebot, Bingbot)
+Crawl delay: 1
+
+# Sitemap - Replace [YOUR-DOMAIN] with your real domain
+Sitemap: https://jorgemarentes.com/sitemap.xml
+
+# Specific rule for Googlebot (no delay restrictions)
+User-agent: Googlebot
+Allow: /
+Crawl delay: 0
+
+# Specific rule for Bingbot (no delay restrictions)
+User-agent: Bingbot
+Allow: /
+Crawl delay: 0
+
+# Block malicious bots and known scrapers
+User-agent: MJ12bot
+Disallow:/
+
+User-agent: AhrefsBot
+Disallow:/
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /

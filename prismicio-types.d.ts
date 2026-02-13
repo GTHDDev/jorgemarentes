@@ -25,16 +25,14 @@ type PickContentRelationshipFieldData<
       TSubRelationship['customtypes'],
       TLang
     >
-  } & {
-    // Group
+  } & { // Group
     [TGroup in Extract<
       TRelationship['fields'][number],
       prismic.CustomTypeModelFetchGroupLevel1 | prismic.CustomTypeModelFetchGroupLevel2
     > as TGroup['id']]: TData[TGroup['id']] extends prismic.GroupField<infer TGroupData>
       ? prismic.GroupField<PickContentRelationshipFieldData<TGroup, TGroupData, TLang>>
       : never
-  } & {
-    // Other fields
+  } & { // Other fields
     [TFieldKey in Extract<TRelationship['fields'][number], string>]: TFieldKey extends keyof TData
       ? TData[TFieldKey]
       : never
@@ -122,6 +120,7 @@ export type HomeDocument<Lang extends string = string> = prismic.PrismicDocument
 >
 
 type PageDocumentDataSlicesSlice =
+  | BentoGridSlice
   | HeroSlice
   | ViewFullCvSlice
   | TimelineSlice
@@ -599,6 +598,244 @@ type AboutSliceVariation = AboutSliceDefault
  * - **Documentation**: https://prismic.io/docs/slices
  */
 export type AboutSlice = prismic.SharedSlice<'about', AboutSliceVariation>
+
+/**
+ * Item in *BentoGrid → Conferences → Primary → Conferences*
+ */
+export interface BentoGridSliceDefaultPrimaryConferencesItem {
+  /**
+   * Size field in *BentoGrid → Conferences → Primary → Conferences*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: bento_grid.default.primary.conferences[].size
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  size: prismic.SelectField<'M' | 'L'>
+
+  /**
+   * Conference Image field in *BentoGrid → Conferences → Primary → Conferences*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: bento_grid.default.primary.conferences[].conference_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  conference_image: prismic.ImageField<never>
+
+  /**
+   * Tag field in *BentoGrid → Conferences → Primary → Conferences*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: bento_grid.default.primary.conferences[].tag
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  tag: prismic.KeyTextField
+
+  /**
+   * Title field in *BentoGrid → Conferences → Primary → Conferences*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: bento_grid.default.primary.conferences[].title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField
+
+  /**
+   * Description field in *BentoGrid → Conferences → Primary → Conferences*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: bento_grid.default.primary.conferences[].description
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  description: prismic.KeyTextField
+
+  /**
+   * Date field in *BentoGrid → Conferences → Primary → Conferences*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: bento_grid.default.primary.conferences[].date
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  date: prismic.KeyTextField
+
+  /**
+   * Location field in *BentoGrid → Conferences → Primary → Conferences*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: bento_grid.default.primary.conferences[].location
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  location: prismic.KeyTextField
+
+  /**
+   * Conference Link field in *BentoGrid → Conferences → Primary → Conferences*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: bento_grid.default.primary.conferences[].conference_link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  conference_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+}
+
+/**
+ * Item in *BentoGrid → Services → Primary → Services*
+ */
+export interface BentoGridSliceServicesPrimaryServicesItem {
+  /**
+   * Tag field in *BentoGrid → Services → Primary → Services*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: bento_grid.services.primary.services[].tag
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  tag: prismic.KeyTextField
+
+  /**
+   * Heading field in *BentoGrid → Services → Primary → Services*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: bento_grid.services.primary.services[].heading
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  heading: prismic.KeyTextField
+
+  /**
+   * Description field in *BentoGrid → Services → Primary → Services*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: bento_grid.services.primary.services[].description
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  description: prismic.KeyTextField
+
+  /**
+   * Size field in *BentoGrid → Services → Primary → Services*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: bento_grid.services.primary.services[].size
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  size: prismic.SelectField<'M' | 'L'>
+
+  /**
+   * Icon field in *BentoGrid → Services → Primary → Services*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: bento_grid.services.primary.services[].icon
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  icon: prismic.SelectField<
+    | 'Brain'
+    | 'BookOpen'
+    | 'Heart'
+    | 'Award'
+    | 'Shield'
+    | 'Zap'
+    | 'Target'
+    | 'Compass'
+    | 'Lightbulb'
+    | 'Activity'
+    | 'Sun'
+    | 'Moon'
+    | 'Sparkles'
+    | 'Eye'
+    | 'Wind'
+    | 'Users'
+    | 'Flower'
+  >
+
+  /**
+   * Icon Color field in *BentoGrid → Services → Primary → Services*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: bento_grid.services.primary.services[].icon_color
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  icon_color: prismic.ColorField
+}
+
+/**
+ * Primary content in *BentoGrid → Conferences → Primary*
+ */
+export interface BentoGridSliceDefaultPrimary {
+  /**
+   * Conferences field in *BentoGrid → Conferences → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: bento_grid.default.primary.conferences[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  conferences: prismic.GroupField<Simplify<BentoGridSliceDefaultPrimaryConferencesItem>>
+}
+
+/**
+ * Conferences variation for BentoGrid Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type BentoGridSliceDefault = prismic.SharedSliceVariation<
+  'default',
+  Simplify<BentoGridSliceDefaultPrimary>,
+  never
+>
+
+/**
+ * Primary content in *BentoGrid → Services → Primary*
+ */
+export interface BentoGridSliceServicesPrimary {
+  /**
+   * Services field in *BentoGrid → Services → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: bento_grid.services.primary.services[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  services: prismic.GroupField<Simplify<BentoGridSliceServicesPrimaryServicesItem>>
+}
+
+/**
+ * Services variation for BentoGrid Slice
+ *
+ * - **API ID**: `services`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type BentoGridSliceServices = prismic.SharedSliceVariation<
+  'services',
+  Simplify<BentoGridSliceServicesPrimary>,
+  never
+>
+
+/**
+ * Slice variation for *BentoGrid*
+ */
+type BentoGridSliceVariation = BentoGridSliceDefault | BentoGridSliceServices
+
+/**
+ * BentoGrid Shared Slice
+ *
+ * - **API ID**: `bento_grid`
+ * - **Description**: BentoGrid
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type BentoGridSlice = prismic.SharedSlice<'bento_grid', BentoGridSliceVariation>
 
 /**
  * Item in *Conferences → Default → Primary → Conferences*
@@ -1097,9 +1334,57 @@ export type HeroSliceAbout = prismic.SharedSliceVariation<
 >
 
 /**
+ * Primary content in *Hero → PageHeader → Primary*
+ */
+export interface HeroSlicePageHeaderPrimary {
+  /**
+   * Badge field in *Hero → PageHeader → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.pageHeader.primary.badge
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  badge: prismic.KeyTextField
+
+  /**
+   * Heading field in *Hero → PageHeader → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.pageHeader.primary.heading
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  heading: prismic.KeyTextField
+
+  /**
+   * Description field in *Hero → PageHeader → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.pageHeader.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  description: prismic.KeyTextField
+}
+
+/**
+ * PageHeader variation for Hero Slice
+ *
+ * - **API ID**: `pageHeader`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type HeroSlicePageHeader = prismic.SharedSliceVariation<
+  'pageHeader',
+  Simplify<HeroSlicePageHeaderPrimary>,
+  never
+>
+
+/**
  * Slice variation for *Hero*
  */
-type HeroSliceVariation = HeroSliceDefault | HeroSliceContact | HeroSliceAbout
+type HeroSliceVariation = HeroSliceDefault | HeroSliceContact | HeroSliceAbout | HeroSlicePageHeader
 
 /**
  * Hero Shared Slice
@@ -1616,6 +1901,14 @@ declare module '@prismicio/client' {
       AboutSliceDefaultPrimary,
       AboutSliceVariation,
       AboutSliceDefault,
+      BentoGridSlice,
+      BentoGridSliceDefaultPrimaryConferencesItem,
+      BentoGridSliceDefaultPrimary,
+      BentoGridSliceServicesPrimaryServicesItem,
+      BentoGridSliceServicesPrimary,
+      BentoGridSliceVariation,
+      BentoGridSliceDefault,
+      BentoGridSliceServices,
       ConferencesSlice,
       ConferencesSliceDefaultPrimaryConferencesItem,
       ConferencesSliceDefaultPrimary,
@@ -1628,10 +1921,12 @@ declare module '@prismicio/client' {
       HeroSliceContactPrimary,
       HeroSliceAboutPrimaryHighlightsItem,
       HeroSliceAboutPrimary,
+      HeroSlicePageHeaderPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
       HeroSliceContact,
       HeroSliceAbout,
+      HeroSlicePageHeader,
       HighlightsCarouselSlice,
       HighlightsCarouselSliceDefaultPrimaryHighligthsItem,
       HighlightsCarouselSliceDefaultPrimary,
