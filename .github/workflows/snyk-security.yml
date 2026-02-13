@@ -1,0 +1,39 @@
+name: Snyk Security
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  contents: read
+
+jobs:
+  snyk:
+    permissions:
+      contents: read
+      security-events: write # Required to upload vulnerability alerts to GitHub Security tab
+      actions: read
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Install dependencies to allow Snyk to build and analyze the full dependency tree
+      - name: Install dependencies
+        run: npm ci
+
+      # Run Snyk Open Source (SCA) to check for vulnerabilities in project dependencies
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        continue-on-error: true # Do not fail the build, report findings to GitHub
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --sarif-file-output=snyk.sarif
+
+      # Upload the SARIF results to GitHub Code Scanning dashboard
+      - name: Upload result to GitHub Code Scanning
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: snyk.sarif
